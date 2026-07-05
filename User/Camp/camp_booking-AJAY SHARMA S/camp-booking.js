@@ -1,3 +1,21 @@
+requireLogin();
+
+const username =
+sessionStorage.getItem(
+"curonex_username"
+);
+
+const profileName =
+document.getElementById(
+"profileName"
+);
+
+if(username && profileName){
+
+    profileName.textContent =
+    username;
+
+}
 const ALL_CAMPS = Array.from({ length: 24 }, (_, i) => {
   const specs = ["General Medicine","Cardiology","Dermatology","Pediatrics","Orthopedics","Ophthalmology","Dental"];
   const cities = ["Chennai","Coimbatore","Madurai","Trichy","Salem","Sirkazhi"];
@@ -53,7 +71,7 @@ function renderCamps() {
           </div>
         </div>
         <div class="camp-card-footer">
-          <button class="btn btn-primary book-btn" data-camp-id="${camp.id}" onclick="window.location.href='../camp_details-AJAY SHARMA S/camp-details.html'">Book</button>
+          <button class="btn btn-primary book-btn" data-camp-id="${camp.id}" onclick="selectCamp('${camp.id}')">Book</button>
         </div>`;
       campGrid.appendChild(card);
     });
@@ -130,12 +148,51 @@ document.addEventListener("click", (e) => {
     userTrigger.setAttribute("aria-expanded", "false");
   }
 });
-logoutBtn.addEventListener("click", () => console.log("Logging out…"));
+logoutBtn.addEventListener("click", () => logoutUser());
 
 campGrid.addEventListener("click", (e) => {
   const btn = e.target.closest(".book-btn");
   if (!btn) return;
   console.log("Book camp:", btn.getAttribute("data-camp-id"));
 });
+function selectCamp(campId){
 
+    sessionStorage.setItem(
+
+    "selectedCamp",
+
+    campId
+
+    );
+
+    const camp =
+
+    ALL_CAMPS.find(c=>c.id===campId);
+
+    if(camp){
+
+        sessionStorage.setItem(
+
+        "selectedCampDetails",
+
+        JSON.stringify(camp)
+
+        );
+
+    }
+
+    window.location.href=
+
+    "../camp_details/camp-details.html";
+
+}
+document
+.getElementById("myProfileBtn")
+.addEventListener("click",(e)=>{
+
+    e.preventDefault();
+
+    goToProfile();
+
+});
 renderCamps();

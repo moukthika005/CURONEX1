@@ -3,7 +3,48 @@
    Handles: icon placeholders, mandatory-field validation, PIN/QR generation,
    and downloading the generated pass.
    ========================================================================== */
+requireLogin();
 
+const username =
+sessionStorage.getItem(
+"curonex_username"
+);
+
+const profileName =
+document.getElementById(
+"profileName"
+);
+
+if(username){
+
+profileName.textContent =
+username;
+
+}
+const booking =
+
+JSON.parse(
+
+sessionStorage.getItem(
+
+"campBooking"
+
+)
+
+);
+
+if(booking){
+
+document.querySelectorAll(".summary-value")[0].textContent =
+booking.campId;
+
+document.querySelectorAll(".summary-value")[2].textContent =
+booking.specialization;
+
+document.querySelectorAll(".summary-value")[4].textContent =
+booking.city;
+
+}
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ---------------------------------------------------------------------
@@ -214,6 +255,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const hospital = document.querySelector('.summary-item:nth-child(4) .summary-value').textContent.trim();
 
     currentPin = generatePin();
+    sessionStorage.setItem(
+    "campStatus",
+    "Booked"
+);
+
+sessionStorage.setItem(
+    "campPIN",
+    currentPin
+); 
     currentName = name;
     currentCampLine = `${hospital} · ${campId}`;
 
@@ -328,7 +378,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (logoutBtn) {
     logoutBtn.addEventListener('click', () => {
       // window.location.href = 'login.html';
-      console.log('Logout clicked');
+      logoutUser();
     });
   }
+  document
+.getElementById("myProfileBtn")
+.addEventListener("click",()=>{
+
+goToProfile();
+
+});
 });

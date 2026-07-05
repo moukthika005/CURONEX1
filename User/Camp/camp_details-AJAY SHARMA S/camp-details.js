@@ -5,7 +5,46 @@
    ===================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+requireLogin();
 
+const username =
+sessionStorage.getItem(
+"curonex_username"
+);
+
+const profileName =
+document.getElementById(
+"profileName"
+);
+
+if(username && profileName){
+
+    profileName.textContent =
+    username;
+
+}
+const camp = JSON.parse(
+
+sessionStorage.getItem(
+
+"selectedCampDetails"
+
+)
+
+);
+
+if(camp){
+
+document.getElementById("campIdBadge").textContent =
+camp.id;
+
+document.getElementById("campName").textContent =
+camp.name;
+
+document.getElementById("campCity").textContent =
+camp.city;
+
+}
   /* ---------------------------------------------------------------
      NAVBAR — user dropdown (every page)
      --------------------------------------------------------------- */
