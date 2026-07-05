@@ -1,3 +1,22 @@
+document.addEventListener("DOMContentLoaded", () => {
+
+    requireLogin();
+
+    const username = sessionStorage.getItem("curonex_username");
+
+    if (username) {
+        document.querySelector(".username").textContent = username;
+    }
+
+    const hospital = sessionStorage.getItem("selectedHospital");
+
+    if (hospital) {
+
+        document.querySelector(".search-banner strong").textContent = hospital;
+
+    }
+
+});
 // ===== Sidebar Navigation =====
 document.querySelectorAll('.side-item').forEach(item => {
   item.addEventListener('click', function () {
@@ -100,3 +119,61 @@ if (userWrap) {
     // Replace with actual dropdown toggle UI
   });
 }
+document.querySelectorAll(".doctor-card").forEach(card => {
+
+    const button = card.querySelector(".view-profile");
+
+    button.addEventListener("click", function (e) {
+
+        e.preventDefault();
+
+        const doctorName =
+            card.querySelector("h4").textContent;
+
+        const specialization =
+            card.querySelector(".specialty").textContent;
+
+        sessionStorage.setItem("selectedDoctor", doctorName);
+
+        sessionStorage.setItem("selectedSpecialization", specialization);
+
+        window.location.href =
+        "../Slot_Booking_Page_Radha/slot_booking.html";
+
+    });
+
+});
+const logoutBtn = document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener("click", function(e){
+
+        e.preventDefault();
+
+        logoutUser();
+
+    });
+
+}
+const profileBtn = document.getElementById("myProfileBtn");
+
+if(profileBtn){
+
+    profileBtn.addEventListener("click", function(e){
+
+        e.preventDefault();
+
+        goToProfile();
+
+    });
+
+}
+sessionStorage.setItem(
+    "appointmentFilter",
+    "history"
+);
+sessionStorage.setItem(
+    "appointmentFilter",
+    "cancelled"
+);

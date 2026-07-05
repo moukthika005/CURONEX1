@@ -314,14 +314,35 @@ function buildSummary() {
 // ===== SUBMIT =====
 function submitForm() {
   const btn = document.getElementById("nextBtn");
+
   btn.disabled = true;
   btn.textContent = "Creating account...";
 
+  // Collect user information
+  const userData = {
+    fullName: document.getElementById("fullName").value.trim(),
+    email: document.getElementById("email").value.trim(),
+    phone: document.getElementById("phone").value.trim(),
+    password: document.getElementById("password").value
+  };
+
+  // Store temporarily (Frontend Simulation)
+  localStorage.setItem("curonex_user", JSON.stringify(userData));
+
   setTimeout(() => {
+
     document.getElementById("successOverlay").classList.add("show");
+
     setTimeout(() => {
+
       showToast("Account created successfully!", "success");
+
+      setTimeout(() => {
+        window.location.href = "../Login_Kaushik/login.html";
+      }, 1500);
+
     }, 400);
+
   }, 1200);
 }
 

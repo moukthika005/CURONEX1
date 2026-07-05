@@ -43,30 +43,67 @@ function bindScrollIndicator() {
 
 // ===== HERO CTA =====
 function bindHeroCta() {
-  document.getElementById("getStartedBtn").addEventListener("click", () => {
-    showToast("Redirecting to registration...", "info");
-  });
+
+    document.getElementById("getStartedBtn").addEventListener("click", (e) => {
+
+        e.preventDefault();
+
+        showToast("Redirecting to Login...", "info");
+
+        setTimeout(() => {
+
+            window.location.href =
+            "../../Login&Register/Login_Kaushik/login.html";
+
+        }, 700);
+
+    });
+
 }
 
 // ===== FEATURE CARDS =====
 function bindFeatureCards() {
-  const featureMessages = {
-    appointment: "Redirecting to Appointment Scheduling...",
-    doctors: "Redirecting to Find Doctors...",
-    camps: "Redirecting to Medical Camps...",
-    reports: "Redirecting to View Reports..."
-  };
-  document.querySelectorAll(".feature-card").forEach(card => {
-    card.addEventListener("click", () => {
-      showToast(featureMessages[card.dataset.feature] || "Loading...", "info");
+
+    document.querySelectorAll(".feature-card").forEach(card => {
+
+        card.addEventListener("click", () => {
+
+            showToast("Please login to continue", "info");
+
+            setTimeout(() => {
+
+                window.location.href =
+                "../../Login&Register/Login_Kaushik/login.html";
+
+            }, 700);
+
+        });
+
     });
-  });
+
 }
 
 // ===== LOGIN / REGISTER =====
 function bindNavAuthButtons() {
-  document.getElementById("loginBtn").addEventListener("click", () => showToast("Redirecting to Login...", "info"));
-  document.getElementById("registerBtn").addEventListener("click", () => showToast("Redirecting to Registration...", "info"));
+
+    document.getElementById("loginBtn").addEventListener("click", (e) => {
+
+        e.preventDefault();
+
+        window.location.href =
+        "../../Login&Register/Login_Kaushik/login.html";
+
+    });
+
+    document.getElementById("registerBtn").addEventListener("click", (e) => {
+
+        e.preventDefault();
+
+        window.location.href =
+        "../../Login&Register/Register_Kaushik/register.html";
+
+    });
+
 }
 
 // ===== CONTACT FORM =====

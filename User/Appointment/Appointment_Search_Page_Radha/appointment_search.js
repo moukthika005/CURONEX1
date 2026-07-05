@@ -1,3 +1,12 @@
+document.addEventListener("DOMContentLoaded", () => {
+    requireLogin();
+    const username = sessionStorage.getItem("curonex_username");
+
+if (username) {
+    document.querySelector(".username").textContent = username;
+}
+});
+
 // ===== Sidebar Navigation =====
 document.querySelectorAll('.side-item').forEach(item => {
   item.addEventListener('click', function () {
@@ -68,9 +77,46 @@ if (searchBox) {
 
 const searchBtn = document.querySelector('.search-btn');
 if (searchBtn && searchBox) {
-  searchBtn.addEventListener('click', function () {
-    filterHospitals(searchBox.value);
-  });
+  searchBtn.addEventListener("click", function () {
+
+    const query = searchBox.value.trim();
+
+    if (query === "") {
+
+        alert("Please enter a hospital, doctor or specialization.");
+
+        searchBox.focus();
+
+        return;
+
+    }
+
+    filterHospitals(query);
+
+    const visibleCard = document.querySelector(
+        ".hospital-grid .card:not(.hidden)"
+    );
+
+    if (visibleCard) {
+
+        const hospital =
+            visibleCard.querySelector("h3").textContent;
+
+        sessionStorage.setItem(
+            "selectedHospital",
+            hospital
+        );
+
+        setTimeout(() => {
+
+            window.location.href =
+            "../Profile_List_Page_Radha/profile_list.html";
+
+        }, 500);
+
+    }
+
+});
 }
 
 // ===== Bell Notification Click =====
@@ -105,7 +151,7 @@ if (userWrap && dropdownMenu) {
   document.getElementById('logoutBtn').addEventListener('click', function (e) {
     e.preventDefault();
     if (confirm('Are you sure you want to log out?')) {
-      alert('Logged out successfully.');
+      logoutUser();
       // window.location.href = 'login.html';
     }
   });
@@ -119,3 +165,21 @@ if (searchInput) {
     }
   });
 }
+document.querySelectorAll(".hospital-grid .card").forEach(card => {
+
+    card.addEventListener("click", function () {
+
+        const hospital =
+            this.querySelector("h3").textContent;
+
+        sessionStorage.setItem(
+            "selectedHospital",
+            hospital
+        );
+
+    });
+
+});
+sessionStorage.setItem("appointmentFilter","history");
+sessionStorage.setItem("appointmentFilter","upcoming");
+sessionStorage.setItem("appointmentFilter","cancelled");

@@ -86,18 +86,27 @@ function attemptLogin() {
     const matchesPassword = password === MOCK_ACCOUNT.password;
 
     if (matchesIdentifier && matchesPassword) {
-      state.failedAttempts = 0;
-      if (rememberMe) {
+
+    state.failedAttempts = 0;
+
+    if (rememberMe) {
         localStorage.setItem("curonex_remember", identifier);
-      } else {
-        localStorage.removeItem("curonex_remember");
-      }
-      btnText.textContent = "Success!";
-      showToast("Login successful! Redirecting...", "success");
-      setTimeout(() => {
-        showToast("Redirecting to dashboard...", "info");
-      }, 1200);
     } else {
+        localStorage.removeItem("curonex_remember");
+    }
+
+    btnText.textContent = "Success!";
+
+    loginUser(identifier, "user");
+
+    showToast("Login successful!", "success");
+
+    setTimeout(() => {
+        window.location.href =
+        "../../User/Appointment/Appointment_Search_Page_Radha/appointment_search.html";
+    }, 1000);
+
+} else {
       state.failedAttempts++;
       btn.disabled = false;
       btn.classList.remove("loading");
