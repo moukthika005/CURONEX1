@@ -1,6 +1,46 @@
 
 
 document.addEventListener('DOMContentLoaded', () => {
+  requireLogin();
+
+/* Logged in user */
+
+const username =
+sessionStorage.getItem("curonex_username");
+
+if(username){
+
+    document.getElementById("userName")
+    .textContent=username;
+
+    document.getElementById("userAvatar")
+    .textContent=
+    username.charAt(0).toUpperCase();
+
+}
+/* Profile */
+
+document
+.getElementById("myProfileBtn")
+.addEventListener("click",(e)=>{
+
+    e.preventDefault();
+
+    goToProfile();
+
+});
+
+/* Logout */
+
+document
+.getElementById("logoutBtn")
+.addEventListener("click",(e)=>{
+
+    e.preventDefault();
+
+    logoutUser();
+
+});
 
   function showMessage(el, text, type = 'success', duration = 4000) {
     if (!el) return;
@@ -32,6 +72,15 @@ document.addEventListener('DOMContentLoaded', () => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
+          sessionStorage.setItem(
+"userLatitude",
+latitude
+);
+
+sessionStorage.setItem(
+"userLongitude",
+longitude
+);
 
           locationText.innerHTML = `
             <strong>Location Enabled</strong>
@@ -65,6 +114,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function runSymptomSearch() {
     const query = searchInput.value.trim();
+    sessionStorage.setItem(
+"emergencySymptoms",
+query
+);
 
     if (!query) {
       showMessage(searchMsg, 'Please enter a symptom to search.', 'error');
@@ -133,6 +186,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (notifyBtn) {
       notifyBtn.addEventListener('click', () => {
         notifyBtn.disabled = true;
+        sessionStorage.setItem(
+"hospitalNotification",
+hospitalName
+);
         notifyBtn.textContent = 'Notified ✔';
         notifyBtn.style.background = 'var(--green, #2e7d32)';
 
@@ -199,5 +256,26 @@ document.addEventListener('DOMContentLoaded', () => {
       item.classList.add('active');
     });
   });
+/* Save selected hospital */
 
+document
+.querySelectorAll(".hospital-card")
+.forEach(card=>{
+
+    card.addEventListener("click",()=>{
+
+        const hospital=
+        card.querySelector("h3")
+        .childNodes[0]
+        .textContent
+        .trim();
+
+        sessionStorage.setItem(
+        "selectedHospital",
+        hospital
+        );
+
+    });
+
+});
 });

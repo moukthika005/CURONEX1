@@ -18,17 +18,33 @@
   </div>
   <div class="nav-right">
     <div class="nav-links">
-      <a href="#">About</a>
-      <a href="#">Contact</a>
     </div>
     <div class="icon-btn">
       <img src="icons/bell.png" alt="Notification" width="24" height="24"/>
       <span class="badge">2</span></div>
-    <div class="user">
-      <div class="avatar">A</div>
-      <span>Aravind R</span>
-      <span style="font-size:11px;">▾</span>
+    <div class="user" id="userMenu">
+
+    <div class="avatar" id="userAvatar">A</div>
+
+    <span id="userName"></span>
+
+    <span style="font-size:11px;">▾</span>
+
+    <div class="dropdown-menu" id="dropdownMenu">
+
+        <a href="#" id="myProfileBtn">
+            👤 My Profile
+        </a>
+
+        <hr>
+
+        <a href="#" id="logoutBtn">
+            🚪 Logout
+        </a>
+
     </div>
+
+</div>
   </div>
 </div>
 
@@ -219,7 +235,7 @@
   </div>
 
 </div>
-
-</body>
+<script src="../../../common/common.js"></script>
 <script src="ambulance_service.js"></script>
+</body>
 </html>
