@@ -110,8 +110,6 @@ body { font-family: 'Poppins', sans-serif; background-color: #F8FAFC; color: #4B
     </div>
   </div>
   <div class="navbar-right">
-    <a href="#" class="nav-link">About</a>
-    <a href="#" class="nav-link">Contact</a>
     <div class="bell-wrapper">
       <img src="../images/bell.png" height="24" width="24"/>
       <span class="bell-badge">2</span>
@@ -151,7 +149,7 @@ body { font-family: 'Poppins', sans-serif; background-color: #F8FAFC; color: #4B
       <div class="stat-card">
         <div class="stat-card-icon icon-blue"><img src="../images/calendar.png" height="24" width="24"/></div>
         <div>
-          <div class="stat-card-number">18</div>
+          <div class="stat-card-number" id="todayAppointmentCount">18</div>
           <div class="stat-card-label">Today's Appointments</div>
         </div>
       </div>
@@ -352,9 +350,35 @@ body { font-family: 'Poppins', sans-serif; background-color: #F8FAFC; color: #4B
     </section>
   </main>
 </div>
-
+<script src="../../../common/common.js"></script>
 <script>
 (function() {
+  requireLogin();
+
+const username =
+sessionStorage.getItem("curonex_username");
+
+const hospitalName =
+document.querySelector(".hospital-dropdown span");
+
+if(hospitalName && username){
+
+    hospitalName.textContent =
+    username;
+}
+const appointments = JSON.parse(
+    sessionStorage.getItem("todayAppointments")
+) || [];
+
+const todayCount =
+document.getElementById("todayAppointmentCount");
+
+if(todayCount){
+
+    todayCount.textContent =
+    appointments.length;
+
+}
   var searchInput = document.getElementById('searchInput');
   var specializationFilter = document.getElementById('specializationFilter');
   var doctorFilter = document.getElementById('doctorFilter');
@@ -369,9 +393,81 @@ body { font-family: 'Poppins', sans-serif; background-color: #F8FAFC; color: #4B
   var prevPageBtn = document.getElementById('prevPageBtn');
   var nextPageBtn = document.getElementById('nextPageBtn');
   var resultsText = document.getElementById('resultsText');
+  const latestAppointment =
+JSON.parse(
+sessionStorage.getItem("latestAppointment")
+);
+
+if(latestAppointment){
+
+    const row=document.createElement("tr");
+
+    row.innerHTML=`
+
+        <td>${latestAppointment.time}</td>
+
+        <td>
+
+            <div class="patient-name">
+
+                ${latestAppointment.patient}
+
+            </div>
+
+            <div class="patient-id">
+
+                ${latestAppointment.id}
+
+            </div>
+
+        </td>
+
+        <td>${latestAppointment.doctor}</td>
+
+        <td>${latestAppointment.specialization}</td>
+
+        <td>
+
+            <span class="type-cell">
+
+                📋 Consultation
+
+            </span>
+
+        </td>
+
+        <td>
+
+            <span class="status-pill status-scheduled">
+
+                Scheduled
+
+            </span>
+
+        </td>
+
+        <td>
+
+            <button class="action-link">
+
+                👁️ View Details
+
+            </button>
+
+        </td>
+
+    `;
+
+    todayTableBody.prepend(row);
+
+}
 
   function applyFilters() {
     var query = searchInput.value.trim().toLowerCase();
+    sessionStorage.setItem(
+"appointmentSearch",
+query
+);
     var spec = specializationFilter.value;
     var doctor = doctorFilter.value;
     var status = statusFilter.value;
@@ -403,12 +499,26 @@ body { font-family: 'Poppins', sans-serif; background-color: #F8FAFC; color: #4B
   document.querySelectorAll('.action-link').forEach(function(btn) {
     btn.addEventListener('click', function() {
       var id = btn.getAttribute('data-id');
-      alert('Viewing details for appointment: ' + id);
+      sessionStorage.setItem(
+"selectedAppointment",
+id
+);
+
+alert(
+"Opening appointment " + id
+);
     });
   });
 
   viewAllTodayBtn.addEventListener('click', function() {
-    alert('Loading all of today\'s appointments...');
+    window.scrollTo({
+
+top:
+document.body.scrollHeight,
+
+behavior:"smooth"
+
+});
   });
 
   pageButtons.forEach(function(btn) {

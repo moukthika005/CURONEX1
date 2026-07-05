@@ -2,9 +2,41 @@
    CAMP DETAILS & REPORT — shown for COMPLETED camps
    Reads ?campId=... from the URL. Replace mock data with real API calls.
    ========================================================================== */
+requireLogin();
 
+const username =
+sessionStorage.getItem("curonex_username");
+
+const profileName =
+document.getElementById("profileName");
+
+const avatar =
+document.querySelector(".profile-avatar");
+
+if(username){
+
+    if(profileName)
+        profileName.textContent=username;
+
+    if(avatar)
+        avatar.textContent=username.charAt(0).toUpperCase();
+
+}
 const urlParams = new URLSearchParams(window.location.search);
 const campId = urlParams.get('campId') || 'CMP-2025-00045';
+const selectedCamp =
+
+sessionStorage.getItem(
+"selectedCamp"
+);
+
+if(selectedCamp){
+
+    document.getElementById(
+    "infoCampId"
+    ).textContent=selectedCamp;
+
+}
 
 const CAMP = {
   id: campId,
@@ -154,3 +186,22 @@ document.getElementById('exportExcelBtn').addEventListener('click', () => {
 });
 
 render();
+document
+.getElementById("myProfileBtn")
+.addEventListener("click",(e)=>{
+
+    e.preventDefault();
+
+    goToProfile();
+
+});
+
+document
+.getElementById("logoutBtn")
+.addEventListener("click",(e)=>{
+
+    e.preventDefault();
+
+    logoutUser();
+
+});

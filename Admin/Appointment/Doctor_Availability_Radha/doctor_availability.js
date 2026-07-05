@@ -1,3 +1,17 @@
+requireLogin();
+
+const username =
+sessionStorage.getItem("curonex_username");
+
+const hospitalName =
+document.getElementById("hospitalName");
+
+if(hospitalName && username){
+
+    hospitalName.textContent =
+    username;
+
+}
 // ===== Profile Dropdown (shared) =====
 const userWrap = document.getElementById('userWrap');
 const dropdownMenu = document.getElementById('dropdownMenu');
@@ -9,11 +23,19 @@ if (userWrap && dropdownMenu) {
     dropdownMenu.classList.toggle('show');
     chevronIcon.classList.toggle('rotated');
   });
+document
+.getElementById("myProfileBtn")
+.addEventListener("click",function(e){
 
+    e.preventDefault();
+
+    goToProfile();
+
+});
   document.getElementById('logoutBtn').addEventListener('click', function (e) {
     e.preventDefault();
     if (confirm('Are you sure you want to log out?')) {
-      alert('Logged out successfully.');
+      logoutUser();
     }
   });
 }
@@ -92,6 +114,10 @@ document.querySelectorAll('.notify-item').forEach(btn => {
 
     if (confirm(`Send a notification to the patient booked at ${time} that ${doctorName} will be unavailable?`)) {
       alert(`Notification sent via SMS and Email for the ${time} slot.`);
+      sessionStorage.setItem(
+    "lastNotification",
+    doctorName + " - " + time
+);
     }
     closeAllSlotDropdowns();
   });
@@ -124,6 +150,26 @@ document.querySelectorAll('.slot-status-btn').forEach(btn => {
 
 // ===== Helper: convert any slot into a Blocked slot =====
 function convertSlotToBlocked(slot) {
+  const blockedSlots =
+JSON.parse(
+    sessionStorage.getItem("blockedSlots")
+) || [];
+
+blockedSlots.push({
+
+    doctor:
+    slot.closest(".availability-card")
+        .dataset.doctorName,
+
+    time:
+    slot.dataset.time
+
+});
+
+sessionStorage.setItem(
+    "blockedSlots",
+    JSON.stringify(blockedSlots)
+);
   slot.className = 'time-slot blocked';
   slot.innerHTML = `
     <span class="slot-time">${slot.dataset.time}</span>
@@ -138,9 +184,15 @@ const specializationSelect = document.getElementById('specializationSelect');
 const doctorSelect = document.getElementById('doctorSelect');
 
 function applyFilters() {
-  const searchTerm = doctorSearchInput.value.trim().toLowerCase();
+  sessionStorage.setItem(
+    "doctorSearch",
+    searchTerm
+);
   const specialty = specializationSelect.value;
-  const doctor = doctorSelect.value;
+  sessionStorage.setItem(
+    "selectedDoctor",
+    doctor
+);
 
   document.querySelectorAll('.availability-card').forEach(card => {
     const name = card.dataset.doctorName;

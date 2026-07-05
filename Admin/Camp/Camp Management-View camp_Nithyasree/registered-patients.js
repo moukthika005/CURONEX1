@@ -3,10 +3,54 @@
    Reads ?campId=... from the URL (set by view-camp.js) to know which camp
    to load. Replace PATIENT_DATA with a real API call keyed by campId.
    ========================================================================== */
+requireLogin();
 
+const username =
+sessionStorage.getItem(
+"curonex_username"
+);
+
+const profileName =
+document.getElementById(
+"profileName"
+);
+
+const avatar =
+document.querySelector(
+".profile-avatar"
+);
+
+if(username){
+
+    if(profileName){
+
+        profileName.textContent =
+        username;
+
+    }
+
+    if(avatar){
+
+        avatar.textContent =
+        username.charAt(0)
+        .toUpperCase();
+
+    }
+
+}
 const urlParams = new URLSearchParams(window.location.search);
 const campId = urlParams.get('campId') || 'CMP-2025-00045';
+const selectedCamp =
 
+sessionStorage.getItem(
+"selectedCamp"
+);
+
+const selectedStatus =
+
+sessionStorage.getItem(
+"selectedCampStatus"
+);
 // Mock camp header info — in production, fetch by campId
 const CAMP_INFO = {
   id: campId,
@@ -19,6 +63,16 @@ document.getElementById('infoCampId').textContent = CAMP_INFO.id;
 document.getElementById('infoCampName').textContent = CAMP_INFO.name;
 document.getElementById('infoTotalReg').textContent = CAMP_INFO.totalRegistrations;
 document.getElementById('infoSlots').textContent = CAMP_INFO.availableSlots;
+if(selectedCamp){
+
+    document
+    .getElementById(
+    "infoCampId"
+    )
+    .textContent =
+    selectedCamp;
+
+}
 
 const PATIENT_DATA = [
   { regId:'REG-2025-00125', name:'Rahul Sharma',  age:45, gender:'Male',   phone:'9876543210', date:'May 28, 2025 09:15 AM', status:'registered' },
@@ -84,8 +138,21 @@ function render(){
   tbody.querySelectorAll('.view-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       // Hook this up to a patient-detail modal/page when ready
-      alert(`Patient detail view for ${btn.getAttribute('data-reg')} — connect to patient detail page.`);
-    });
+      sessionStorage.setItem(
+
+"selectedPatient",
+
+btn.getAttribute(
+"data-reg"
+)
+
+);
+
+alert(
+
+"Opening patient profile..."
+
+);    });
   });
 }
 
@@ -130,3 +197,29 @@ document.getElementById('downloadExcelBtn').addEventListener('click', () => {
 });
 
 render();
+document
+.getElementById(
+"myProfileBtn"
+)
+.addEventListener(
+"click",
+function(e){
+
+    e.preventDefault();
+
+    goToProfile();
+
+});
+document
+.getElementById(
+"logoutBtn"
+)
+.addEventListener(
+"click",
+function(e){
+
+    e.preventDefault();
+
+    logoutUser();
+
+});

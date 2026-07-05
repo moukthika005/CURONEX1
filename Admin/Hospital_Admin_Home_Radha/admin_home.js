@@ -1,9 +1,103 @@
 // ===== Sidebar Navigation =====
+document.addEventListener("DOMContentLoaded", () => {
+
+    requireLogin();
+    /* ===========================
+ICU Availability
+=========================== */
+
+const availableBeds =
+sessionStorage.getItem("icuBeds");
+
+if(availableBeds){
+
+    const value =
+    document.querySelector(".donut-value");
+
+    if(value){
+
+        value.textContent =
+        availableBeds;
+
+    }
+
+}
+/* ===========================
+Today's Appointments
+=========================== */
+
+const appointments =
+JSON.parse(
+sessionStorage.getItem(
+"todayAppointments"
+)
+)||[];
+
+const appointmentCard =
+document.querySelectorAll(
+".stat-value"
+)[0];
+
+if(appointmentCard){
+
+    appointmentCard.textContent =
+    appointments.length;
+
+}
+
+    /* Logged in hospital */
+
+    const username =
+    sessionStorage.getItem("curonex_username");
+
+    if(username){
+
+        const hospitalName =
+        document.getElementById("hospitalName");
+
+        if(hospitalName){
+
+            hospitalName.textContent =
+            username;
+
+        }
+
+    }
 document.querySelectorAll('.side-item').forEach(item => {
   item.addEventListener('click', function () {
     document.querySelectorAll('.side-item').forEach(i => i.classList.remove('active'));
     this.classList.add('active');
-    console.log(`Navigating to: ${this.textContent.trim()}`);
+    const routes={
+
+"Create Doctor Profile":
+"../Appointment/Doctor_Profiles_Radha/doctor_profile.html",
+
+"Update Doctor Availability":
+"../Appointment/Doctor_Availability_Radha/doctor_availability.html",
+
+"Update ICU Bed Availability":
+"../Appointment/ICU_Availability_Radha/icu_availability.html",
+
+"Show Previous Appointments":
+"../Appointment/Prev_Appointments_Radha/prev_appointments.html",
+
+"Camp Management":
+"../Camp/Camp Management- Dashboard_Nithyasree/dashboard.html",
+
+"Resource Management":
+"../Resource/Inventory Management_S Gokulakrishnan/Ilp2.0/resource-availability.html"
+
+};
+
+const label=
+this.textContent.trim();
+
+if(routes[label]){
+
+window.location.href=
+routes[label];
+
+}
   });
 });
 
@@ -55,7 +149,17 @@ if (userWrap && dropdownMenu) {
   document.getElementById('logoutBtn').addEventListener('click', function (e) {
     e.preventDefault();
     if (confirm('Are you sure you want to log out?')) {
-      alert('Logged out successfully.');
+      logoutUser();
     }
   });
 }
+document
+.getElementById("myProfileBtn")
+.addEventListener("click",function(e){
+
+    e.preventDefault();
+
+    goToProfile();
+
+});
+});

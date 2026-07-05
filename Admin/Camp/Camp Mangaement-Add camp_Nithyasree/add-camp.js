@@ -2,7 +2,71 @@
    ADD CAMP — form handling
    Wire submitCamp() to your real API (POST /camps) when the backend is ready.
    ========================================================================== */
+requireLogin();
 
+const username =
+sessionStorage.getItem(
+"curonex_username"
+);
+
+const profileName =
+document.getElementById(
+"profileName"
+);
+
+const avatar =
+document.querySelector(
+".profile-avatar"
+);
+
+if(username){
+
+    if(profileName){
+
+        profileName.textContent =
+        username;
+
+    }
+
+    if(avatar){
+
+        avatar.textContent =
+        username.charAt(0)
+        .toUpperCase();
+
+    }
+
+}
+const doctorSelect =
+document.getElementById(
+"campDoctor"
+);
+
+const doctors =
+JSON.parse(
+sessionStorage.getItem(
+"doctorProfiles"
+)
+) || [];
+
+if(doctorSelect && doctors.length){
+
+    doctorSelect.innerHTML =
+    '<option value="">Select doctor</option>';
+
+    doctors.forEach(doc=>{
+
+        const option =
+        document.createElement("option");
+
+        option.textContent =
+        `${doc.name} — ${doc.specialty}`;
+
+        doctorSelect.appendChild(option);
+
+    });
+
+}
 const form = document.getElementById('addCampForm');
 const uploadBox = document.getElementById('uploadBox');
 const bannerInput = document.getElementById('bannerInput');
@@ -61,7 +125,31 @@ form.addEventListener('submit', (e) => {
     description: document.getElementById('campDescription').value,
     banner: bannerInput.files[0] ? bannerInput.files[0].name : null
   };
+  let camps =
+JSON.parse(
+sessionStorage.getItem(
+"campData"
+)
+) || [];
 
+camps.push(payload);
+
+sessionStorage.setItem(
+"campData",
+JSON.stringify(camps)
+);
+
+sessionStorage.setItem(
+"latestCamp",
+JSON.stringify(payload)
+);
+sessionStorage.setItem(
+
+"totalCamps",
+
+camps.length
+
+);
   submitCamp(payload);
 });
 
@@ -79,4 +167,23 @@ document.getElementById('cancelBtn').addEventListener('click', () => {
   if (confirm('Discard this camp and go back to the dashboard?')) {
     window.location.href = 'dashboard.html';
   }
+  document
+.getElementById("myProfileBtn")
+.addEventListener("click",function(e){
+
+    e.preventDefault();
+
+    goToProfile();
+
+});
+
+document
+.getElementById("logoutBtn")
+.addEventListener("click",function(e){
+
+    e.preventDefault();
+
+    logoutUser();
+
+});
 });

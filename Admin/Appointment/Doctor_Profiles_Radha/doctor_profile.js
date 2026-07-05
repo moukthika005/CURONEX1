@@ -1,3 +1,17 @@
+requireLogin();
+
+const username =
+sessionStorage.getItem("curonex_username");
+
+const hospitalName =
+document.getElementById("hospitalName");
+
+if(hospitalName && username){
+
+    hospitalName.textContent =
+    username;
+
+}
 // ===== Sidebar Navigation =====
 document.querySelectorAll('.side-item').forEach(item => {
   item.addEventListener('click', function () {
@@ -38,6 +52,29 @@ if (addDoctorForm) {
     const specialty = document.getElementById('doctorSpecialty').value.trim();
     const experience = document.getElementById('doctorExperience').value.trim();
     const qualification = document.getElementById('doctorQualification').value.trim();
+    const doctor = {
+
+    name,
+
+    specialty,
+
+    experience,
+
+    qualification
+
+};
+
+const doctors =
+JSON.parse(
+    sessionStorage.getItem("doctorProfiles")
+) || [];
+
+doctors.push(doctor);
+
+sessionStorage.setItem(
+    "doctorProfiles",
+    JSON.stringify(doctors)
+);
 
     if (!name || !specialty || !experience) {
       alert('Please fill in Name, Specialization, and Years of Experience.');
@@ -66,6 +103,18 @@ if (addDoctorForm) {
       const doctorName = card.querySelector('h4').textContent;
       if (confirm(`Are you sure you want to delete ${doctorName}'s profile?`)) {
         card.remove();
+        let doctors =
+JSON.parse(
+    sessionStorage.getItem("doctorProfiles")
+) || [];
+
+doctors =
+doctors.filter(d => d.name !== doctorName);
+
+sessionStorage.setItem(
+    "doctorProfiles",
+    JSON.stringify(doctors)
+);
         console.log(`${doctorName} deleted.`);
       }
     });
@@ -80,7 +129,12 @@ if (addDoctorForm) {
 const sortSelect = document.getElementById('sortSelect');
 if (sortSelect) {
   sortSelect.addEventListener('change', function () {
-    sortDoctors(this.value);
+    sessionStorage.setItem(
+    "doctorSort",
+    this.value
+);
+
+sortDoctors(this.value);
   });
 }
 
@@ -112,7 +166,14 @@ function sortDoctors(criteria) {
 const filterBtn = document.querySelector('.filter-btn');
 if (filterBtn) {
   filterBtn.addEventListener('click', function () {
-    alert('Opening filter options (by specialty, experience, etc.)...');
+    sessionStorage.setItem(
+    "doctorFilterOpened",
+    "true"
+);
+
+alert(
+    "Filter options coming soon."
+);
   });
 }
 
@@ -189,11 +250,19 @@ if (userWrap && dropdownMenu) {
       chevronIcon.classList.remove('rotated');
     }
   });
+  document
+.getElementById("myProfileBtn")
+.addEventListener("click",function(e){
 
+    e.preventDefault();
+
+    goToProfile();
+
+});
   document.getElementById('logoutBtn').addEventListener('click', function (e) {
     e.preventDefault();
     if (confirm('Are you sure you want to log out?')) {
-      alert('Logged out successfully.');
+      logoutUser();
     }
   });
 }

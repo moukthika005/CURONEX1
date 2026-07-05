@@ -1,5 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
+requireLogin();
 
+const username =
+sessionStorage.getItem(
+"curonex_username"
+);
+
+const profileName =
+document.getElementById(
+"profileName"
+);
+
+if(username && profileName){
+
+    profileName.textContent =
+    username;
+
+}
+const selectedPatient =
+sessionStorage.getItem(
+"selectedPatient"
+);
+
+if(selectedPatient){
+
+    document
+    .getElementById("patientId")
+    .value =
+    selectedPatient;
+
+}
   /* ==========================================================
      PROFILE DROPDOWN (navbar) — same pattern as camp-details/authentication
   ========================================================== */
@@ -31,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (logoutBtn) {
     logoutBtn.addEventListener('click', () => {
-      console.log('Logout clicked');
+      logoutUser();
     });
   }
 
@@ -210,7 +240,66 @@ document.addEventListener('DOMContentLoaded', () => {
       successCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
+const record = {
 
+    patientId:
+    document.getElementById(
+    "patientId"
+    ).value,
+
+    patientName:
+    document.getElementById(
+    "patientName"
+    ).value,
+
+    phone:
+    document.getElementById(
+    "phoneNumber"
+    ).value,
+
+    age:
+    document.getElementById(
+    "age"
+    ).value,
+
+    gender:
+    document.getElementById(
+    "gender"
+    ).value,
+
+    diagnosis:
+    document.getElementById(
+    "diagnosis"
+    ).value,
+
+    prescription:
+    document.getElementById(
+    "prescription"
+    ).value,
+
+    doctor:
+    username
+
+};
+
+let records =
+JSON.parse(
+sessionStorage.getItem(
+"patientRecords"
+)
+) || [];
+
+records.push(record);
+
+sessionStorage.setItem(
+"patientRecords",
+JSON.stringify(records)
+);
+
+sessionStorage.setItem(
+"latestPatientRecord",
+JSON.stringify(record)
+);
   if (newRecordBtn) {
     newRecordBtn.addEventListener('click', () => {
       recordForm.reset();
@@ -239,5 +328,14 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => { draftBtn.textContent = 'Save Draft'; }, 1800);
     });
   }
+
+});
+document
+.getElementById("myProfileBtn")
+.addEventListener("click",(e)=>{
+
+    e.preventDefault();
+
+    goToProfile();
 
 });

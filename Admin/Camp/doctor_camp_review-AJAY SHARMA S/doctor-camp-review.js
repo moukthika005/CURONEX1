@@ -6,7 +6,24 @@
 
 (function () {
   "use strict";
+requireLogin();
 
+const username =
+sessionStorage.getItem(
+"curonex_username"
+);
+
+const profileName =
+document.getElementById(
+"profileName"
+);
+
+if(username && profileName){
+
+    profileName.textContent =
+    username;
+
+}
   /* -------------------------------------------------------------------
      1. MOCK CAMP DATA
      In production this would come from an API call, e.g.
@@ -85,7 +102,7 @@
     if (els.logoutBtn) {
       els.logoutBtn.addEventListener("click", () => {
         // Hook up real logout logic / redirect here.
-        window.location.href = "login.html";
+        logoutUser();
       });
     }
   }
@@ -203,6 +220,13 @@
 
   function onSearch() {
     state.query = els.searchInput.value;
+    sessionStorage.setItem(
+
+"doctorCampSearch",
+
+state.query
+
+);
     refresh();
   }
 
@@ -231,15 +255,27 @@
   /* -------------------------------------------------------------------
      7. NAVIGATION — "Enter Data" opens the camp entry page
      ------------------------------------------------------------------- */
- /* function onEnterDataClick(e) {
-    const campId = e.currentTarget.getAttribute("data-camp-id");
-    if (!campId) return;
+ function onEnterDataClick(e){
 
-    // Navigate to the camp details / patient entry page, passing the
-    // Camp ID so that page can load the right camp's data.
-    window.location.href = `camp-details.html?campId=${encodeURIComponent(campId)}`;
-  }
-*/
+    const campId =
+
+    e.currentTarget.getAttribute(
+    "data-camp-id"
+    );
+
+    sessionStorage.setItem(
+
+    "selectedCamp",
+
+    campId
+
+    );
+
+    window.location.href =
+
+    "../patient-record/patient-record.html";
+
+}
   /* -------------------------------------------------------------------
      8. INIT
      ------------------------------------------------------------------- */
@@ -249,6 +285,14 @@
     renderSnapshotStrip();
     refresh();
   }
+document
+.getElementById("myProfileBtn")
+.addEventListener("click",(e)=>{
 
+e.preventDefault();
+
+goToProfile();
+
+});
   document.addEventListener("DOMContentLoaded", init);
 })();

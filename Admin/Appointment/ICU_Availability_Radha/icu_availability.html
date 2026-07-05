@@ -96,8 +96,6 @@ body { font-family: 'Poppins', sans-serif; background-color: #F8FAFC; color: #4B
     </div>
   </div>
   <div class="navbar-right">
-    <a href="#" class="nav-link">About</a>
-    <a href="#" class="nav-link">Contact</a>
     <div class="bell-wrapper">
       <img src="../images/bell.png" height="24" width="24"/>
       <span class="bell-badge">2</span>
@@ -204,11 +202,29 @@ body { font-family: 'Poppins', sans-serif; background-color: #F8FAFC; color: #4B
     </section>
   </main>
 </div>
-
+<script src="../../../common/common.js"></script>
 <script>
 (function() {
+  requireLogin();
+
+const username =
+sessionStorage.getItem("curonex_username");
+
+const hospitalName =
+document.querySelector(".hospital-dropdown span");
+
+if(hospitalName && username){
+
+    hospitalName.textContent =
+    username;
+
+}
   var MAX_BEDS = 25;
-  var currentAvailable = 12;
+  var currentAvailable = Number(
+
+sessionStorage.getItem("icuBeds")
+
+) || 12;
 
   var currentBedsInput = document.getElementById('currentBedsInput');
   var updateBedsInput = document.getElementById('updateBedsInput');
@@ -283,6 +299,20 @@ body { font-family: 'Poppins', sans-serif; background-color: #F8FAFC; color: #4B
     if (validValue === null) return;
 
     currentAvailable = validValue;
+    sessionStorage.setItem(
+
+"icuBeds",
+
+currentAvailable
+
+);
+sessionStorage.setItem(
+
+"icuLastUpdated",
+
+new Date().toLocaleString()
+
+);
     currentBedsInput.value = currentAvailable;
     availableCountDisplay.textContent = currentAvailable;
     lastUpdatedText.textContent = 'Last updated: Today, ' +
@@ -291,6 +321,13 @@ body { font-family: 'Poppins', sans-serif; background-color: #F8FAFC; color: #4B
     addHistoryRow(currentAvailable);
     updateBedsInput.value = '';
     setBanner('ICU bed availability updated successfully.', 'success');
+    setTimeout(function(){
+
+    window.location.href=
+
+    "../../Hospital_Admin_Home_Radha/admin_home.html";
+
+},1200);
   });
 
   resetBtn.addEventListener('click', function() {

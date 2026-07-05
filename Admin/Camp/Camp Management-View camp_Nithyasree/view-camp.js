@@ -2,7 +2,48 @@
    VIEW CAMP DATA — table logic
    Replace CAMP_DATA with a real API response when the backend is ready.
    ========================================================================== */
+requireLogin();
 
+const username =
+sessionStorage.getItem(
+"curonex_username"
+);
+
+const profileName =
+document.getElementById(
+"profileName"
+);
+
+const avatar =
+document.querySelector(
+".profile-avatar"
+);
+
+if(username){
+
+    if(profileName){
+
+        profileName.textContent =
+        username;
+
+    }
+
+    if(avatar){
+
+        avatar.textContent =
+        username
+        .charAt(0)
+        .toUpperCase();
+
+    }
+
+}
+const savedCamps =
+JSON.parse(
+sessionStorage.getItem(
+"campData"
+)
+) || [];
 const CAMP_DATA = [
   { id:'CMP-2025-00045', name:'Healthy Hearts Camp',      type:'Cardiology',    date:'May 28, 2025', city:'Pune',       status:'upcoming',  registrations:125 },
   { id:'CMP-2025-00044', name:'Diabetes Awareness Camp',  type:'General',       date:'May 20, 2025', city:'Nagpur',     status:'completed', registrations:210 },
@@ -96,6 +137,21 @@ function attachViewHandlers(){
       // Completed camps -> Camp Details & Report (with patient consultation history)
       // Upcoming / Ongoing camps -> Registered Patients page
       if (status === 'completed') {
+        sessionStorage.setItem(
+
+"selectedCamp",
+
+btn.getAttribute("data-id")
+
+);
+
+sessionStorage.setItem(
+
+"selectedCampStatus",
+
+btn.getAttribute("data-status")
+
+);
         window.location.href = `camp-details-report.html?campId=${encodeURIComponent(id)}`;
       } else {
         window.location.href = `registered-patients.html?campId=${encodeURIComponent(id)}`;
@@ -123,3 +179,29 @@ document.getElementById('perPage').addEventListener('change', (e) => {
 });
 
 render();
+document
+.getElementById(
+"myProfileBtn"
+)
+.addEventListener(
+"click",
+function(e){
+
+    e.preventDefault();
+
+    goToProfile();
+
+});
+document
+.getElementById(
+"logoutBtn"
+)
+.addEventListener(
+"click",
+function(e){
+
+    e.preventDefault();
+
+    logoutUser();
+
+});
