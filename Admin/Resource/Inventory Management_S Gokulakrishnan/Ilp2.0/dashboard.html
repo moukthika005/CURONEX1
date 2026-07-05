@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Curonex | Inventory Dashboard</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Dashboard CSS -->
+
+    <link rel="stylesheet"
+            href="assets/css/dashboard.css">
+
+</head>
+
+<body>
+
+<header class="top-navbar">
+
+    <!-- Logo -->
+
+    <div class="logo-section">
+
+        <img src="assets/images/logo.png"
+             alt="Curonex Logo"
+             class="logo">
+
+        <div class="logo-text">
+
+            <h2>Curonex</h2>
+
+            <span>Hospital Camp Management</span>
+
+        </div>
+
+    </div>
+
+    <!-- Search -->
+
+    <div class="search-container">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+             id="dashboardSearch"
+               type="text"
+               placeholder="Search">
+
+    </div>
+
+    <!-- Right Side -->
+
+    <div class="navbar-right">
+
+        <nav class="nav-links">
+
+            <a href="#">About</a>
+
+            <a href="#">Contact</a>
+
+        </nav>
+
+        <button class="nav-icon">
+
+            <i class="fa-regular fa-bell"></i>
+
+        </button>
+
+        <button class="nav-icon">
+
+            <i class="fa-regular fa-envelope"></i>
+
+        </button>
+
+        <div class="profile-menu">
+
+            <div class="profile-icon">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+            <div class="profile-text">
+
+                <h4>Admin</h4>
+
+                <span>Administrator</span>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-down"></i>
+
+        </div>
+
+    </div>
+
+</header>
+
+<div class="main-container">
+
+    <!-- ==========================================
+                    LEFT SIDEBAR
+    =========================================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-top">
+
+            <div class="sidebar-header">
+
+                <h3>Inventory Module</h3>
+
+                <p>Manage Hospital Resources</p>
+
+            </div>
+
+            <nav class="sidebar-menu">
+
+                <a href="dashboard.html"
+                   class="menu-item active">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    <span>Dashboard</span>
+
+                </a>
+
+                <a href="registration.html"
+                   class="menu-item">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    <span>Resource Registration</span>
+
+                </a>
+
+                <a href="resource-availability.html"
+                   class="menu-item">
+
+                    <i class="fa-solid fa-boxes-stacked"></i>
+
+                    <span>Resource Availability</span>
+
+                </a>
+
+                <a href="transfer-request.html"
+                   class="menu-item">
+
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+
+                    <span>Transfer Request</span>
+
+                </a>
+
+                <a href="movement-tracking.html"
+                   class="menu-item">
+
+                    <i class="fa-solid fa-truck-fast"></i>
+
+                    <span>Movement Tracking</span>
+
+                </a>
+
+            </nav>
+
+        </div>
+
+        <!-- ==========================================
+                    HELP CARD
+        =========================================== -->
+
+        <div class="help-card">
+
+            <div class="help-icon">
+
+                <i class="fa-solid fa-headset"></i>
+
+            </div>
+
+            <h3>Need Help?</h3>
+
+            <h4>Support Center</h4>
+
+            <p>
+
+                Our support team is available to help
+                you with inventory operations.
+
+            </p>
+
+            <button class="support-btn">
+
+                Contact Support
+
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- ==========================================
+                    PAGE CONTENT
+    =========================================== -->
+
+    <main class="dashboard-content">
+
+
+    <!-- ==========================================
+                    PAGE HEADER
+    =========================================== -->
+
+    <section class="page-header">
+
+        <div class="page-title">
+
+            <h1>Inventory Dashboard</h1>
+
+            <p>
+
+                Efficiently manage hospital resources,
+                monitor inventory levels and streamline
+                inventory operations across medical camps.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================================
+                    WELCOME CARD
+    =========================================== -->
+
+    <section class="welcome-card">
+
+        <div class="welcome-content">
+
+            <span class="welcome-badge">
+
+                Welcome Back 👋
+
+            </span>
+
+            <h2>
+
+                Hello, Admin
+
+            </h2>
+
+            <p>
+
+                Access inventory information, monitor
+                medical supplies, register new resources,
+                approve transfers and keep track of
+                inventory movements from one dashboard.
+
+            </p>
+
+            <div class="welcome-buttons">
+
+                <a href="registration.html"
+                   class="primary-btn">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    Register Resource
+
+                </a>
+
+                <a href="resource-availability.html"
+                   class="secondary-btn">
+
+                    View Resources
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Decorative Right Side -->
+
+        <div class="welcome-design">
+
+            <div class="circle circle-1"></div>
+
+            <div class="circle circle-2"></div>
+
+            <div class="circle circle-3"></div>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================================
+                    DASHBOARD SUMMARY
+    =========================================== -->
+
+    <section class="stats-grid">
+
+        <div class="stat-card">
+
+            <div class="stat-icon blue">
+
+                <i class="fa-solid fa-boxes-stacked"></i>
+
+            </div>
+
+            <div class="stat-info">
+
+                <h3>0</h3>
+
+                <p>Total Resources</p>
+
+            </div>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="stat-icon green">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+            </div>
+
+            <div class="stat-info">
+
+                <h3>0</h3>
+
+                <p>Available Resources</p>
+
+            </div>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="stat-icon orange">
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+            </div>
+
+            <div class="stat-info">
+
+                <h3>0</h3>
+
+                <p>Low Stock</p>
+
+            </div>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="stat-icon red">
+
+                <i class="fa-solid fa-clock"></i>
+
+            </div>
+
+            <div class="stat-info">
+
+                <h3>0</h3>
+
+                <p>Pending Transfers</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+                    RECENT RESOURCES
+    =========================================== -->
+
+    <section class="content-section">
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>Recent Resources</h2>
+
+                <p>Latest resources added to inventory</p>
+
+            </div>
+
+            <a href="resource-availability.html" class="view-all">
+
+                View All
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+        <div class="resource-grid"></div>
+
+    </section>
+
+    <!-- ==========================================
+                    QUICK ACTIONS
+    =========================================== -->
+
+    <section class="content-section">
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>Quick Actions</h2>
+
+                <p>Frequently used inventory operations</p>
+
+            </div>
+
+        </div>
+
+        <div class="quick-action-grid">
+
+            <a href="registration.html"
+               class="quick-action-card">
+
+                <i class="fa-solid fa-circle-plus"></i>
+
+                <h3>Register</h3>
+
+                <p>Add new inventory resources.</p>
+
+            </a>
+
+            <a href="resource-availability.html"
+               class="quick-action-card">
+
+                <i class="fa-solid fa-boxes-stacked"></i>
+
+                <h3>Availability</h3>
+
+                <p>Monitor current stock.</p>
+
+            </a>
+
+            <a href="transfer-request.html"
+               class="quick-action-card">
+
+                <i class="fa-solid fa-arrow-right-arrow-left"></i>
+
+                <h3>Transfer</h3>
+
+                <p>Create transfer requests.</p>
+
+            </a>
+
+            <a href="movement-tracking.html"
+               class="quick-action-card">
+
+                <i class="fa-solid fa-truck-fast"></i>
+
+                <h3>Tracking</h3>
+
+                <p>Track resource movement.</p>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+                    INVENTORY OVERVIEW
+    =========================================== -->
+
+    <section class="bottom-grid">
+
+        <!-- LOW STOCK -->
+
+        <div class="dashboard-card">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>Low Stock Resources</h2>
+
+                    <p>Resources that require attention</p>
+
+                </div>
+
+            </div>
+
+            <table class="resource-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Resource</th>
+
+                        <th>Category</th>
+
+                        <th>Quantity</th>
+
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody></tbody>
+
+            </table>
+
+        </div>
+
+        <!-- RECENT ACTIVITY -->
+
+        <div class="dashboard-card">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>Recent Activity</h2>
+
+                    <p>Latest inventory updates</p>
+
+                </div>
+
+            </div>
+
+            <div class="activity-list">
+
+                <div class="activity-item">
+
+                    <div class="activity-icon success">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h4>Resource Registered</h4>
+
+                        <p>
+
+                            PPE Kits successfully added to inventory.
+
+                        </p>
+
+                        <span>5 minutes ago</span>
+
+                    </div>
+
+                </div>
+
+                <div class="activity-item">
+
+                    <div class="activity-icon primary">
+
+                        <i class="fa-solid fa-arrow-right-arrow-left"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h4>Transfer Approved</h4>
+
+                        <p>
+
+                            Resources transferred successfully.
+
+                        </p>
+
+                        <span>20 minutes ago</span>
+
+                    </div>
+
+                </div>
+
+                <div class="activity-item">
+
+                    <div class="activity-icon warning">
+
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h4>Low Stock Alert</h4>
+
+                        <p>
+
+                            Face Masks reached the minimum quantity.
+
+                        </p>
+
+                        <span>Today</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+</div>
+
+<script src="assets/js/dashboard.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+

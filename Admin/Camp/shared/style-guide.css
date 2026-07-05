@@ -1,0 +1,158 @@
+/* ==========================================================================
+   CURONEX UI DESIGN SYSTEM v1.0 — shared tokens
+   Import this file FIRST on every page, before the page's own CSS.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root{
+  /* 1. Color palette */
+  --c-primary:            #0B3D91; /* navbar / brand */
+  --c-primary-btn:        #1976D2; /* primary button */
+  --c-btn-hover:          #1565C0; /* primary button hover */
+  --c-selected-bg:        #E3F2FD; /* selected / active background */
+  --c-page-bg:            #F8FAFC; /* page background */
+
+  --c-card-bg:            #FFFFFF;
+  --c-border:             #D9E6F5;
+  --c-input-border:       #C9DDF2;
+  --c-icon-text:          #0B3D91; /* icon / primary text */
+  --c-heading:            #102A43; /* heading text */
+
+  --c-body:               #4B5563;
+  --c-secondary:          #6B7280;
+  --c-link:               #1976D2;
+  --c-rating-bg:          #E8F4FD;
+  --c-rating-text:        #1976D2;
+
+  --c-success:            #2E7D32;
+  --c-success-bg:         #E8F5E9;
+  --c-error:              #D32F2F;
+  --c-error-bg:           #FFEBEE;
+  --c-info-bg:            #E3F2FD;
+  --c-info-text:          #1976D2;
+  --c-warning:            #B26A00;
+  --c-warning-bg:         #FFF3E0;
+
+  --c-slot-disabled-bg:   rgba(180,180,180,0.35);
+  --c-slot-selected:      #64B5F6;
+  --c-card-hover-bg:      #F2F8FE;
+
+  /* 2. Typography */
+  --font-main: 'Poppins', sans-serif;
+
+  /* 3. Border radius */
+  --r-button:   14px;
+  --r-card:     20px;
+  --r-input:    16px;
+  --r-hospital: 18px;
+  --r-date:     12px;
+  --r-slot:     10px;
+  --r-profile:  50%;
+
+  /* 4. Shadows */
+  --shadow-default: 0 8px 24px rgba(0,0,0,0.08);
+  --shadow-hover:   0 12px 30px rgba(0,0,0,0.12);
+
+  /* 9. Spacing scale */
+  --s-4:4px; --s-8:8px; --s-12:12px; --s-16:16px; --s-20:20px;
+  --s-24:24px; --s-32:32px; --s-40:40px; --s-64:64px;
+
+  /* 10. Layout dimensions */
+  --navbar-height:      80px;
+  --sidebar-width:      260px;
+  --sidebar-collapsed:  84px;
+  --right-panel-width:  300px;
+  --content-padding:    32px;
+  --container-max:      1440px;
+}
+
+*, *::before, *::after{ box-sizing:border-box; }
+
+html, body{
+  margin:0;
+  padding:0;
+  font-family: var(--font-main);
+  background:var(--c-page-bg);
+  color:var(--c-body);
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3,h4,h5,h6{ margin:0; color:var(--c-heading); font-weight:600; }
+h1{ font-size:32px; font-weight:700; }
+h2{ font-size:24px; font-weight:600; }
+h3{ font-size:18px; font-weight:600; }
+p{ margin:0; }
+a{ color:var(--c-link); text-decoration:none; }
+button{ font-family:var(--font-main); cursor:pointer; }
+ul{ list-style:none; margin:0; padding:0; }
+img{ max-width:100%; display:block; }
+
+/* ---- reusable atoms ---- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  font-weight:600; font-size:15px; border:none; border-radius:var(--r-button);
+  padding:12px 22px; transition:background .15s ease, box-shadow .15s ease, transform .05s ease;
+}
+.btn:active{ transform:translateY(1px); }
+.btn-primary{ background:var(--c-primary-btn); color:#fff; }
+.btn-primary:hover{ background:var(--c-btn-hover); }
+.btn-secondary{ background:#fff; color:var(--c-primary-btn); border:1.5px solid var(--c-primary-btn); }
+.btn-secondary:hover{ background:var(--c-selected-bg); }
+.btn-success{ background:var(--c-success); color:#fff; }
+.btn-success:hover{ filter:brightness(0.92); }
+.btn-outline{ background:#fff; color:var(--c-heading); border:1.5px solid var(--c-border); }
+.btn-outline:hover{ background:var(--c-card-hover-bg); }
+.btn:disabled{ opacity:.55; cursor:not-allowed; }
+
+.card{
+  background:var(--c-card-bg); border:1px solid var(--c-border);
+  border-radius:var(--r-card); box-shadow:var(--shadow-default);
+  transition:box-shadow .15s ease, transform .15s ease;
+}
+.card:hover{ box-shadow:var(--shadow-hover); }
+
+.badge{
+  display:inline-flex; align-items:center; gap:6px; padding:4px 12px;
+  border-radius:20px; font-size:13px; font-weight:600;
+}
+.badge-success{ background:var(--c-success-bg); color:var(--c-success); }
+.badge-error{ background:var(--c-error-bg); color:var(--c-error); }
+.badge-info{ background:var(--c-info-bg); color:var(--c-info-text); }
+.badge-warning{ background:var(--c-warning-bg); color:var(--c-warning); }
+.badge-rating{ background:var(--c-rating-bg); color:var(--c-rating-text); }
+
+.input, .select{
+  width:100%; font-family:var(--font-main); font-size:14px; color:var(--c-heading);
+  border:1.5px solid var(--c-input-border); border-radius:var(--r-input);
+  padding:12px 16px; background:#fff; outline:none; transition:border-color .15s ease;
+}
+.input::placeholder{ color:var(--c-secondary); }
+.input:focus, .select:focus{ border-color:var(--c-primary-btn); }
+label{ font-size:13px; font-weight:600; color:var(--c-heading); margin-bottom:6px; display:block; }
+
+.breadcrumb{ display:flex; align-items:center; gap:8px; font-size:14px; color:var(--c-secondary); }
+.breadcrumb a{ display:flex; align-items:center; gap:6px; color:var(--c-link); font-weight:500; }
+.breadcrumb .sep{ color:var(--c-secondary); }
+
+.table-wrap{ width:100%; overflow-x:auto; }
+table{ width:100%; border-collapse:collapse; }
+thead th{
+  text-align:left; font-size:13px; font-weight:600; color:var(--c-secondary);
+  padding:14px 16px; border-bottom:2px solid var(--c-border); white-space:nowrap;
+}
+tbody td{
+  padding:14px 16px; font-size:14px; color:var(--c-heading);
+  border-bottom:1px solid var(--c-border); white-space:nowrap;
+}
+tbody tr:hover{ background:var(--c-card-hover-bg); }
+
+.icon-btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:50%; border:none; background:transparent;
+  color:var(--c-icon-text); position:relative; transition:background .15s ease;
+}
+.icon-btn:hover{ background:var(--c-selected-bg); }
+
+.container{ max-width:var(--container-max); margin:0 auto; }
+.visually-hidden{ position:absolute; width:1px;height:1px; overflow:hidden; clip:rect(0 0 0 0); }

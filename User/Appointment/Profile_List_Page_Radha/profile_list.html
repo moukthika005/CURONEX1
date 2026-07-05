@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Curonex - Appointment Scheduling</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="profile_list.css">
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">
+    <div class="logo-icon"><img src="../../Appointment/Appointment_Search_Page_Radha/IMG-20260702-WA0003 (1).jpg" height="40" width="44" style="border-radius:50%" /></div>
+    <div class="logo-text">
+      <h1>Curonex</h1>
+      <p>Affordable Healthcare Access</p>
+    </div>
+  </div>
+  <div class="nav">
+    <div class="bell-wrap">
+      <img src="../icons/bell.png" height="24" width="24"/>
+      <span class="badge">2</span>
+    </div>
+    <div class="user-wrap" id="userWrap">
+      <div class="avatar">👤</div>
+      <span class="username">Kaushik T</span>
+      <span class="chevron" id="chevronIcon">▾</span>
+
+      <div class="dropdown-menu" id="dropdownMenu">
+        <a href="../../Profile Management_Gowri Manogari/profile.html" class="dropdown-item" id="myProfileBtn"> My Profile</a>
+        <div class="dropdown-divider"></div>
+        <a href="../../Homepage_ Gowri Manogari/homepage.html" class="dropdown-item logout" id="logoutBtn">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+  <div class="sidebar">
+    <div>
+      <a href="#"><div class="side-item active"><img src="../icons/calendar.png" height="24" width="24"/> Appointment Scheduling</div></a>
+      <a href="../../Pharmacy/Pharmacy_Home_Kaushik1/pharmacy_home.html"><div class="side-item"><img src="../icons/pharmacy.png" height="24" width="24"/>Pharmacy</div></a>
+      <a href="../../Camp/camp_booking-AJAY SHARMA S/camp-booking.html"><div class="side-item"><img src="../icons/refugee-camp.png" height="24" width="24"/>Medical Camp</div></a>
+    </div>
+    <div class="help-box">
+      <div class="help-top">
+        <img src="../icons/customer-service.png" height="24" width="24"/>
+        <div>
+          <p>Need Help?</p>
+          <a href="#">Support Center</a>
+        </div>
+      </div>
+      <p class="help-desc">We are here to help you 24/7</p>
+    </div>
+  </div>
+
+  <div class="main">
+    <h2>Appointment Scheduling</h2>
+    <div class="breadcrumb">Home <span class="sep">›</span> Appointment Scheduling <span class="sep">›</span> Search Results</div>
+
+    <div class="search-banner">
+      <span>You searched for: <strong>Cardiologist</strong></span>
+      <a href="../Appointment_Search_Page_Radha/appointment_search.html" class="change-search" id="changeSearchBtn">✎ Change Search</a>
+    </div>
+
+    <div class="results-header">
+      <h3>Found <span>18</span> doctors</h3>
+      <div class="sort-box">
+        Sort by:
+        <select id="sortSelect">
+          <option>Most Relevant</option>
+          <option>Rating: High to Low</option>
+          <option>Experience: High to Low</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="doctor-grid">
+
+      <div class="doctor-card">
+        <div class="heart">♡</div>
+        <img class="doctor-photo" src="https://i.pravatar.cc/150?img=12" alt="Dr. Arjun Mehta">
+        <h4>Dr. Arjun Mehta</h4>
+        <p class="specialty">Cardiologist</p>
+        <p class="exp"><img src="../icons/experience.png" height="24" width="24"/>12+ Years Experience</p>
+        <p class="rating">⭐ <strong>4.8</strong> <span>(230 reviews)</span></p>
+        <a href="../Slot_Booking_Page_Radha/slot_booking.html"><button class="view-profile">View Profile <span>›</span></button></a>
+      </div>
+
+      <div class="doctor-card">
+        <div class="heart">♡</div>
+        <img class="doctor-photo" src="https://i.pravatar.cc/150?img=47" alt="Dr. Priya Nair">
+        <h4>Dr. Priya Nair</h4>
+        <p class="specialty">Cardiologist</p>
+        <p class="exp"><img src="../icons/experience.png" height="24" width="24"/> 10+ Years Experience</p>
+        <p class="rating">⭐ <strong>4.7</strong> <span>(198 reviews)</span></p>
+         <a href="../Slot_Booking_Page_Radha/slot_booking.html"><button class="view-profile">View Profile <span>›</span></button></a>
+      </div>
+
+      <div class="doctor-card">
+        <div class="heart">♡</div>
+        <img class="doctor-photo" src="https://i.pravatar.cc/150?img=13" alt="Dr. Rahul Verma">
+        <h4>Dr. Rahul Verma</h4>
+        <p class="specialty">Cardiologist</p>
+        <p class="exp"><img src="../icons/experience.png" height="24" width="24"/> 15+ Years Experience</p>
+        <p class="rating">⭐ <strong>4.9</strong> <span>(315 reviews)</span></p>
+         <a href="../Slot_Booking_Page_Radha/slot_booking.html"><button class="view-profile">View Profile <span>›</span></button></a>
+      </div>
+
+      <div class="doctor-card">
+        <div class="heart">♡</div>
+        <img class="doctor-photo" src="https://i.pravatar.cc/150?img=44" alt="Dr. Ananya Iyer">
+        <h4>Dr. Ananya Iyer</h4>
+        <p class="specialty">Cardiologist</p>
+        <p class="exp"><img src="../icons/experience.png" height="24" width="24"/> 8+ Years Experience</p>
+        <p class="rating">⭐ <strong>4.6</strong> <span>(144 reviews)</span></p>
+         <a href="../Slot_Booking_Page_Radha/slot_booking.html"><button class="view-profile">View Profile <span>›</span></button></a>
+      </div>
+
+      <div class="doctor-card">
+        <div class="heart">♡</div>
+        <img class="doctor-photo" src="https://i.pravatar.cc/150?img=53" alt="Dr. Vikram Singh">
+        <h4>Dr. Vikram Singh</h4>
+        <p class="specialty">Cardiologist</p>
+        <p class="exp"><img src="../icons/experience.png" height="24" width="24"/> 9+ Years Experience</p>
+        <p class="rating">⭐ <strong>4.6</strong> <span>(176 reviews)</span></p>
+         <a href="../Slot_Booking_Page_Radha/slot_booking.html"><button class="view-profile">View Profile <span>›</span></button></a>
+      </div>
+
+      <div class="doctor-card">
+        <div class="heart">♡</div>
+        <img class="doctor-photo" src="https://i.pravatar.cc/150?img=45" alt="Dr. Sneha Kapoor">
+        <h4>Dr. Sneha Kapoor</h4>
+        <p class="specialty">Cardiologist</p>
+        <p class="exp"><img src="../icons/experience.png" height="24" width="24"/> 11+ Years Experience</p>
+        <p class="rating">⭐ <strong>4.7</strong> <span>(205 reviews)</span></p>
+         <a href="../Slot_Booking_Page_Radha/slot_booking.html"><button class="view-profile">View Profile <span>›</span></button></a>
+      </div>
+
+    </div>
+
+    <div class="pagination">
+      <button class="page-arrow">‹</button>
+      <button class="page-num active">1</button>
+      <button class="page-num">2</button>
+      <button class="page-num">3</button>
+      <span class="page-dots">…</span>
+      <button class="page-num">5</button>
+      <button class="page-arrow">›</button>
+    </div>
+  </div>
+
+  <div class="right-panel">
+    <div class="right-card">
+      <div class="right-icon">🕐</div>
+      <div class="right-text">
+        <h4>Appointments</h4>
+        <p>View upcoming & past appointments</p>
+      </div>
+      <a href="../Appointment_History_Aravind/appointment_history.html"><span class="right-arrow">›</span></a>
+    </div>
+    <div class="right-card">
+      <div class="right-icon">✕</div>
+      <div class="right-text">
+        <h4>Cancelled</h4>
+        <p>View cancelled appointments</p>
+      </div>
+      <a href="#"><span class="right-arrow">›</span></a>
+    </div>
+
+    <div class="promo-box">
+      <div class="promo-icon">🗓️</div>
+      <p>Manage all your appointments in one place with ease and convenience.</p>
+    </div>
+  </div>
+</div>
+
+<script src="profile_list.js"></script>
+</body>
+</html>

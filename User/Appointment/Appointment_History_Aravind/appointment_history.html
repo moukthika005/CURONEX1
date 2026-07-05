@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Curonex | My Appointments</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="appointment_history.css"/>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<div class="header">
+  <div class="logo">
+    <div class="logo-icon"><img src="images/IMG-20260702-WA0003.jpg" alt="Logo" width="40" height="40" style="border-radius:50%;"/></div>
+    <div class="logo-text">
+      <h1>Curonex</h1>
+      <p>Affordable Healthcare Access</p>
+    </div>
+  </div>
+  <div class="nav">
+    <div class="bell-wrap">
+      <img src="icons/bell.png" alt="Notification" width="20" height="20"/>
+      <span class="badge">2</span>
+    </div>
+    <div class="user-wrap" id="userWrap">
+      <div class="avatar">A</div>
+      <span class="username">Aravind R</span>
+      <span class="chevron" id="chevronIcon">▾</span>
+
+      <div class="dropdown-menu" id="dropdownMenu">
+        <a href="../../Profile Management_Gowri Manogari/profile.html" class="dropdown-item" id="myProfileBtn">👤 My Profile</a>
+        <div class="dropdown-divider"></div>
+        <a href="../../Homepage_ Gowri Manogari/homepage.html" class="dropdown-item logout" id="logoutBtn">🚪 Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LAYOUT ===== -->
+<div class="layout">
+
+  <!-- LEFT SIDEBAR -->
+  <div class="sidebar">
+     <div class="sidebar">
+    <div>
+      <a href="#"><div class="side-item active"><img src="../icons/calendar.png" height="24" width="24"/> Appointment Scheduling</div></a>
+      <a href="../../Pharmacy/Pharmacy_Home_Kaushik1/pharmacy_home.html"><div class="side-item"><img src="../icons/pharmacy.png" height="24" width="24"/>Pharmacy</div></a>
+      <a href="../../Camp/camp_booking-AJAY SHARMA S/camp-booking.html"><div class="side-item"><img src="../icons/refugee-camp.png" height="24" width="24"/>Medical Camp</div></a>
+    </div>
+    <div class="help-box">
+      <div class="help-top">
+        <img src="../icons/customer-service.png" height="24" width="24"/>
+        <div>
+          <p>Need Help?</p>
+          <a href="#">Support Center</a>
+        </div>
+      </div>
+      <p class="help-desc">We are here to help you 24/7</p>
+    </div>
+  </div>
+  </div>
+    
+
+  <!-- MAIN CONTENT: My Appointments -->
+  <div class="main-card">
+
+    <div class="content-header">
+      <div class="titles">
+        <a href="../Appointment_Cofirmation_Aravind/appoinment_confirm.html"><img src="icons/left-arrow.png" alt="Back" title="Back" width="24" height="24" style="cursor: pointer;"/></a>
+      
+        <div>
+          <h2 id="section-title">Upcoming Appointments</h2>
+          <p id="section-sub">Appointments you have scheduled ahead</p>
+        </div>
+      </div>
+
+      <div class="tab-header">
+        <button class="tab-btn active" data-tab="upcoming">
+          <span class="ico"> <img src="icons/calendar.png" alt="Notification" width="24" height="24"/></span> Upcoming <span class="count" id="count-upcoming">0</span>
+        </button>
+        <button class="tab-btn" data-tab="history">
+          <span class="ico"> <img src="icons/history.png" alt="Notification" width="24" height="24"/></span> History <span class="count" id="count-history">0</span>
+        </button>
+        <button class="tab-btn" data-tab="cancelled">
+          <span class="ico">✕</span> Cancelled <span class="count" id="count-cancelled">0</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="list" id="appt-list"></div>
+
+  </div>
+
+
+</div>
+
+
+
+</body>
+<script src="appointment_history.js"></script>
+</html>

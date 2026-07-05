@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Curonex | Movement Tracking</title>
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+            href="assets/css/movement-tracking.css">
+
+</head>
+
+<body>
+
+<!-- ==========================================
+                TOP NAVBAR
+========================================== -->
+
+<header class="top-navbar">
+
+    <div class="logo-section">
+
+        <img src="assets/images/logo.png"
+             alt="Curonex Logo"
+             class="logo">
+
+        <div class="logo-text">
+
+            <h2>Curonex</h2>
+
+            <span>Hospital Camp Management</span>
+
+        </div>
+
+    </div>
+
+    <div class="search-container">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+                id="movementSearch"
+            type="text"
+            placeholder="Search">
+
+    </div>
+
+    <div class="navbar-right">
+
+        <nav class="nav-links">
+
+            <a href="#">About</a>
+
+            <a href="#">Contact</a>
+
+        </nav>
+
+        <button class="nav-icon">
+
+            <i class="fa-regular fa-bell"></i>
+
+        </button>
+
+        <button class="nav-icon">
+
+            <i class="fa-regular fa-envelope"></i>
+
+        </button>
+
+        <div class="profile-menu">
+
+            <div class="profile-icon">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+            <div class="profile-text">
+
+                <h4>Admin</h4>
+
+                <span>Administrator</span>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-down"></i>
+
+        </div>
+
+    </div>
+
+</header>
+
+<!-- ==========================================
+                MAIN CONTAINER
+========================================== -->
+
+<div class="main-container">
+    <!-- ==========================================
+                    LEFT SIDEBAR
+    =========================================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-top">
+
+            <div class="sidebar-header">
+
+                <h3>Inventory Module</h3>
+
+                <p>Manage Hospital Resources</p>
+
+            </div>
+
+            <nav class="sidebar-menu">
+
+                <a href="dashboard.html"
+                   class="menu-item">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    <span>Dashboard</span>
+
+                </a>
+
+                <a href="registration.html"
+                   class="menu-item">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    <span>Resource Registration</span>
+
+                </a>
+
+                <a href="resource-availability.html"
+                   class="menu-item">
+
+                    <i class="fa-solid fa-boxes-stacked"></i>
+
+                    <span>Resource Availability</span>
+
+                </a>
+
+                <a href="transfer-request.html"
+                   class="menu-item">
+
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+
+                    <span>Transfer Request</span>
+
+                </a>
+
+                <a href="movement-tracking.html"
+                   class="menu-item active">
+
+                    <i class="fa-solid fa-truck-fast"></i>
+
+                    <span>Movement Tracking</span>
+
+                </a>
+
+            </nav>
+
+        </div>
+
+        <!-- ==========================================
+                    HELP CARD
+        =========================================== -->
+
+        <div class="help-card">
+
+            <div class="help-icon">
+
+                <i class="fa-solid fa-headset"></i>
+
+            </div>
+
+            <h3>Need Help?</h3>
+
+            <h4>Support Center</h4>
+
+            <p>
+
+                Monitor every resource movement
+                and track deliveries between
+                hospitals and medical camps.
+
+            </p>
+
+            <button class="support-btn">
+
+                Contact Support
+
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- ==========================================
+                    PAGE CONTENT
+    =========================================== -->
+
+    <main class="dashboard-content">
+
+        <!-- ==========================================
+                        PAGE HEADER
+        =========================================== -->
+
+        <section class="page-header">
+
+            <div class="page-title">
+
+                <h1>Movement Tracking</h1>
+
+                <p>
+
+                    Track every resource transfer,
+                    monitor delivery status and view
+                    movement history across all locations.
+
+                </p>
+
+            </div>
+
+        </section>
+    <!-- ==========================================
+                TRACKING FILTERS
+    =========================================== -->
+
+    <section class="filter-card">
+
+        <div class="filter-grid">
+
+            <!-- Search -->
+
+            <div class="filter-group">
+
+                <label for="trackingSearch">
+
+                    Search
+
+                </label>
+
+                <input
+                    type="text"
+                    id="trackingSearch"
+                    placeholder="Search by Request ID or Resource">
+
+            </div>
+
+            <!-- Status -->
+
+            <div class="filter-group">
+
+                <label for="trackingStatus">
+
+                    Status
+
+                </label>
+
+                <select id="trackingStatus">
+
+                    <option value="">All Status</option>
+
+                    <option>Pending</option>
+
+                    <option>In Transit</option>
+
+                    <option>Delivered</option>
+
+                    <option>Cancelled</option>
+
+                </select>
+
+            </div>
+
+            <!-- Date -->
+
+            <div class="filter-group">
+
+                <label for="trackingDate">
+
+                    Transfer Date
+
+                </label>
+
+                <input
+                    type="date"
+                    id="trackingDate">
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================================
+                MOVEMENT TABLE
+    =========================================== -->
+
+    <section class="table-card">
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>Resource Movement History</h2>
+
+                <p>
+
+                    View and monitor every
+                    resource movement request.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="table-container">
+
+            <table class="tracking-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Tracking ID</th>
+
+                        <th>Resource</th>
+
+                        <th>Source</th>
+
+                        <th>Destination</th>
+
+                        <th>Quantity</th>
+
+                        <th>Status</th>
+
+                        <th>Last Updated</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="trackingTableBody">
+
+                    <!-- JavaScript will populate this table -->
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================================
+                LIVE TRACKING STATUS
+    =========================================== -->
+
+    <section class="tracking-card">
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>Latest Movement Status</h2>
+
+                <p>
+
+                    Current progress of the latest
+                    transfer request.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="tracking-timeline">
+
+            <div class="timeline-step completed">
+
+                <div class="timeline-icon">
+
+                    <i class="fa-solid fa-file-circle-check"></i>
+
+                </div>
+
+                <span>Request Created</span>
+
+            </div>
+
+            <div class="timeline-step completed">
+
+                <div class="timeline-icon">
+
+                    <i class="fa-solid fa-box"></i>
+
+                </div>
+
+                <span>Packed</span>
+
+            </div>
+
+            <div class="timeline-step active">
+
+                <div class="timeline-icon">
+
+                    <i class="fa-solid fa-truck"></i>
+
+                </div>
+
+                <span>In Transit</span>
+
+            </div>
+
+            <div class="timeline-step">
+
+                <div class="timeline-icon">
+
+                    <i class="fa-solid fa-hospital"></i>
+
+                </div>
+
+                <span>Delivered</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================================
+                TRACKING SUMMARY
+    =========================================== -->
+
+    <section class="summary-grid">
+
+        <div class="summary-card">
+
+            <i class="fa-solid fa-truck-fast"></i>
+
+            <h3 id="totalMovements">0</h3>
+
+            <p>Total Movements</p>
+
+        </div>
+
+        <div class="summary-card">
+
+            <i class="fa-solid fa-clock"></i>
+
+            <h3 id="pendingMovements">0</h3>
+
+            <p>Pending</p>
+
+        </div>
+
+        <div class="summary-card">
+
+            <i class="fa-solid fa-truck"></i>
+
+            <h3 id="inTransitMovements">0</h3>
+
+            <p>In Transit</p>
+
+        </div>
+
+        <div class="summary-card">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            <h3 id="completedMovements">0</h3>
+
+            <p>Delivered</p>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================================
+                EMPTY STATE
+    =========================================== -->
+
+    <section class="empty-state"
+             id="trackingEmptyState"
+             style="display:none;">
+
+        <i class="fa-solid fa-box-open"></i>
+
+        <h2>No Tracking Records</h2>
+
+        <p>
+            No movement records are available.
+            Create a transfer request to begin
+            tracking resource movement.
+
+        </p>
+
+    </section>
+
+</main>
+
+</div>
+
+<script src="assets/js/movement-tracking.js"></script>
+
+</body>
+
+</html>

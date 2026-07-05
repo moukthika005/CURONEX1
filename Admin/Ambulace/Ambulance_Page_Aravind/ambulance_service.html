@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Curonex | Ambulance Service</title>
+<link rel="stylesheet" href="ambulance_service.css"></link>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<div class="navbar">
+  <div class="brand">
+    <div class="logo"> <img src="images/IMG-20260702-WA0003.jpg" alt="Logo" width="40" height="40" style="border-radius: 50%;"/></div>
+    <div>
+      <h1>Curonex</h1>
+      <p>Affordable Healthcare Access</p>
+    </div>
+  </div>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="icon-btn">
+      <img src="icons/bell.png" alt="Notification" width="24" height="24"/>
+      <span class="badge">2</span></div>
+    <div class="user">
+      <div class="avatar">A</div>
+      <span>Aravind R</span>
+      <span style="font-size:11px;">▾</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LAYOUT ===== -->
+<div class="layout">
+
+  <!-- LEFT SIDEBAR -->
+  <div class="sidebar">
+    <div>
+      <a href="#"><div class="side-item active"><img src="../../Appointment/icons/ambulance.png" height="24" width="24"/> Ambulance Service</div></a>
+    </div>
+    <div class="help-box">
+      <div class="help-top">
+        <img src="../../Appointment/icons/customer-service.png" height="24" width="24"/>
+        <div>
+          <p>Need Help?</p>
+          <a href="#">Support Center</a>
+        </div>
+      </div>
+      <p class="help-desc">We are here to help you 24/7</p>
+    </div>
+  </div>
+
+
+  <!-- MAIN CONTENT -->
+  <div class="main-col">
+
+    <div class="content-title-bar">
+      <h2>Ambulance Service</h2>
+      <p>Fast Help. Right Care. Near You.</p>
+    </div>
+
+    <!-- Location Banner -->
+    <div class="location-banner">
+      <div class="location-info">
+        <div class="pin">
+          <img src="icons/map.png" alt="Location" width="24" height="24"/>
+        </div>
+        <div class="location-text">
+          <strong>Location Disabled</strong>
+          <span>Enable location to find nearby hospitals</span>
+        </div>
+      </div>
+      <button class="btn-red">Enable Location</button>
+      <div class="field-msg" id="location-msg"></div>
+    </div>
+
+    <!-- Symptom Search -->
+    <div class="search-card">
+      <h2>Tell us your symptoms</h2>
+      <p>Type your symptoms to find the right care</p>
+      <div class="search-bar">
+  <input type="text" placeholder="Type symptoms (e.g. chest pain, breathing difficulty, fever)">
+  <button>Search</button>
+</div>
+<div class="field-msg" id="search-msg"></div>
+      <div class="popular">
+        <span class="label">Popular examples:</span>
+        <span class="tag">Chest pain</span>
+        <span class="tag">Breathlessness</span>
+        <span class="tag">Severe headache</span>
+        <span class="tag">High fever</span>
+        <span class="tag">Accident injury</span>
+      </div>
+    </div>
+
+    <!-- Hospitals Section -->
+    <div>
+      <div class="section-title">
+        <h2>Hospitals Near You</h2>
+        <span class="based-on">Based on: <b>Chest pain, Breathlessness</b> ⓘ</span>
+      </div>
+      <p class="section-sub">Showing hospitals with available ICU beds and specialists based on your symptoms.</p>
+
+      <!-- Hospital 1 -->
+      <div class="hospital-card">
+        <div class="hosp-img"></div>
+        <div class="hosp-info">
+          <h3>City Care Hospital <span class="dist">2.5 km</span></h3>
+          <p class="addr">123, MG Road, Near Central Park, City</p>
+          <span class="emergency">24x7 Emergency</span>
+        </div>
+        <div class="icu-info">
+          <div class="label">ICU Beds Available</div>
+          <div class="count high">3 <small>/ 10</small></div>
+          <div class="sub">ICU Beds</div>
+        </div>
+        <div class="spec-info">
+          <div class="label">Available Specialists</div>
+          <div class="spec-item"><span class="ok">✔</span> Cardiologist</div>
+          <div class="spec-item"><span class="ok">✔</span> Pulmonologist</div>
+          <div class="spec-item"><span class="ok">✔</span> Emergency Physician</div>
+        </div>
+        <div class="status-box good">
+          <div class="check">✔</div>
+          <p>All required specialists<br>are available</p>
+          <button class="direction-btn"
+            onclick="window.open('https://www.google.com/maps/search/?api=1&query=City+Care+Hospital','_blank')">
+            Get Directions
+          </button>
+        </div>
+      </div>
+
+      <!-- Hospital 2 -->
+      <div class="hospital-card">
+        <div class="hosp-img"></div>
+        <div class="hosp-info">
+          <h3>Green Valley Hospital <span class="dist">6.3 km</span></h3>
+          <p class="addr">78, Green Valley Road, City</p>
+          <span class="emergency">24x7 Emergency</span>
+        </div>
+        <div class="icu-info">
+          <div class="label">ICU Beds Available</div>
+          <div class="count high">5 <small>/ 12</small></div>
+          <div class="sub">ICU Beds</div>
+        </div>
+        <div class="spec-info">
+          <div class="label">Available Specialists</div>
+          <div class="spec-item"><span class="ok">✔</span> Cardiologist</div>
+          <div class="spec-item"><span class="ok">✔</span> Pulmonologist</div>
+          <div class="spec-item"><span class="ok">✔</span> Neurologist</div>
+        </div>
+        <div class="status-box good">
+          <div class="check">✔</div>
+          <p>All required specialists<br>are available</p>
+          <button class="direction-btn"
+            onclick="window.open('https://www.google.com/maps/search/?api=1&query=Green+Valley+Hospital','_blank')">
+            Get Directions
+          </button>
+        </div>
+      </div>
+
+      <!-- Hospital 3 -->
+      <div class="hospital-card">
+        <div class="hosp-img"></div>
+        <div class="hosp-info">
+          <h3>Life Line Multispeciality <span class="dist">4.1 km</span></h3>
+          <p class="addr">45, South Street, Near Bus Stand, City</p>
+          <span class="emergency">24x7 Emergency</span>
+        </div>
+        <div class="icu-info">
+          <div class="label">ICU Beds Available</div>
+          <div class="count low">1 <small>/ 8</small></div>
+          <div class="sub">ICU Beds</div>
+        </div>
+        <div class="spec-info">
+          <div class="label">Available Specialists</div>
+          <div class="spec-item"><span class="ok">✔</span> Cardiologist</div>
+          <div class="spec-item"><span class="ok">✔</span> Neurologist</div>
+          <div class="spec-item"><span class="no">✘</span> Pulmonologist <span class="badge-no">Not Available</span></div>
+        </div>
+        <div class="status-box warn">
+          <div class="warn-title">Pulmonologist<br>Not Available</div>
+          <button>Notify Hospital</button>
+          <div class="note">We will inform the hospital about this requirement.</div>
+        </div>
+      </div>
+
+      <!-- Hospital 4 -->
+      <div class="hospital-card">
+        <div class="hosp-img"></div>
+        <div class="hosp-info">
+          <h3>Hope Medical Center <span class="dist">8.7 km</span></h3>
+          <p class="addr">99, Ring Road, City</p>
+          <span class="emergency">24x7 Emergency</span>
+        </div>
+        <div class="icu-info">
+          <div class="label">ICU Beds Available</div>
+          <div class="count zero">0 <small>/ 6</small></div>
+          <div class="sub">ICU Beds</div>
+        </div>
+        <div class="spec-info">
+          <div class="label">Available Specialists</div>
+          <div class="spec-item"><span class="ok">✔</span> Cardiologist</div>
+          <div class="spec-item"><span class="ok">✔</span> Neurologist</div>
+          <div class="spec-item"><span class="no">✘</span> Pulmonologist <span class="badge-no">Not Available</span></div>
+        </div>
+        <div class="status-box warn">
+          <div class="warn-title">Pulmonologist<br>Not Available</div>
+          <button>Notify Hospital</button>
+          <div class="note">We will inform the hospital about this requirement.</div>
+        </div>
+      </div>
+
+    
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+<script src="ambulance_service.js"></script>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Curonex | Appointment Confirmation</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="appointment_confirm.css"/>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<div class="header">
+  <div class="logo">
+    <div class="logo-icon"><img src="images/IMG-20260702-WA0003.jpg" alt="Logo" width="40" height="40" style="border-radius:50%;"/></div>
+    <div class="logo-text">
+      <h1>Curonex</h1>
+      <p>Affordable Healthcare Access</p>
+    </div>
+  </div>
+  <div class="nav">
+    <div class="bell-wrap">
+      <img src="icons/bell.png" alt="Notification" width="20" height="20"/>
+      <span class="badge">2</span>
+    </div>
+    <div class="user-wrap" id="userWrap">
+      <div class="avatar">A</div>
+      <span class="username">Aravind R</span>
+      <span class="chevron" id="chevronIcon">▾</span>
+
+      <div class="dropdown-menu" id="dropdownMenu">
+        <a href="../../Profile Management_Gowri Manogari/profile.html" class="dropdown-item" id="myProfileBtn">👤 My Profile</a>
+        <div class="dropdown-divider"></div>
+        <a href="../../Homepage_ Gowri Manogari/homepage.html" class="dropdown-item logout" id="logoutBtn">🚪 Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LAYOUT ===== -->
+<div class="layout">
+
+  <!-- LEFT SIDEBAR -->
+  <div class="sidebar">
+    <div>
+      <a href="#"><div class="side-item active"><img src="../icons/calendar.png" height="24" width="24"/> Appointment Scheduling</div></a>
+      <a href="../../Pharmacy/Pharmacy_Home_Kaushik1/pharmacy_home.html"><div class="side-item"><img src="../icons/pharmacy.png" height="24" width="24"/>Pharmacy</div></a>
+      <a href="../../Camp/camp_booking-AJAY SHARMA S/camp-booking.html"><div class="side-item"><img src="../icons/refugee-camp.png" height="24" width="24"/>Medical Camp</div></a>
+    </div>
+    <div class="help-box">
+      <div class="help-top">
+        <img src="../icons/customer-service.png" height="24" width="24"/>
+        <div>
+          <p>Need Help?</p>
+          <a href="#">Support Center</a>
+        </div>
+      </div>
+      <p class="help-desc">We are here to help you 24/7</p>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT: Appointment Confirmation -->
+  <div class="main-card">
+    <div style="display: flex;flex-direction: row; align-items:flex-start;">
+      <a href="../Appointment_History_Aravind/appointment_history.html"><img src="icons/left-arrow.png" alt="Back" title="Back" width="24" height="24" style="cursor: pointer;margin-top:4px;margin-right:16px;"/></a>
+      <div class="content-title-bar">
+        <h2>Appointment Confirmation</h2>
+        <p>Review your details and confirm your booking</p>
+      </div>
+    </div>
+
+    <div class="modal-body">
+      <!-- LEFT COLUMN -->
+      <div class="left-col">
+        <div class="section-label"><span class="ico"><img src="icons/hospital.png" alt="Hospital" width="24" height="24"/></span> Hospital Details</div>
+        <div class="info-card">
+          <img src="images/Hospital2.webp" alt="hospital">
+          <div class="details">
+            <h3>City Care Hospital</h3>
+            <p>123, MG Road, Near Central Park, City</p>
+            <p>+91 98765 432***</p>
+            <span class="badge-emergency">24x7 Emergency</span> 
+          </div>
+        </div>
+
+        <div class="section-label"><span class="ico"><img src="icons/doctor.png" alt="Doctor" width="24" height="24"/></span> Doctor Details</div>
+        <div class="doctor-card">
+          <div class="avatar"><img src="https://i.pravatar.cc/150?img=12" alt="Doctor" width="80" height="80" style="border-radius: 50%;"/></div>
+          <div>
+            <h3>Dr. Rajesh Kumar</h3>
+            <div class="specialty">Cardiologist</div>
+            <div class="qual">MBBS, MD (Cardiology)</div>
+            <div class="meta">
+              <span class="rating">⭐ 4.8 (120 reviews)</span>
+              <span>12+ Years Experience</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-label"> Selected Slot Time</div>
+        <div class="slot-card">
+          <div class="slot-item">
+            <div>
+              <strong>20 May 2025</strong>
+              <span>Tuesday</span>
+            </div>
+          </div>
+          <div class="divider-v"></div>
+          <div class="slot-item">
+            <div>
+              <strong>09:00 AM - 09:30 AM</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="right-col">
+        <div class="section-label"><span class="ico"></span> Add Patient</div>
+
+        <!-- FOR ME / FOR OTHERS TOGGLE -->
+        <div class="patient-toggle">
+          <button type="button" class="toggle-btn active" data-mode="me">For Me</button>
+          <button type="button" class="toggle-btn" data-mode="others">For Others</button>
+        </div>
+
+        <!-- SELF PATIENT CARD (shown when "For Me" is selected) -->
+        <div class="self-patient-card show" id="self-patient-card">
+          <div class="self-patient-row">
+            <div class="avatar" id="self-avatar">A</div>
+            <div>
+              <h3 id="self-name">Aravind R</h3>
+              <span id="self-meta">Male • 29 years</span>
+            </div>
+          </div>
+          <div class="self-detail-grid">
+            <div class="self-detail-item">
+              <label>Phone Number</label>
+              <p id="self-phone">+91 98765 43210</p>
+            </div>
+            <div class="self-detail-item">
+              <label>Email</label>
+              <p id="self-email">aravind.r@example.com</p>
+            </div>
+            <div class="self-detail-item">
+              <label>Age</label>
+              <p id="self-age">29</p>
+            </div>
+            <div class="self-detail-item">
+              <label>Gender</label>
+              <p id="self-gender">Male</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FOR OTHERS: INPUT FORM (hidden by default) -->
+        <div class="other-patient-fields hide" id="other-patient-fields">
+
+          <div class="form-group">
+            <input type="text" id="patient-name" placeholder="Full Name">
+          </div>
+
+          <div class="age-gender-row" style="margin-bottom:14px;">
+            <div class="form-group">
+              <input type="text" id="patient-age" placeholder="Age">
+            </div>
+            <div class="gender-row">
+              <label><input type="radio" name="gender" value="Male"> Male</label>
+              <label><input type="radio" name="gender" value="Female"> Female</label>
+              <label><input type="radio" name="gender" value="Other"> Other</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <input type="text" id="patient-phone" placeholder="Phone Number">
+          </div>
+
+          <div class="form-group">
+            <input type="text" id="patient-email" placeholder="Email (Optional)">
+          </div>
+
+        </div>
+
+        <div class="notify-box">
+          <div class="bell">🔔</div>
+          <div>
+            <h4>We will send notifications</h4>
+            <p>We will send SMS and Email notifications about this appointment and any updates.</p>
+          </div>
+        </div>
+
+        <div class="field-msg" id="form-msg"></div>
+
+        <div class="action-row">
+          <button class="btncancel">Cancel</button>
+          <button class="btn-confirm">Confirm Appointment</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+<script src="appointment_confirm.js"></script>
+</html>

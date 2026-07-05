@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>City Care Hospital - Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin_home.css">
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">
+    <div class="logo-icon"><img src="../images/logo.jpg" height="40" width="44" style="border-radius:50%" /></div>
+    <div class="logo-text">
+      <h1>Curonex</h1>
+      <p>Hospital Administrator</p>
+    </div>
+  </div>
+  <div class="nav">
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <div class="bell-wrap">
+      <span class="bell"><img src="../images/bell.png" height="24" width="24"/></span>
+      <span class="badge">2</span>
+    </div>
+    <div class="user-wrap" id="userWrap">
+      <div class="avatar"><img src="../images/hospital.png" height="24" width="24"/></div>
+      <span class="username">City Care Hospital</span>
+      <span class="chevron" id="chevronIcon">▾</span>
+
+      <div class="dropdown-menu" id="dropdownMenu">
+        <a href="#" class="dropdown-item" id="myProfileBtn">👤 My Profile</a>
+        <a href="#" class="dropdown-item" id="settingsBtn">⚙️ Settings</a>
+        <div class="dropdown-divider"></div>
+        <a href="#" class="dropdown-item logout" id="logoutBtn">🚪 Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+  <div class="sidebar">
+    <div>
+      <div class="side-item active"><span class="side-icon"><img src="../images/icons8-plus-50.png" height="24" width="24"/></span> Create Doctor Profile</div>
+      <div class="side-item"><span class="side-icon"><img src="../images/calendar.png" height="24" width="24"/></span> Update Doctor Availability</div>
+      <div class="side-item"><span class="side-icon"><img src="../images/icons8-hospital-bed-50.png" height="24" width="24"/></span> Update ICU Bed Availability</div>
+      <div class="side-item"><span class="side-icon"><img src="../images/dashboard.png" height="24" width="24"/></span> Show Previous Appointments</div>
+      <div class="side-item"><span class="side-icon"><img src="../images/refugee-camp.png" height="24" width="24"/></span> Camp Management</div>
+      <div class="side-item"><span class="side-icon"><img src="../images/diabetes.png" height="24" width="24"/></span> Resource Management</div>
+    </div>
+    <div class="help-box">
+      <div class="help-top">
+        <div class="icon-circle"><img src="../images/customer-service.png" height="24" width="24"/></div>
+        <div>
+          <p>Need Help?</p>
+          <a href="#">Support Center</a>
+        </div>
+      </div>
+      <p class="help-desc">We are here to help you 24/7</p>
+    </div>
+  </div>
+
+  <div class="main">
+    <h2>Dashboard Overview</h2>
+    <p class="subtitle">Welcome back! Here's what's happening at your hospital today.</p>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-icon blue"><img src="../images/calendar.png" height="24" width="24"/></div>
+        <p class="stat-label">Today's Appointments</p>
+        <p class="stat-value">64</p>
+        <a href="#" class="stat-link">View all →</a>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon green"><img src="../images/doctor.png" height="24" width="24"/></div>
+        <p class="stat-label">Total Doctors</p>
+        <p class="stat-value">28</p>
+        <a href="#" class="stat-link">View all →</a>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon purple"><img src="../images/icons8-hospital-bed-50.png" height="24" width="24"/></div>
+        <p class="stat-label">ICU Beds Available</p>
+        <p class="stat-value">12</p>
+        <p class="stat-note">of 25 Beds</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon lightblue"><img src="../images/dashboard.png" height="24" width="24"/></div>
+        <p class="stat-label">Total Patients</p>
+        <p class="stat-value">1,248</p>
+        <p class="stat-note">This Month <span class="up">↑ 12.5%</span></p>
+      </div>
+    </div>
+
+    <div class="content-grid">
+      <div class="left-col">
+        <div class="chart-card">
+          <div class="chart-header">
+            <h3>Appointments Overview</h3>
+            <select class="week-select">
+              <option>This Week</option>
+            </select>
+          </div>
+          <svg viewBox="0 0 780 260" class="line-chart" preserveAspectRatio="none">
+            <line x1="40" y1="20" x2="40" y2="220" stroke="#D9E6F5" stroke-width="1"/>
+            <line x1="40" y1="220" x2="760" y2="220" stroke="#D9E6F5" stroke-width="1"/>
+            <line x1="40" y1="170" x2="760" y2="170" stroke="#F1F5F9" stroke-width="1"/>
+            <line x1="40" y1="120" x2="760" y2="120" stroke="#F1F5F9" stroke-width="1"/>
+            <line x1="40" y1="70" x2="760" y2="70" stroke="#F1F5F9" stroke-width="1"/>
+            <line x1="40" y1="20" x2="760" y2="20" stroke="#F1F5F9" stroke-width="1"/>
+
+            <text x="10" y="24" class="axis-label">80</text>
+            <text x="10" y="74" class="axis-label">60</text>
+            <text x="10" y="124" class="axis-label">40</text>
+            <text x="10" y="174" class="axis-label">20</text>
+            <text x="20" y="224" class="axis-label">0</text>
+
+            <text x="70" y="240" class="axis-label">Mon</text>
+            <text x="175" y="240" class="axis-label">Tue</text>
+            <text x="280" y="240" class="axis-label">Wed</text>
+            <text x="390" y="240" class="axis-label">Thu</text>
+            <text x="500" y="240" class="axis-label">Fri</text>
+            <text x="610" y="240" class="axis-label">Sat</text>
+            <text x="710" y="240" class="axis-label">Sun</text>
+
+            <polygon points="70,120 175,70 280,145 390,95 500,155 610,190 710,145 710,220 70,220"
+              fill="url(#gradFill)" opacity="0.5"/>
+            <polyline points="70,120 175,70 280,145 390,95 500,155 610,190 710,145"
+              fill="none" stroke="#1976D2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <circle cx="70" cy="120" r="5" fill="#1976D2"/>
+            <circle cx="175" cy="70" r="5" fill="#1976D2"/>
+            <circle cx="280" cy="145" r="5" fill="#1976D2"/>
+            <circle cx="390" cy="95" r="5" fill="#1976D2"/>
+            <circle cx="500" cy="155" r="5" fill="#1976D2"/>
+            <circle cx="610" cy="190" r="5" fill="#1976D2"/>
+            <circle cx="710" cy="145" r="5" fill="#1976D2"/>
+
+            <defs>
+              <linearGradient id="gradFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#1976D2" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#1976D2" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <div class="table-card">
+          <div class="table-header">
+            <h3>Recent Appointments</h3>
+            <a href="#" class="view-all-link">View all</a>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Patient Name</th>
+                <th>Doctor</th>
+                <th>Department</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="patient-cell"><span class="avatar-letter">R</span> Ramesh Kumar</td>
+                <td>Dr. Anjali Sharma</td>
+                <td>Cardiology</td>
+                <td>02 Jul 2025</td>
+                <td>10:30 AM</td>
+                <td><span class="status confirmed">Confirmed</span></td>
+              </tr>
+              <tr>
+                <td class="patient-cell"><span class="avatar-letter">S</span> Sunita Devi</td>
+                <td>Dr. Vikram Patel</td>
+                <td>Neurology</td>
+                <td>02 Jul 2025</td>
+                <td>11:00 AM</td>
+                <td><span class="status confirmed">Confirmed</span></td>
+              </tr>
+              <tr>
+                <td class="patient-cell"><span class="avatar-letter">A</span> Arjun Reddy</td>
+                <td>Dr. Neha Gupta</td>
+                <td>Orthopedics</td>
+                <td>02 Jul 2025</td>
+                <td>11:30 AM</td>
+                <td><span class="status pending">Pending</span></td>
+              </tr>
+              <tr>
+                <td class="patient-cell"><span class="avatar-letter">P</span> Priya Singh</td>
+                <td>Dr. Amit Verma</td>
+                <td>General Medicine</td>
+                <td>02 Jul 2025</td>
+                <td>02:00 PM</td>
+                <td><span class="status confirmed">Confirmed</span></td>
+              </tr>
+              <tr>
+                <td class="patient-cell"><span class="avatar-letter">M</span> Mohammed Ali</td>
+                <td>Dr. Pooja Mehta</td>
+                <td>Pediatrics</td>
+                <td>02 Jul 2025</td>
+                <td>03:00 PM</td>
+                <td><span class="status cancelled">Cancelled</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="right-col">
+        <div class="icu-card">
+          <h3>ICU Bed Availability</h3>
+          <div class="donut-wrap">
+            <svg viewBox="0 0 140 140" class="donut-chart">
+              <circle cx="70" cy="70" r="55" fill="none" stroke="#F1F5F9" stroke-width="18"/>
+              <circle cx="70" cy="70" r="55" fill="none" stroke="#2E7D32" stroke-width="18"
+                stroke-dasharray="132.9 213.6" stroke-dashoffset="0" transform="rotate(-90 70 70)" stroke-linecap="round"/>
+              <circle cx="70" cy="70" r="55" fill="none" stroke="#1976D2" stroke-width="18"
+                stroke-dasharray="88.6 258" stroke-dashoffset="-132.9" transform="rotate(-90 70 70)" stroke-linecap="round"/>
+              <circle cx="70" cy="70" r="55" fill="none" stroke="#CBD5E1" stroke-width="18"
+                stroke-dasharray="55.3 291.3" stroke-dashoffset="-221.5" transform="rotate(-90 70 70)" stroke-linecap="round"/>
+            </svg>
+            <div class="donut-center">
+              <p class="donut-value">12</p>
+              <p class="donut-label">Available</p>
+            </div>
+          </div>
+          <div class="icu-legend">
+            <p><i class="dot green"></i> 12 Available</p>
+            <p><i class="dot blue"></i> 8 Occupied</p>
+            <p><i class="dot grey"></i> 5 Maintenance</p>
+          </div>
+          <a href="#" class="view-details-link">View Details →</a>
+        </div>
+
+        <div class="doctor-avail-card">
+          <h3><span class="card-icon"><img src="../images/calendar.png" height="24" width="24"/></span> Doctor Availability Today</h3>
+          <div class="avail-row">
+            <span>Available</span>
+            <span class="avail-value green">18</span>
+          </div>
+          <div class="avail-row">
+            <span>On Leave</span>
+            <span class="avail-value red">10</span>
+          </div>
+          <a href="#" class="manage-link">Manage Availability →</a>
+        </div>
+
+        <div class="camps-card">
+          <h3><span class="card-icon"><img src="../images/calendar.png" height="24" width="24"/></span> Upcoming Camps</h3>
+
+          <div class="camp-item">
+            <div class="camp-info">
+              <p class="camp-title">Free Health Checkup Camp</p>
+              <p class="camp-meta"><img src="../images/calendar.png" height="24" width="24"/> 10 Jul 2025 &nbsp; 📍 Banjarahills</p>
+            </div>
+            <span class="camp-badge">Upcoming</span>
+          </div>
+
+          <div class="camp-item">
+            <div class="camp-info">
+              <p class="camp-title">Eye Checkup Camp</p>
+              <p class="camp-meta"><img src="../images/calendar.png" height="24" width="24"/> 18 Jul 2025 &nbsp; 📍 Kukatpally</p>
+            </div>
+            <span class="camp-badge">Upcoming</span>
+          </div>
+
+          <div class="camp-item">
+            <div class="camp-info">
+              <p class="camp-title">Diabetes Awareness Camp</p>
+              <p class="camp-meta"><img src="../images/calendar.png" height="24" width="24"/> 25 Jul 2025 &nbsp; 📍 Miyapur</p>
+            </div>
+            <span class="camp-badge">Upcoming</span>
+          </div>
+
+          <a href="#" class="view-all-camps-link">View All Camps →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="admin_home.js"></script>
+</body>
+</html>

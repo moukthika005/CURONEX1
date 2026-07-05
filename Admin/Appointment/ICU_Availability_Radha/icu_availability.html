@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Curonex - Update ICU Bed Availability</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Poppins', sans-serif; background-color: #F8FAFC; color: #4B5563; }
+
+.navbar { height: 80px; background-color: #0B3D91; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; color: #FFFFFF; }
+.navbar-left { display: flex; align-items: center; gap: 12px; }
+.logo-icon { width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+.logo-title { font-size: 22px; font-weight: 700; }
+.logo-subtitle { font-size: 12px; font-weight: 400; opacity: 0.85; }
+.navbar-right { display: flex; align-items: center; gap: 28px; }
+.nav-link { color: #FFFFFF; text-decoration: none; font-size: 16px; font-weight: 500; }
+.bell-wrapper { position: relative; font-size: 18px; cursor: pointer; }
+.bell-badge { position: absolute; top: -8px; right: -8px; background: #D32F2F; color: #fff; font-size: 11px; font-weight: 600; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; }
+.hospital-dropdown { display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.1); padding: 8px 14px; border-radius: 20px; font-size: 15px; cursor: pointer; }
+.chevron { font-size: 14px; }
+
+.layout { display: flex; min-height: calc(100vh - 80px); }
+
+.sidebar { width: 260px; background: #FFFFFF; border-right: 1px solid #D9E6F5; padding: 24px 16px; display: flex; flex-direction: column; justify-content: space-between; }
+.sidebar-nav { display: flex; flex-direction: column; gap: 6px; }
+.sidebar-item { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 14px; text-decoration: none; color: #0B3D91; font-size: 15px; font-weight: 500; }
+.sidebar-item:hover { background: #F2F8FE; }
+.sidebar-item.active { background: #E3F2FD; font-weight: 600; }
+.sidebar-icon { font-size: 18px; width: 22px; text-align: center; }
+.help-card { background: #E3F2FD; border-radius: 20px; padding: 20px; margin-top: 24px; }
+.help-icon { font-size: 20px; margin-bottom: 8px; }
+.help-title { font-weight: 600; color: #102A43; margin-bottom: 4px; }
+.help-link { color: #1976D2; font-weight: 600; font-size: 14px; text-decoration: none; }
+.help-text { font-size: 13px; color: #6B7280; margin-top: 8px; }
+
+.main-content { flex: 1; padding: 32px; max-width: 1180px; }
+.page-title { font-size: 32px; font-weight: 700; color: #102A43; margin-bottom: 6px; }
+.page-subtitle { font-size: 15px; color: #6B7280; margin-bottom: 24px; }
+
+.stats-card { background: #FFFFFF; border: 1px solid #D9E6F5; border-radius: 20px; padding: 28px 32px; display: flex; align-items: center; gap: 40px; margin-bottom: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.stat-item { display: flex; align-items: center; gap: 16px; }
+.stat-icon { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+.stat-icon-blue { background: #E3F2FD; }
+.stat-icon-green { background: #E8F5E9; }
+.stat-number { font-size: 30px; font-weight: 700; color: #0B3D91; }
+.stat-number-green { color: #2E7D32; }
+.stat-label { font-size: 15px; font-weight: 600; color: #102A43; }
+.stat-sub { font-size: 13px; color: #6B7280; }
+.stat-divider { width: 1px; height: 60px; background: #D9E6F5; }
+
+.update-card { background: #FFFFFF; border: 1px solid #D9E6F5; border-radius: 20px; padding: 32px; margin-bottom: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.card-heading { font-size: 22px; font-weight: 600; color: #102A43; margin-bottom: 24px; }
+.update-card-body { display: flex; gap: 48px; }
+.update-illustration { flex: 0 0 260px; text-align: center; }
+.bed-illustration { font-size: 90px; background: #F2F8FE; border-radius: 18px; padding: 30px; margin-bottom: 16px; }
+.illustration-caption { font-size: 14px; color: #6B7280; line-height: 1.5; }
+.update-form { flex: 1; }
+.form-label { display: block; font-size: 14px; font-weight: 600; color: #102A43; margin-bottom: 8px; margin-top: 16px; }
+.form-label:first-child { margin-top: 0; }
+.required { color: #D32F2F; }
+.form-input-readonly { width: 100%; padding: 14px 16px; border-radius: 16px; border: 1px solid #C9DDF2; background: #F0F0F0; font-size: 15px; color: #4B5563; font-family: 'Poppins', sans-serif; }
+.form-input { width: 100%; padding: 14px 16px; border-radius: 16px; border: 1px solid #1976D2; background: #FFFFFF; font-size: 15px; color: #102A43; font-family: 'Poppins', sans-serif; }
+.form-input:focus { outline: none; border-color: #1565C0; }
+.input-hint { font-size: 13px; color: #6B7280; margin-top: 6px; }
+.info-banner { display: flex; align-items: center; gap: 10px; background: #E3F2FD; color: #1976D2; font-size: 13.5px; font-weight: 500; padding: 14px 16px; border-radius: 14px; margin-top: 16px; }
+.info-banner.error { background: #FFEBEE; color: #D32F2F; }
+.info-banner.success { background: #E8F5E9; color: #2E7D32; }
+.form-actions { display: flex; justify-content: flex-end; gap: 14px; margin-top: 24px; }
+.btn { padding: 12px 28px; border-radius: 14px; font-size: 16px; font-weight: 600; font-family: 'Poppins', sans-serif; cursor: pointer; border: none; }
+.btn-secondary { background: #FFFFFF; border: 1px solid #1976D2; color: #1976D2; }
+.btn-secondary:hover { background: #F2F8FE; }
+.btn-primary { background: #1976D2; color: #FFFFFF; }
+.btn-primary:hover { background: #1565C0; }
+.history-card { background: #FFFFFF; border: 1px solid #D9E6F5; border-radius: 20px; padding: 32px; margin-bottom: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.history-table { width: 100%; border-collapse: collapse; }
+.history-table th { text-align: left; font-size: 13px; font-weight: 600; color: #6B7280; padding: 12px 8px; border-bottom: 1px solid #D9E6F5; }
+.history-table td { font-size: 14px; color: #4B5563; padding: 14px 8px; border-bottom: 1px solid #F0F4F8; }
+.cal-icon, .person-icon { margin-right: 6px; }
+.beds-pill { background: #E8F5E9; color: #2E7D32; font-weight: 600; font-size: 13px; padding: 5px 12px; border-radius: 10px; }
+
+.reminder-banner { background: #E3F2FD; border-radius: 20px; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; }
+.reminder-left { display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 500; color: #102A43; }
+.reminder-bell { background: #1976D2; color: #fff; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+.reminder-illustration { font-size: 50px; }
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="navbar-left">
+    <div class="logo-icon"><img src="../images/logo.jpg" height="40" width="44" style="border-radius:50%" /></div>
+    <div class="logo-text">
+      <div class="logo-title">Curonex</div>
+      <div class="logo-subtitle">Affordable Healthcare Access</div>
+    </div>
+  </div>
+  <div class="navbar-right">
+    <a href="#" class="nav-link">About</a>
+    <a href="#" class="nav-link">Contact</a>
+    <div class="bell-wrapper">
+      <img src="../images/bell.png" height="24" width="24"/>
+      <span class="bell-badge">2</span>
+    </div>
+    <div class="hospital-dropdown">
+      <img src="../images/hospital.png" height="24" width="24"/>
+      <span>City Care Hospital</span>
+      <span class="chevron">⌄</span>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <a href="../Doctor_Profiles_Radha/doctor_profile.html" class="sidebar-item"><img src="../images/icons8-plus-50.png" height="24" width="24"/><span>Create Doctor Profile</span></a>
+      <a href="../Doctor_Availability_Radha/doctor_availability.html" class="sidebar-item"><img src="../images/calendar.png" height="24" width="24"/><span>Update Doctor Availability</span></a>
+      <a href="../ICU_Availability_Radha/icu_availability.html" class="sidebar-item active"><img src="../images/icons8-hospital-bed-50.png" height="24" width="24"/><span>Update ICU Bed Availability</span></a>
+      <a href="../Prev_Appointments_Radha/prev_appointments.html" class="sidebar-item"><img src="../images/dashboard.png" height="24" width="24"/><span>Show Previous Appointments</span></a>
+      <a href="../../Camp/Camp Management- Dashboard_Nithyasree/dashboard.html" class="sidebar-item"><img src="../images/refugee-camp.png" height="24" width="24"/><span>Camp Management</span></a>
+      <a href="../../Resource/Inventory Management_S Gokulakrishnan/Ilp2.0/dashboard.html" class="sidebar-item"><img src="../images/diabetes.png" height="24" width="24"/><span>Resource Management</span></a>
+    </nav>
+    <div class="help-card">
+      <div class="help-icon"><img src="../images/customer-service.png" height="24" width="24"/></div>
+      <div class="help-title">Need Help?</div>
+      <a href="#" class="help-link">Support Center</a>
+      <div class="help-text">We are here to help you 24/7</div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <h1 class="page-title">Update ICU Bed Availability</h1>
+    <p class="page-subtitle">View current ICU bed availability and update the numbers in real-time.</p>
+
+    <section class="stats-card">
+      <div class="stat-item">
+        <div class="stat-icon stat-icon-blue"><img src="../images/icons8-hospital-bed-50.png" height="24" width="24"/></div>
+        <div>
+          <div class="stat-number" id="availableCountDisplay">12</div>
+          <div class="stat-label">ICU Beds Available</div>
+          <div class="stat-sub" id="lastUpdatedText">Last updated: Today, 09:30 AM</div>
+        </div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-icon stat-icon-green"><img src="../images/icons8-hospital-bed-50.png" height="24" width="24"/></div>
+        <div>
+          <div class="stat-number stat-number-green" id="totalBedsDisplay">25</div>
+          <div class="stat-label">Total ICU Beds (Max Limit)</div>
+          <div class="stat-sub">Fixed limit for this hospital</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="update-card">
+      <h2 class="card-heading">Update ICU Bed Availability</h2>
+      <div class="update-card-body">
+        <div class="update-illustration">
+          <div class="bed-illustration"><img src="../images/icons8-hospital-bed-50.png" height="80" width="80"/></div>
+          <p class="illustration-caption">Keep your ICU bed availability updated to help patients get accurate information.</p>
+        </div>
+        <div class="update-form">
+          <label class="form-label">Current Available ICU Beds</label>
+          <input type="text" class="form-input-readonly" id="currentBedsInput" value="12" disabled>
+
+          <label class="form-label">Update Available ICU Beds <span class="required">*</span></label>
+          <input type="number" class="form-input" id="updateBedsInput" placeholder="Enter number of available ICU beds" min="0" max="25">
+          <p class="input-hint">Enter a value between 0 and 25</p>
+
+          <div class="info-banner" id="infoBanner">
+            <span class="info-icon">🛡️</span>
+            <span id="infoBannerText">Value must be greater than or equal to 0 and less than or equal to 25.</span>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" id="resetBtn">Reset</button>
+            <button type="button" class="btn btn-primary" id="updateBtn">💾 Update</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="history-card">
+      <h2 class="card-heading">ICU Bed Availability History</h2>
+      <table class="history-table">
+        <thead>
+          <tr><th>Date &amp; Time</th><th>Updated By</th><th>Available Beds</th><th>Action</th></tr>
+        </thead>
+        <tbody id="historyTableBody">
+          <tr><td><img src="../images/calendar.png" height="24" width="24"/> 30 May 2024, 09:30 AM</td><td><span class="person-icon">👤</span> Rajesh Kumar</td><td><span class="beds-pill">12 Beds</span></td><td>Updated</td></tr>
+          <tr><td><img src="../images/calendar.png" height="24" width="24"/> 29 May 2024, 06:15 PM</td><td><span class="person-icon">👤</span> Rajesh Kumar</td><td><span class="beds-pill">15 Beds</span></td><td>Updated</td></tr>
+          <tr><td><img src="../images/calendar.png" height="24" width="24"/> 28 May 2024, 08:45 AM</td><td><span class="person-icon">👤</span> Rajesh Kumar</td><td><span class="beds-pill">18 Beds</span></td><td>Updated</td></tr>
+          <tr><td><img src="../images/calendar.png" height="24" width="24"/> 27 May 2024, 07:10 PM</td><td><span class="person-icon">👤</span> Rajesh Kumar</td><td><span class="beds-pill">20 Beds</span></td><td>Updated</td></tr>
+          <tr><td><img src="../images/calendar.png" height="24" width="24"/> 26 May 2024, 09:00 AM</td><td><span class="person-icon">👤</span> Rajesh Kumar</td><td><span class="beds-pill">22 Beds</span></td><td>Updated</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="reminder-banner">
+      <div class="reminder-left">
+        <span class="reminder-bell"><img src="../images/bell.png" height="24" width="24"/></span>
+        <span>Ensure ICU bed availability is updated regularly for accurate information.</span>
+      </div>
+      <div class="reminder-illustration"><img src="../images/hospital.png" height="40" width="40"/></div>
+    </section>
+  </main>
+</div>
+
+<script>
+(function() {
+  var MAX_BEDS = 25;
+  var currentAvailable = 12;
+
+  var currentBedsInput = document.getElementById('currentBedsInput');
+  var updateBedsInput = document.getElementById('updateBedsInput');
+  var infoBanner = document.getElementById('infoBanner');
+  var infoBannerText = document.getElementById('infoBannerText');
+  var updateBtn = document.getElementById('updateBtn');
+  var resetBtn = document.getElementById('resetBtn');
+  var availableCountDisplay = document.getElementById('availableCountDisplay');
+  var lastUpdatedText = document.getElementById('lastUpdatedText');
+  var historyTableBody = document.getElementById('historyTableBody');
+
+  function setBanner(message, type) {
+    infoBannerText.textContent = message;
+    infoBanner.classList.remove('error', 'success');
+    if (type === 'error') infoBanner.classList.add('error');
+    if (type === 'success') infoBanner.classList.add('success');
+  }
+
+  function validateInput() {
+    var value = updateBedsInput.value.trim();
+
+    if (value === '') {
+      setBanner('Value must be greater than or equal to 0 and less than or equal to ' + MAX_BEDS + '.', 'default');
+      return null;
+    }
+
+    var num = Number(value);
+
+    if (isNaN(num) || !Number.isInteger(num)) {
+      setBanner('Please enter a whole number.', 'error');
+      return null;
+    }
+    if (num < 0) {
+      setBanner('ICU beds available cannot be negative.', 'error');
+      return null;
+    }
+    if (num > MAX_BEDS) {
+      setBanner('ICU beds available cannot exceed the maximum limit of ' + MAX_BEDS + '.', 'error');
+      return null;
+    }
+
+    setBanner('Value must be greater than or equal to 0 and less than or equal to ' + MAX_BEDS + '.', 'default');
+    return num;
+  }
+
+  function formatTimestamp(date) {
+    var datePart = date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+    var hours = date.getHours();
+    var minutes = date.getMinutes().toString().padStart(2, '0');
+    var ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    return datePart + ', ' + hours.toString().padStart(2, '0') + ':' + minutes + ' ' + ampm;
+  }
+
+  function addHistoryRow(bedCount) {
+    var row = document.createElement('tr');
+    row.innerHTML =
+      '<td><span class="cal-icon">📅</span> ' + formatTimestamp(new Date()) + '</td>' +
+      '<td><span class="person-icon">👤</span> Rajesh Kumar</td>' +
+      '<td><span class="beds-pill">' + bedCount + ' Beds</span></td>' +
+      '<td>Updated</td>';
+    historyTableBody.insertBefore(row, historyTableBody.firstChild);
+  }
+
+  updateBedsInput.addEventListener('input', function() {
+    validateInput();
+  });
+
+  updateBtn.addEventListener('click', function() {
+    var validValue = validateInput();
+    if (validValue === null) return;
+
+    currentAvailable = validValue;
+    currentBedsInput.value = currentAvailable;
+    availableCountDisplay.textContent = currentAvailable;
+    lastUpdatedText.textContent = 'Last updated: Today, ' +
+      new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+
+    addHistoryRow(currentAvailable);
+    updateBedsInput.value = '';
+    setBanner('ICU bed availability updated successfully.', 'success');
+  });
+
+  resetBtn.addEventListener('click', function() {
+    updateBedsInput.value = '';
+    setBanner('Value must be greater than or equal to 0 and less than or equal to ' + MAX_BEDS + '.', 'default');
+  });
+})();
+</script>
+</body>
+</html>

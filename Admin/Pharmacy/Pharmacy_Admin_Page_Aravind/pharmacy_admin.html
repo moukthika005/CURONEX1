@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Curonex | Pharmacy Administrator</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="pharmacy_admin.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="brand">
+    <div class="logo"><img src="images/IMG-20260702-WA0003.jpg" alt="Logo" width="40" height="40" style="border-radius: 50%;"/></div>
+    <div>
+      <h1>Curonex</h1>
+      <p>Affordable Healthcare Access</p>
+    </div>
+  </div>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="icon-btn">
+      <img src="icons/bell.png" alt="Notification" width="24" height="24"/>
+      <span class="badge">2</span></div>
+    <div class="user">
+      <div class="avatar">A</div>
+      <span>Aravind R</span>
+      <span style="font-size:11px;">▾</span>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+
+  <!-- LEFT SIDEBAR -->
+  <div class="sidebar">
+    <div class="side-nav" id="side-nav">
+      <div class="side-item active" data-page="dashboard"><div class="ico"><img src="icons/dashboard.png" alt="Notification" width="24" height="24"/></div><span>Pharmacy Dashboard</span></div>
+      <div class="side-item" data-page="orders"><div class="ico"><img src="icons/booking.png" alt="Notification" width="24" height="24"/></div><span>Medicine Orders</span></div>
+      <div class="side-item" data-page="history"><div class="ico"><img src="icons/clock.png" alt="Notification" width="24" height="24"/></div><span>Order History</span></div>
+      <div class="side-item" data-page="reports"><div class="ico"><img src="icons/analysis.png" alt="Notification" width="24" height="24"/></div><span>Reports &amp; Analytics</span></div>
+      <div class="side-item" data-page="profile"><div class="ico"><img src="icons/user.png" alt="Notification" width="24" height="24"/></div><span>Pharmacy Profile</span></div>
+    </div>
+    <div class="help-card">
+      <div class="ico">
+        <img src="icons/customer-service.png" alt="Help Center" width="24" height="24"/>
+      </div>
+      <h4>Need Help?</h4>
+      <a class="link" href="#">Support Center</a>
+      <p>We are here to help you 24/7</p>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-card">
+
+    <!-- 1. DASHBOARD -->
+    <section class="page-section active" id="page-dashboard">
+      <div class="page-title"><h2>Pharmacy Dashboard</h2><p>Overview of today's pharmacy operations.</p></div>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="num">18</div><div class="label">New Medicine Orders</div></div>
+        
+        <div class="stat-card"><div class="num">11</div><div class="label">Orders Processing</div></div>
+        
+        <div class="stat-card success"><div class="num">23</div><div class="label">Today's Deliveries</div></div>
+        <div class="stat-card"><div class="num">₹42,300</div><div class="label">Today's Revenue</div></div>
+      </div>
+      <div class="section-heading">Recent Orders</div>
+      <table>
+        <thead><tr><th>Order ID</th><th>Patient</th><th>Medicines</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>#ORD1042</td><td>Rahul Menon</td><td>Paracetamol, Azithromycin</td><td><span class="badge badge-warn">Processing</span></td></tr>
+          <tr><td>#ORD1041</td><td>Divya S</td><td>Metformin 500mg</td><td><span class="badge badge-success">Ready</span></td></tr>
+          <tr><td>#ORD1040</td><td>Kaushik T</td><td>Amoxicillin, Vitamin D3</td><td><span class="badge badge-info">New</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 2. MEDICINE ORDERS -->
+    <section class="page-section" id="page-orders">
+      <div class="page-title"><h2>Medicine Orders</h2><p>Manage and process incoming medicine orders.</p></div>
+      <div class="toolbar">
+        <div class="filter-tabs">
+          <button class="filter-tab active">New</button>
+          <button class="filter-tab">Completed</button>
+          <button class="filter-tab">Cancelled</button>
+        </div>
+        <input type="text" placeholder="Search order ID or patient...">
+      </div>
+      <table>
+        <thead><tr><th>Order ID</th><th>Patient</th><th>Items</th><th>Amount</th><th>Status</th><th>Actions</th></tr></thead>
+        <tbody id="orders-table">
+          <tr><td>#ORD1040</td><td>Kaushik T</td><td>Amoxicillin 500mg x2</td><td>₹340</td><td><span class="badge badge-info">New</span></td>
+            <td class="row-actions"><button class="btn-sm accept" onclick="orderAction(this,'Accepted')">Accept</button><button class="btn-sm reject" onclick="orderAction(this,'Rejected')">Reject</button></td></tr>
+          <tr><td>#ORD1039</td><td>Anitha R</td><td>Cetirizine, Cough Syrup</td><td>₹210</td><td><span class="badge badge-info">New</span></td>
+            <td class="row-actions"><button class="btn-sm accept" onclick="orderAction(this,'Accepted')">Accept</button><button class="btn-sm reject" onclick="orderAction(this,'Rejected')">Reject</button></td></tr>
+          <tr><td>#ORD1038</td><td>Suresh Babu</td><td>Insulin Pen, Syringes</td><td>₹890</td><td><span class="badge badge-info">New</span></td>
+            <td class="row-actions"><button class="btn-sm accept" onclick="orderAction(this,'Accepted')">Accept</button><button class="btn-sm reject" onclick="orderAction(this,'Rejected')">Reject</button></td></tr>
+        </tbody>
+      </table>
+      <div class="field-msg" id="orders-msg"></div>
+    </section>
+
+    <!-- 7. ORDER HISTORY -->
+    <section class="page-section" id="page-history">
+      <div class="page-title"><h2>Order History</h2><p>Search and review completed, cancelled, and returned orders.</p></div>
+      <div class="toolbar">
+        <input type="text" placeholder="Search by Order ID or Patient...">
+        <input type="date">
+      </div>
+      <table>
+        <thead><tr><th>Order ID</th><th>Patient</th><th>Date</th><th>Amount</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>#ORD0998</td><td>Meena S</td><td>28 Jun 2026</td><td>₹560</td><td><span class="badge badge-success">Completed</span></td></tr>
+          <tr><td>#ORD0991</td><td>Arvind B</td><td>25 Jun 2026</td><td>₹120</td><td><span class="badge badge-error">Cancelled</span></td></tr>
+          <tr><td>#ORD0987</td><td>Priya Sharma</td><td>21 Jun 2026</td><td>₹340</td><td><span class="badge badge-warn">Returned</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 8. REPORTS & ANALYTICS -->
+    <section class="page-section" id="page-reports">
+      <div class="page-title"><h2>Reports &amp; Analytics</h2><p>Track performance and identify trends.</p></div>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="num">142</div><div class="label">Orders This Month</div></div>
+        <div class="stat-card success"><div class="num">96%</div><div class="label">Delivery Success Rate</div></div>
+        
+      </div>
+      <div class="section-heading">Frequently Ordered Medicines</div>
+      <table>
+        <thead><tr><th>Medicine</th><th>Orders This Month</th><th>Trend</th></tr></thead>
+        <tbody>
+          <tr><td>Paracetamol 500mg</td><td>212</td><td><span class="badge badge-success">↑ 12%</span></td></tr>
+          <tr><td>Cetirizine 10mg</td><td>134</td><td><span class="badge badge-success">↑ 5%</span></td></tr>
+          <tr><td>Amoxicillin 500mg</td><td>98</td><td><span class="badge badge-error">↓ 3%</span></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+  <!-- 9. PHARMACY PROFILE -->
+<section class="page-section" id="page-profile">
+  <div class="page-title">
+    <h2>Pharmacy Profile</h2>
+    <p>Manage your pharmacy's information and license details.</p>
+  </div>
+
+  <!-- ===== PROFILE HEADER CARD ===== -->
+  <div class="profile-header-card">
+    <div class="profile-banner"></div>
+    <div class="profile-header-content">
+      <div class="profile-avatar-wrap">
+        <div class="profile-avatar" id="profile-avatar-initial">P</div>
+        <button class="avatar-edit-btn" type="button" title="Change logo">✎</button>
+      </div>
+      <div class="profile-header-info">
+        <h3 id="profile-display-name">Prime Pharmacy</h3>
+        <div class="profile-meta-row">
+          <span class="profile-license-tag">License: <b id="profile-display-license">PH-TN-88213</b></span>
+          <span class="verified-badge">✔ Verified Pharmacy</span>
+        </div>
+      </div>
+      <div class="profile-header-stats">
+        <div class="ph-stat">
+          <span class="ph-stat-num">4.7</span>
+          <span class="ph-stat-label">Rating</span>
+        </div>
+        <div class="ph-divider"></div>
+        <div class="ph-stat">
+          <span class="ph-stat-num">1,204</span>
+          <span class="ph-stat-label">Orders Served</span>
+        </div>
+        <div class="ph-divider"></div>
+        <div class="ph-stat">
+          <span class="ph-stat-num">3 yrs</span>
+          <span class="ph-stat-label">On Curonex</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== BASIC INFORMATION ===== -->
+  <div class="profile-section-card">
+    <div class="profile-section-heading">
+      
+      <div>
+        <h4>Basic Information</h4>
+        <p>Your pharmacy's name and license details</p>
+      </div>
+    </div>
+
+    <div class="profile-grid">
+      <div class="form-group">
+        <label>Pharmacy Name</label>
+        <input type="text" id="pf-name" value="Prime Pharmacy" placeholder="Enter pharmacy name">
+      </div>
+      <div class="form-group">
+        <label>License Number</label>
+        <input type="text" id="pf-license" value="PH-TN-88213" placeholder="Enter license number">
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CONTACT & AVAILABILITY ===== -->
+  <div class="profile-section-card">
+    <div class="profile-section-heading">
+      
+      <div>
+        <h4>Contact &amp; Availability</h4>
+        <p>How patients and delivery partners can reach you</p>
+      </div>
+    </div>
+
+    <div class="profile-grid">
+      <div class="form-group">
+        <label>Contact Number</label>
+        <input type="text" id="pf-contact" value="+91 44 2345 6789" placeholder="Enter contact number">
+      </div>
+      <div class="form-group">
+        <label>Operating Hours</label>
+        <input type="text" id="pf-hours" value="8:00 AM - 10:00 PM" placeholder="e.g. 8:00 AM - 10:00 PM">
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LOCATION ===== -->
+  <div class="profile-section-card">
+    <div class="profile-section-heading">
+     
+      <div>
+        <h4>Pharmacy Address</h4>
+        <p>Used for delivery zone mapping and patient directions</p>
+      </div>
+    </div>
+
+    <div class="form-group" style="margin-bottom:0;">
+      <label>Address</label>
+      <textarea id="pf-address" rows="3" placeholder="Enter full address">45, Anna Salai, Chennai, Tamil Nadu - 600002</textarea>
+    </div>
+  </div>
+
+  <!-- ===== ACTIONS ===== -->
+  <div class="profile-actions">
+    <button class="btn-secondary" id="profile-discard-btn" type="button">Discard Changes</button>
+    <button class="btn-primary" id="profile-update-btn" type="button">Update Profile</button>
+  </div>
+
+  <div class="field-msg" id="profile-msg"></div>
+</section>
+
+  </div>
+
+  <!-- RIGHT SIDEBAR -->
+  <div class="right-sidebar">
+    <div class="quick-card">
+      <h4>Today's Snapshot</h4>
+      <div class="quick-row"><span>New Orders</span><b>18</b></div>
+    </div>
+    <div class="quick-card">
+      <h4>Notifications</h4>
+      <div class="quick-row"><span>Prescription request pending</span></div>
+      <div class="quick-row"><span>Order Completed</span><b>7</b></div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+<script src="pharmacy_admin.js"></script>
+</html>

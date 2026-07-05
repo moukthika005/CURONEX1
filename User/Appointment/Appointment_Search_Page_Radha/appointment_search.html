@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Curonex - Appointment Scheduling</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="appointment_search.css">
+</head>
+<body>
+
+<div class="header">
+  <div class="logo"> 
+    <div class="logo-icon"><img src="../Appointment_Search_Page_Radha/IMG-20260702-WA0003 (1).jpg" height="40" width="44" style="border-radius:50%" /></div>
+    <div class="logo-text">
+      <h1>Curonex</h1>
+      <p>Affordable Healthcare Access</p>
+    </div>
+  </div>
+  <div class="nav">
+    <div class="bell-wrap">
+      <img src="../icons/bell.png" height="24" width="24"/>
+      <span class="badge">2</span>
+    </div>
+    <div class="user-wrap" id="userWrap">
+  <div class="avatar">👤</div>
+  <span class="username">Kaushik T</span>
+  <span class="chevron" id="chevronIcon">▾</span>
+
+  <div class="dropdown-menu" id="dropdownMenu">
+    <a href="../../Profile Management_Gowri Manogari/profile.html" class="dropdown-item" id="myProfileBtn"> My Profile</a>
+    <div class="dropdown-divider"></div>
+    <a href="../../Homepage_ Gowri Manogari/homepage.html" class="dropdown-item logout" id="logoutBtn">Logout</a>
+  </div>
+</div>
+  </div>
+</div>
+
+<div class="layout">
+  <div class="sidebar">
+    <div>
+      <a href="#"><div class="side-item active"><img src="../icons/calendar.png" height="24" width="24"/> Appointment Scheduling</div></a>
+      <a href="../../Pharmacy/Pharmacy_Home_Kaushik1/pharmacy_home.html"><div class="side-item"><img src="../icons/pharmacy.png" height="24" width="24"/>Pharmacy</div></a>
+      <a href="../../Camp/camp_booking-AJAY SHARMA S/camp-booking.html"><div class="side-item"><img src="../icons/refugee-camp.png" height="24" width="24"/>Medical Camp</div></a>
+    </div>
+    <div class="help-box">
+      <div class="help-top">
+        <img src="../icons/customer-service.png" height="24" width="24"/>
+        <div>
+          <p>Need Help?</p>
+          <a href="#">Support Center</a>
+        </div>
+      </div>
+      <p class="help-desc">We are here to help you 24/7</p>
+    </div>
+  </div>
+
+  <div class="main">
+    <h2>Appointment Scheduling</h2>
+    <p class="subtitle">Search for doctors, hospitals or specializations and book your appointment easily.</p>
+
+    <div class="tabs">
+      <div class="tab active"><img src="../icons/doctor.png" height="24" width="24"/> Doctor</div>
+      <div class="tab"><img src="../icons/hospital.png" height="24" width="24"/>Hospital</div>
+      <div class="tab"><img src="../icons/surgeon.png" height="24" width="24"/>Specialization</div>
+    </div>
+
+    <div class="search-row">
+      <div class="search-input">🔍 
+        <input type="text" id="searchBox" placeholder="Search by doctor's name, specialization, or hospital..."/>
+      </div>
+      <button class="search-btn">Search</button>
+    </div>
+
+    <div class="section-header">
+      <div>
+        <div class="section-title"><span class="bar"></span>Recommended Hospitals</div>
+        <p class="section-sub">Top rated hospitals based on patient feedback and ratings.</p>
+      </div>
+      <a href="#" class="view-all">View all →</a>
+    </div>
+
+    <div class="hospital-grid">
+      <a href="../Profile_List_Page_Radha/profile_list.html"><div class="card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1587351021355-a479a299d2f9?w=400&h=200&fit=crop" alt="City Care Hospital">
+        </div>
+        <div class="card-body">
+          <h3>City Care Hospital</h3>
+          <p class="card-loc">📍 Banjara Hills, Hyderabad</p>
+          <p class="card-desc">Multi-speciality hospital with advanced medical facilities.</p>
+          <div class="card-rating">★ 4.8<span class="reviews">(1240 reviews)</span></div>
+          <a class="view-details">View Details →</a>
+        </div>
+      </div></a>
+      <a href="../Profile_List_Page_Radha/profile_list.html"><div class="card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&h=200&fit=crop" alt="Sunrise Medical Center">
+        </div>
+        <div class="card-body">
+          <h3>Sunrise Medical Center</h3>
+          <p class="card-loc">📍 Gachibowli, Hyderabad</p>
+          <p class="card-desc">Expert care with state-of-the-art infrastructure.</p>
+          <div class="card-rating">★ 4.6<span class="reviews">(980 reviews)</span></div>
+          <a href="#" class="view-details">View Details →</a>
+        </div>
+      </div></a>
+      <a href="../Profile_List_Page_Radha/profile_list.html"><div class="card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=400&h=200&fit=crop" alt="HealthPlus Hospital">
+        </div>
+        <div class="card-body">
+          <h3>HealthPlus Hospital</h3>
+          <p class="card-loc">📍 Ameerpet, Hyderabad</p>
+          <p class="card-desc">Compassionate care, trusted by thousands.</p>
+          <div class="card-rating">★ 4.6<span class="reviews">(870 reviews)</span></div>
+          <a href="#" class="view-details">View Details →</a>
+        </div>
+      </div></a>
+      <a href="../Profile_List_Page_Radha/profile_list.html"></a><div class="card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1587351021355-a479a299d2f9?w=400&h=200&fit=crop" alt="Wellness Hospital">
+        </div>
+        <div class="card-body">
+          <h3>Wellness Hospital</h3>
+          <p class="card-loc">📍 Kukatpally, Hyderabad</p>
+          <p class="card-desc">Quality healthcare for you and your family.</p>
+          <div class="card-rating">★ 4.4<span class="reviews">(760 reviews)</span></div>
+          <a href="#" class="view-details">View Details →</a>
+        </div>
+      </div></a>
+    </div>
+
+    <div class="info-box">
+      <span class="info-icon">ℹ️</span>
+      <span>Select a search type and enter your query to find the best healthcare providers near you.</span>
+      <span class="info-illustration">🔍</span>
+    </div>
+  </div>
+
+  <div class="right-panel">
+    <div class="right-card">
+      <div class="right-icon">🕐</div>
+      <div class="right-text">
+        <h4>History</h4>
+        <p>View your past appointments</p>
+      </div>
+      <a href="../Appointment_History_Aravind/appointment_history.html"><span class="right-arrow">›</span></a>
+    </div>
+    <div class="right-card">
+      <div class="right-icon">📅</div>
+      <div class="right-text">
+        <h4>Upcoming</h4>
+        <p>View your upcoming appointments</p>
+      </div>
+      <a href="../Appointment_History_Aravind/appointment_history.html"><span class="right-arrow">›</span></a>
+    </div>
+    <div class="right-card">
+      <div class="right-icon">✕</div>
+      <div class="right-text">
+        <h4>Cancelled</h4>
+        <p>View cancelled appointments</p>
+      </div>
+      <a href="../Appointment_History_Aravind/appointment_history.html"><span class="right-arrow">›</span></a>
+    </div>
+  </div>
+</div>
+<script src="appointment_search.js"></script>
+</body>
+</html>

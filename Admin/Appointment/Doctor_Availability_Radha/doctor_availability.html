@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Curonex - Update Doctor Availability</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="doctor_availability.css">
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">
+    <div class="logo-icon"><img src="../images/logo.jpg" height="40" width="44" style="border-radius:50%" /></div>
+    <div class="logo-text">
+      <h1>Curonex</h1>
+      <p>Affordable Healthcare Access</p>
+    </div>
+  </div>
+  <div class="nav">
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <div class="bell-wrap">
+      <span class="bell"><img src="../images/bell.png" height="24" width="24"/></span>
+      <span class="badge">2</span>
+    </div>
+    <div class="user-wrap" id="userWrap">
+      <div class="avatar"><img src="../images/hospital.png" height="24" width="24"/></div>
+      <span class="username">City Care Hospital</span>
+      <span class="chevron" id="chevronIcon">▾</span>
+
+      <div class="dropdown-menu" id="dropdownMenu">
+        <a href="#" class="dropdown-item" id="myProfileBtn">👤 My Profile</a>
+        <a href="#" class="dropdown-item" id="settingsBtn">⚙️ Settings</a>
+        <div class="dropdown-divider"></div>
+        <a href="#" class="dropdown-item logout" id="logoutBtn">🚪 Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+  <div class="sidebar">
+    <div>
+      <a href="../Doctor_Profiles_Radha/doctor_profile.html"><div class="side-item active"><span class="side-icon"><img src="../icons/icons8-plus-50.png" height="24" width="24"/></span> Create Doctor Profile</div></a>
+      <a href="../Doctor_Availability_Radha/doctor_availability.html"><div class="side-item"><span class="side-icon"><img src="../icons/calendar.png" height="24" width="24"/></span> Update Doctor Availability</div></a>
+      <a href="../ICU_Availability_Radha/icu_availability.html"><div class="side-item"><span class="side-icon"><img src="../icons/icons8-hospital-bed-50.png" height="24" width="24"/></span> Update ICU Bed Availability</div></a>
+      <a href="../Prev_Appointments_Radha/prev_appointments.html"><div class="side-item"><span class="side-icon"><img src="../icons/dashboard.png" height="24" width="24"/></span> Show Previous Appointments</div></a>
+      <a href="../../Camp/Camp Management- Dashboard_Nithyasree/dashboard.html"><div class="side-item"><span class="side-icon"><img src="../icons/refugee-camp.png" height="24" width="24"/></span> Camp Management</div></a>
+      <a href="../../Resource/Inventory Management_S Gokulakrishnan/Ilp2.0/dashboard.html"><div class="side-item"><span class="side-icon"><img src="../icons/diabetes.png" height="24" width="24"/></span> Resource Management</div></a>
+    </div>
+    <div class="help-box">
+      <div class="help-top">
+        <div class="icon-circle"><img src="../images/customer-service.png" height="24" width="24"/></div>
+        <div>
+          <p>Need Help?</p>
+          <a href="#">Support Center</a>
+        </div>
+      </div>
+      <p class="help-desc">We are here to help you 24/7</p>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="page-header-row">
+      <div>
+        <h2>Update Doctor Availability</h2>
+        <p class="subtitle">Manage doctor schedules, block slots for emergency cases and notify patients if a booked slot is unavailable.</p>
+      </div>
+      <button class="view-blocked-btn" id="viewBlockedBtn"><img src="../images/calendar.png" height="24" width="24"/> View Blocked Slots</button>
+    </div>
+
+    <div class="filter-row">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="doctorSearchInput" placeholder="Search by doctor name or specialization...">
+      </div>
+      <select class="filter-select" id="specializationSelect">
+        <option value="">All Specializations</option>
+        <option value="Cardiologist">Cardiology</option>
+        <option value="Neurologist">Neurology</option>
+        <option value="Orthopedics">Orthopedics</option>
+      </select>
+      <select class="filter-select" id="doctorSelect">
+        <option value="">All Doctors</option>
+        <option value="Dr. Arjun Mehta">Dr. Arjun Mehta</option>
+        <option value="Dr. Priya Sharma">Dr. Priya Sharma</option>
+        <option value="Dr. Vikram Patel">Dr. Vikram Patel</option>
+      </select>
+      <button class="filter-btn-solid">☰ Filter</button>
+    </div>
+
+    <div class="availability-list" id="availabilityList">
+
+      <!-- Doctor 1 -->
+      <div class="availability-card" data-doctor-name="Dr. Arjun Mehta" data-specialty="Cardiologist">
+        <div class="doctor-info-col">
+          <img class="doctor-avatar-lg" src="https://i.pravatar.cc/150?img=12" alt="Dr. Arjun Mehta">
+          <h4>Dr. Arjun Mehta <span class="verified-badge">✔️</span></h4>
+          <p class="specialty-link">Cardiologist</p>
+          <p class="exp-line"><img src="../images/experience.png" height="24" width="24"/> 12+ Years Experience</p>
+          <p class="qual-line">🎓 MBBS, MD (Cardiology)</p>
+        </div>
+
+        <div class="availability-col">
+          <div class="date-select-row">
+            <span class="date-label">Select Date</span>
+            <div class="date-scroller">
+              <button class="date-arrow prev">‹</button>
+              <button class="date-chip">Wed<br>29 May</button>
+              <button class="date-chip active">Thu<br>30 May</button>
+              <button class="date-chip">Fri<br>31 May</button>
+              <button class="date-chip">Sat<br>01 Jun</button>
+              <button class="date-chip">Sun<br>02 Jun</button>
+              <button class="date-arrow next">›</button>
+            </div>
+          </div>
+
+          <p class="slots-label">Available Time Slots</p>
+          <div class="slots-grid">
+            <div class="time-slot booked" data-time="09:00 AM">
+              <span class="slot-time">09:00 AM</span>
+              <span class="slot-status-text">Booked</span>
+              <div class="slot-menu-wrap">
+                <button class="slot-menu-btn">⋮</button>
+                <div class="slot-dropdown">
+                  <button class="slot-dropdown-item notify-item"><span>📨</span> Send Notification</button>
+                  <button class="slot-dropdown-item block-item"><span>🔒</span> Block Slot</button>
+                </div>
+              </div>
+            </div>
+            <div class="time-slot booked" data-time="10:00 AM">
+              <span class="slot-time">10:00 AM</span>
+              <span class="slot-status-text">Booked</span>
+              <div class="slot-menu-wrap">
+                <button class="slot-menu-btn">⋮</button>
+                <div class="slot-dropdown">
+                  <button class="slot-dropdown-item notify-item"><span>📨</span> Send Notification</button>
+                  <button class="slot-dropdown-item block-item"><span>🔒</span> Block Slot</button>
+                </div>
+              </div>
+            </div>
+            <div class="time-slot available" data-time="11:00 AM">
+              <span class="slot-time">11:00 AM</span>
+              <button class="slot-status-btn">🔒 Block Slot</button>
+            </div>
+            <div class="time-slot booked" data-time="12:00 PM">
+              <span class="slot-time">12:00 PM</span>
+              <span class="slot-status-text">Booked</span>
+              <div class="slot-menu-wrap">
+                <button class="slot-menu-btn">⋮</button>
+                <div class="slot-dropdown">
+                  <button class="slot-dropdown-item notify-item"><span>📨</span> Send Notification</button>
+                  <button class="slot-dropdown-item block-item"><span>🔒</span> Block Slot</button>
+                </div>
+              </div>
+            </div>
+            <div class="time-slot available" data-time="02:00 PM">
+              <span class="slot-time">02:00 PM</span>
+              <button class="slot-status-btn">🔒 Block Slot</button>
+            </div>
+            <div class="time-slot booked" data-time="03:00 PM">
+              <span class="slot-time">03:00 PM</span>
+              <span class="slot-status-text">Booked</span>
+              <div class="slot-menu-wrap">
+                <button class="slot-menu-btn">⋮</button>
+                <div class="slot-dropdown">
+                  <button class="slot-dropdown-item notify-item"><span>📨</span> Send Notification</button>
+                  <button class="slot-dropdown-item block-item"><span>🔒</span> Block Slot</button>
+                </div>
+              </div>
+            </div>
+            <div class="time-slot available" data-time="04:00 PM">
+              <span class="slot-time">04:00 PM</span>
+              <button class="slot-status-btn">🔒 Block Slot</button>
+            </div>
+            <div class="time-slot blocked" data-time="05:00 PM">
+              <span class="slot-time">05:00 PM</span>
+              <span class="slot-status-text">🔒 Blocked</span>
+            </div>
+          </div>
+
+          <div class="slots-legend">
+            <span><i class="legend-dot available"></i> Available</span>
+            <span><i class="legend-dot booked"></i> Booked</span>
+            <span><i class="legend-dot blocked"></i> Blocked (Emergency)</span>
+          </div>
+        </div>
+
+        <div class="info-banner">
+          <span class="info-icon">ⓘ</span> Blocked slots will not be visible for booking.
+        </div>
+      </div>
+
+      <!-- Doctor 2 -->
+      <div class="availability-card" data-doctor-name="Dr. Priya Sharma" data-specialty="Neurologist">
+        <div class="doctor-info-col">
+          <img class="doctor-avatar-lg" src="https://i.pravatar.cc/150?img=47" alt="Dr. Priya Sharma">
+          <h4>Dr. Priya Sharma</h4>
+          <p class="specialty-link">Neurologist</p>
+          <p class="exp-line"><img src="../images/experience.png" height="24" width="24"/> 10+ Years Experience</p>
+          <p class="qual-line">🎓 MBBS, MD (Medicine), DM (Neurology)</p>
+        </div>
+
+        <div class="availability-col">
+          <div class="date-select-row">
+            <span class="date-label">Select Date</span>
+            <div class="date-scroller">
+              <button class="date-arrow prev">‹</button>
+              <button class="date-chip">Wed<br>29 May</button>
+              <button class="date-chip active">Thu<br>30 May</button>
+              <button class="date-chip">Fri<br>31 May</button>
+              <button class="date-chip">Sat<br>01 Jun</button>
+              <button class="date-chip">Sun<br>02 Jun</button>
+              <button class="date-arrow next">›</button>
+            </div>
+          </div>
+
+          <p class="slots-label">Available Time Slots</p>
+          <div class="slots-grid">
+            <div class="time-slot available" data-time="08:30 AM">
+              <span class="slot-time">08:30 AM</span>
+              <button class="slot-status-btn">🔒 Block Slot</button>
+            </div>
+            <div class="time-slot booked" data-time="09:30 AM">
+              <span class="slot-time">09:30 AM</span>
+              <span class="slot-status-text">Booked</span>
+              <div class="slot-menu-wrap">
+                <button class="slot-menu-btn">⋮</button>
+                <div class="slot-dropdown">
+                  <button class="slot-dropdown-item notify-item"><span>📨</span> Send Notification</button>
+                  <button class="slot-dropdown-item block-item"><span>🔒</span> Block Slot</button>
+                </div>
+              </div>
+            </div>
+            <div class="time-slot booked" data-time="10:30 AM">
+              <span class="slot-time">10:30 AM</span>
+              <span class="slot-status-text">Booked</span>
+              <div class="slot-menu-wrap">
+                <button class="slot-menu-btn">⋮</button>
+                <div class="slot-dropdown">
+                  <button class="slot-dropdown-item notify-item"><span>📨</span> Send Notification</button>
+                  <button class="slot-dropdown-item block-item"><span>🔒</span> Block Slot</button>
+                </div>
+              </div>
+            </div>
+            <div class="time-slot blocked" data-time="11:30 AM">
+              <span class="slot-time">11:30 AM</span>
+              <span class="slot-status-text">🔒 Blocked</span>
+            </div>
+            <div class="time-slot booked" data-time="01:00 PM">
+              <span class="slot-time">01:00 PM</span>
+              <span class="slot-status-text">Booked</span>
+              <div class="slot-menu-wrap">
+                <button class="slot-menu-btn">⋮</button>
+                <div class="slot-dropdown">
+                  <button class="slot-dropdown-item notify-item"><span>📨</span> Send Notification</button>
+                  <button class="slot-dropdown-item block-item"><span>🔒</span> Block Slot</button>
+                </div>
+              </div>
+            </div>
+            <div class="time-slot blocked" data-time="02:00 PM">
+              <span class="slot-time">02:00 PM</span>
+              <span class="slot-status-text">🔒 Blocked</span>
+            </div>
+            <div class="time-slot booked" data-time="03:00 PM">
+              <span class="slot-time">03:00 PM</span>
+              <span class="slot-status-text">Booked</span>
+              <div class="slot-menu-wrap">
+                <button class="slot-menu-btn">⋮</button>
+                <div class="slot-dropdown">
+                  <button class="slot-dropdown-item notify-item"><span>📨</span> Send Notification</button>
+                  <button class="slot-dropdown-item block-item"><span>🔒</span> Block Slot</button>
+                </div>
+              </div>
+            </div>
+            <div class="time-slot blocked" data-time="04:00 PM">
+              <span class="slot-time">04:00 PM</span>
+              <span class="slot-status-text">🔒 Blocked</span>
+            </div>
+          </div>
+
+          <div class="slots-legend">
+            <span><i class="legend-dot available"></i> Available</span>
+            <span><i class="legend-dot booked"></i> Booked</span>
+            <span><i class="legend-dot blocked"></i> Blocked (Emergency)</span>
+          </div>
+        </div>
+
+        <div class="info-banner">
+          <span class="info-icon">ⓘ</span> Blocked slots will not be visible for booking.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="notification-info-banner">
+      <span class="info-icon">ⓘ</span>
+      <div>
+        <h4>About Notifications</h4>
+        <p>Use the notification option to inform patients if you are not available for a booked slot. The patient will be notified via SMS and Email.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="doctor_availability.js"></script>
+</body>
+</html>

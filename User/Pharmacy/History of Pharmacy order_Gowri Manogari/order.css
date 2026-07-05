@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f9f6;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+    width:100%;
+    background:#0B3D91;
+    color:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+}
+
+.logo-section{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo-section img{
+    width:55px;
+    height:55px;
+}
+
+.logo-section h2{
+    font-size:30px;
+}
+
+.logo-section p{
+    font-size:14px;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:500;
+}
+
+.profile img{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    border:2px solid #fff;
+}
+
+/* ================= MAIN ================= */
+
+.container{
+    display:flex;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+    width:280px;
+    background:#ffffff;
+    min-height:100vh;
+    box-shadow:2px 0 10px rgba(0,0,0,0.08);
+    padding-top:30px;
+}
+
+.sidebar a{
+    display:block;
+    padding:18px 25px;
+    color:#1976D2;
+    text-decoration:none;
+    font-size:17px;
+    transition:0.3s;
+}
+
+.sidebar a i{
+    margin-right:10px;
+}
+
+.sidebar a:hover{
+    background:#1976D2;
+    color:white;
+}
+
+/* ================= CONTENT ================= */
+
+.content{
+    flex:1;
+    padding:35px;
+}
+
+.content h1{
+    color:#1976D2;
+    margin-bottom:30px;
+}
+
+/* ================= CARD ================= */
+
+.card{
+    background:white;
+    border-radius:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px;
+    margin-bottom:25px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.profile-image img{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    border:3px solid #1976D2;
+}
+
+.details{
+    flex:1;
+    margin-left:25px;
+}
+
+.details p{
+    margin:12px 0;
+    font-size:17px;
+}
+
+.details strong{
+    color:#1976D2;
+}
+
+.status{
+    background:#d4edda;
+    color:#155724;
+    padding:6px 14px;
+    border-radius:6px;
+    font-weight:bold;
+}
+
+/* ================= MEDICINES ================= */
+
+.medicine{
+    width:280px;
+    border-left:2px solid #d9e8df;
+    padding-left:25px;
+}
+
+.medicine h3{
+    color:#1976D2;
+    margin-bottom:15px;
+}
+
+.medicine ul{
+    padding-left:18px;
+}
+
+.medicine li{
+    margin-bottom:10px;
+    color:#555;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+.container{
+    flex-direction:column;
+}
+
+.sidebar{
+    width:100%;
+    min-height:auto;
+}
+
+.card{
+    flex-direction:column;
+    text-align:center;
+}
+
+.details{
+    margin:20px 0;
+}
+
+.medicine{
+    width:100%;
+    border-left:none;
+    border-top:2px solid #ddd;
+    margin-top:20px;
+    padding-top:20px;
+    padding-left:0;
+}
+
+.header{
+    flex-direction:column;
+    gap:15px;
+}
+
+nav{
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+}
+.sidebar {
+  width:260px; padding:32px 16px; background:#fff; border-right:1px solid #D9E6F5;
+  min-height:calc(100vh - 80px); display:flex; flex-direction:column; justify-content:space-between;
+}
+.side-item {
+  display:flex; align-items:center; gap:12px; padding:12px 10px; border-radius:14px;
+  color:#102A43; font-weight:500; font-size:16px; margin-bottom:8px; cursor:pointer;
+}
+.side-item.active { background:#E3F2FD; color:#1976D2; border-left:4px solid #1976D2; padding-left:6px; }
+.side-icon { font-size:18px; width:22px; text-align:center; }
+
+.help-box { background:#E3F2FD; border-radius:20px; padding:16px; }
+.help-top { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+.help-box .icon-circle {
+  width:36px; height:36px; border-radius:50%; background:#fff;
+  display:flex; align-items:center; justify-content:center; color:#1976D2;
+}
+.help-box p { font-size:14px; font-weight:600; color:#102A43; }
+.help-box a { font-size:14px; color:#1976D2; text-decoration:none; font-weight:500; }
+.help-desc { font-size:13px; color:#6B7280; }

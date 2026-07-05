@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Curonex - Create Doctor Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="doctor_profile.css">
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">
+    <div class="logo-icon"><img src="../../../User/Appointment/Appointment_Search_Page_Radha/IMG-20260702-WA0003 (1).jpg" height="40" width="44" style="border-radius:50%" /></div>
+    <div class="logo-text">
+      <h1>Curonex</h1>
+      <p>Affordable Healthcare Access</p>
+    </div>
+  </div>
+  <div class="nav">
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <div class="bell-wrap">
+      <img src="../images/bell.png" height="24" width="24"/>
+      <span class="badge">2</span>
+    </div>
+    <div class="user-wrap" id="userWrap">
+      <div class="avatar"><img src="../images/hospital.png" height="24" width="24"/></div>
+      <span class="username">City Care Hospital</span>
+      <span class="chevron" id="chevronIcon">▾</span>
+
+      <div class="dropdown-menu" id="dropdownMenu">
+        <a href="#" class="dropdown-item" id="myProfileBtn">👤 My Profile</a>
+        <a href="#" class="dropdown-item" id="settingsBtn">⚙️ Settings</a>
+        <div class="dropdown-divider"></div>
+        <a href="#" class="dropdown-item logout" id="logoutBtn">🚪 Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+  <div class="sidebar">
+    <div>
+      <a href="../Doctor_Profiles_Radha/doctor_profile.html"><div class="side-item active"><span class="side-icon"><img src="../icons/icons8-plus-50.png" height="24" width="24"/></span> Create Doctor Profile</div></a>
+      <a href="../Doctor_Availability_Radha/doctor_availability.html"><div class="side-item"><span class="side-icon"><img src="../icons/calendar.png" height="24" width="24"/></span> Update Doctor Availability</div></a>
+      <a href="../ICU_Availability_Radha/icu_availability.html"><div class="side-item"><span class="side-icon"><img src="../icons/icons8-hospital-bed-50.png" height="24" width="24"/></span> Update ICU Bed Availability</div></a>
+      <a href="../Prev_Appointments_Radha/prev_appointments.html"><div class="side-item"><span class="side-icon"><img src="../icons/dashboard.png" height="24" width="24"/></span> Show Previous Appointments</div></a>
+      <a href="../../Camp/Camp Management- Dashboard_Nithyasree/dashboard.html"><div class="side-item"><span class="side-icon"><img src="../icons/refugee-camp.png" height="24" width="24"/></span> Camp Management</div></a>
+      <a href="../../Resource/Inventory Management_S Gokulakrishnan/Ilp2.0/dashboard.html"><div class="side-item"><span class="side-icon"><img src="../icons/diabetes.png" height="24" width="24"/></span> Resource Management</div></a>
+    </div>
+    <div class="help-box">
+      <div class="help-top">
+        <div class="icon-circle"><img src="../images/customer-service.png" height="24" width="24"/></div>
+        <div>
+          <p>Need Help?</p>
+          <a href="#">Support Center</a>
+        </div>
+      </div>
+      <p class="help-desc">We are here to help you 24/7</p>
+    </div>
+  </div>
+
+  <div class="main">
+    <h2>Create Doctor Profile</h2>
+    <p class="subtitle">Add new doctors and manage existing doctor profiles.</p>
+
+<div class="top-row">
+  <div class="add-doctor-col">
+    <button class="add-doctor-btn" id="addDoctorBtn">
+      <span class="plus-icon">+</span> Add Doctor
+    </button>
+    <p class="add-doctor-hint">↰ Click "Add Doctor"<br>to enter details</p>
+  </div>
+
+  <div class="empty-state-box" id="emptyStateBox">
+    <div class="empty-illustration">
+      <div class="clipboard-icon">📋</div>
+      <div class="plus-badge">+</div>
+    </div>
+    <div class="empty-text">
+      <h4>No doctor form is open</h4>
+      <p>Click the "Add Doctor" button<br>to create a new doctor profile.</p>
+    </div>
+  </div>
+
+  <div class="doctor-form-card" id="doctorFormCard" style="display:none;">
+    <h4 class="form-title">Add New Doctor</h4>
+    <form id="addDoctorForm">
+      <div class="form-group">
+        <label for="doctorName">Name <span class="required-star">*</span></label>
+        <input type="text" id="doctorName" placeholder="e.g. Dr. Ananya Rao" required>
+      </div>
+      <div class="form-group">
+        <label for="doctorSpecialty">Specialization <span class="required-star">*</span></label>
+        <input type="text" id="doctorSpecialty" placeholder="e.g. Dermatology" required>
+      </div>
+      <div class="form-group">
+        <label for="doctorExperience">Years of Experience <span class="required-star">*</span></label>
+        <input type="number" id="doctorExperience" placeholder="e.g. 7" min="0" required>
+      </div>
+      <div class="form-group">
+        <label for="doctorQualification">Qualification</label>
+        <input type="text" id="doctorQualification" placeholder="e.g. MBBS, MD (Dermatology)">
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="save-doctor-btn">Save Doctor</button>
+        <button type="button" class="cancel-doctor-btn" id="cancelDoctorBtn">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+    <div class="existing-doctors-header">
+      <h3>Existing Doctors</h3>
+      <div class="header-controls">
+        <div class="sort-box">
+          Sort By:
+          <select id="sortSelect">
+  <option>Experience (High to Low)</option>
+  <option>Experience (Low to High)</option>
+  <option>Specialization (A-Z)</option>
+</select>
+        </div>
+        <button class="filter-btn">⏷ Filter</button>
+      </div>
+    </div>
+
+    <div class="doctors-grid" id="doctorsGrid">
+
+      <div class="doctor-row-card">
+        <img class="doctor-thumb" src="https://i.pravatar.cc/150?img=12" alt="Dr. Arjun Mehta">
+        <div class="doctor-details">
+          <h4>Dr. Arjun Mehta</h4>
+          <p class="specialty">Cardiology</p>
+          <p class="exp"><img src="../images/experience.png" height="24" width="24"/> 15 Years Experience</p>
+          <p class="qual">MBBS, MD (Cardiology), DM (Interventional Cardiology)</p>
+        </div>
+        <button class="delete-btn">🗑️</button>
+      </div>
+
+      <div class="doctor-row-card">
+        <img class="doctor-thumb" src="https://i.pravatar.cc/150?img=47" alt="Dr. Priya Sharma">
+        <div class="doctor-details">
+          <h4>Dr. Priya Sharma</h4>
+          <p class="specialty">Neurology</p>
+          <p class="exp"><img src="../images/experience.png" height="24" width="24"/> 12 Years Experience</p>
+          <p class="qual">MBBS, MD (Medicine), DM (Neurology)</p>
+        </div>
+        <button class="delete-btn">🗑️</button>
+      </div>
+
+      <div class="doctor-row-card">
+        <img class="doctor-thumb" src="https://i.pravatar.cc/150?img=13" alt="Dr. Vikram Patel">
+        <div class="doctor-details">
+          <h4>Dr. Vikram Patel</h4>
+          <p class="specialty">Orthopedics</p>
+          <p class="exp"><img src="../images/experience.png" height="24" width="24"/> 10 Years Experience</p>
+          <p class="qual">MBBS, MS (Orthopedics)</p>
+        </div>
+        <button class="delete-btn">🗑️</button>
+      </div>
+
+      <div class="doctor-row-card">
+        <img class="doctor-thumb" src="https://i.pravatar.cc/150?img=44" alt="Dr. Neha Gupta">
+        <div class="doctor-details">
+          <h4>Dr. Neha Gupta</h4>
+          <p class="specialty">Pediatrics</p>
+          <p class="exp"><img src="../images/experience.png" height="24" width="24"/> 8 Years Experience</p>
+          <p class="qual">MBBS, DCH (Pediatrics)</p>
+        </div>
+        <button class="delete-btn">🗑️</button>
+      </div>
+
+      <div class="doctor-row-card">
+        <img class="doctor-thumb" src="https://i.pravatar.cc/150?img=53" alt="Dr. Ramesh Kumar">
+        <div class="doctor-details">
+          <h4>Dr. Ramesh Kumar</h4>
+          <p class="specialty">General Medicine</p>
+          <p class="exp"><img src="../images/experience.png" height="24" width="24"/> 6 Years Experience</p>
+          <p class="qual">MBBS, MD (General Medicine)</p>
+        </div>
+        <button class="delete-btn">🗑️</button>
+      </div>
+
+      <div class="doctor-row-card">
+        <img class="doctor-thumb" src="https://i.pravatar.cc/150?img=45" alt="Dr. Sunita Devi">
+        <div class="doctor-details">
+          <h4>Dr. Sunita Devi</h4>
+          <p class="specialty">Gynecology</p>
+          <p class="exp"><img src="../images/experience.png" height="24" width="24"/> 5 Years Experience</p>
+          <p class="qual">MBBS, MS (Obstetrics & Gynecology)</p>
+        </div>
+        <button class="delete-btn">🗑️</button>
+      </div>
+
+    </div>
+
+    <div class="pagination-row">
+      <p class="showing-text">Showing 1 to 6 of 18 doctors</p>
+      <div class="pagination">
+        <button class="page-arrow">‹</button>
+        <button class="page-num active">1</button>
+        <button class="page-num">2</button>
+        <button class="page-num">3</button>
+        <button class="page-arrow">›</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="doctor_profile.js"></script>
+</body>
+</html>

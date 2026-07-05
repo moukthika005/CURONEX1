@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>View Camp Data | Medical Camp Management</title>
+<link rel="stylesheet" href="../shared/style-guide.css">
+<link rel="stylesheet" href="../shared/sidebar.css">
+<link rel="stylesheet" href="view-camp.css">
+</head>
+<body data-page="view-camp">
+
+<header class="app-header">
+  <div class="app-header-left">
+    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle sidebar">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <div class="brand">
+      <img src="shared/assets/logo.jpg" alt="Medical Camp Management logo" height="40" width="44" style="border-radius: 50%;">
+      <div class="brand-text">
+        <h1>Curonex</h1>
+        <span>Affordable Healthcare Access</span>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <div class="app-header-right">
+    <nav class="app-header-nav">
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
+    <button class="header-icon-btn" aria-label="Notifications">
+      <img src="shared/assets/bell.png" alt="" class="nav-icon">
+      <span class="notif-dot">3</span>
+    </button>
+    <div class="profile-menu">
+      <button class="profile-btn" id="profileBtn">
+        <span class="profile-avatar">AD</span>
+        <span class="profile-name">Admin User</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="profile-dropdown" id="profileDropdown">
+        <a href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg> My Profile</a>
+        <a href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.2a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.2a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.2a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.2a1.7 1.7 0 0 0-1.5 1z"/></svg> Settings</a>
+        <a href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Logout</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="appSidebar">
+  <nav>
+  
+    <a href="../../Appointment/Doctor_Profiles_Radha/doctor_profile.html" class="nav-link" data-page="dashboard">
+      <img src="shared/assets/icons8-plus-50 (1).png" alt="" class="nav-icon">
+      <span class="nav-label">Create Doctor Profile</span>
+    </a>
+    <a href="../../Appointment/Doctor_Profiles_Radha/doctor_profile.html" class="nav-link" data-page="add-camp">
+      <img src="shared/assets/calendar.png" alt="" class="nav-icon">
+      <span class="nav-label">Update Doctor Availability</span>
+    </a>
+    <a href="../../Appointment/ICU_Availability_Radha/icu_availability.html" class="nav-link" data-page="add-camp">
+      <img src="shared/assets/icons8-hospital-bed-50 (1).png" alt="" class="nav-icon">
+      <span class="nav-label">Update ICU Bed Availability</span>
+    </a>
+    <a href="view-camp.html" class="nav-link" data-page="view-camp">
+      <img src="shared/assets/dashboard (1).png" alt="" class="nav-icon">
+      <span class="nav-label">Show Previous Appointments</span>
+    </a>
+    <a href="../../Camp/Camp Management- Dashboard_Nithyasree/dashboard.html" class="nav-link" data-page="specialist-doctor">
+      <img src="shared/assets/refugee-camp.png" alt="" class="nav-icon">
+      <span class="nav-label">Camp Management</span>
+    </a>
+    <a href="../../Resource/Inventory Management_S Gokulakrishnan/Ilp2.0/dashboard.html" class="nav-link" data-page="camp-reports">
+      <img src="shared/assets/diabetes.png" alt="" class="nav-icon">
+      <span class="nav-label">Resource Management</span>
+    </a>
+  </nav>
+  <div class="sidebar-help">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 2-3 4"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    <div>
+      <strong>Need Help?</strong>
+      <p>Support Center — we are here to help you 24/7</p>
+    </div>
+  </div>
+</aside>
+
+<!-- ============ MAIN CONTENT ============ -->
+<main class="main-content" id="mainContent">
+  <div class="container">
+
+    <h1>View Camp Data</h1>
+    <nav class="breadcrumb" style="margin:10px 0 24px;">
+      <a href="dashboard.html">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        Dashboard
+      </a>
+      <span class="sep">›</span>
+      <span>View Camp Data</span>
+    </nav>
+
+    <section class="card filter-bar">
+      <div class="search-field">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="campSearch" class="input" placeholder="Search by Camp ID or Camp Name" style="border:none; padding-left:0;">
+      </div>
+      <div class="status-field">
+        <label style="margin:0 10px 0 0; white-space:nowrap;">Status</label>
+        <select id="statusFilter" class="select">
+          <option value="all">All</option>
+          <option value="upcoming">Upcoming</option>
+          <option value="ongoing">Ongoing</option>
+          <option value="completed">Completed</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="card" style="padding:8px 0;">
+      <div class="table-wrap">
+        <table id="campTable">
+          <thead>
+            <tr>
+              <th>Camp ID</th><th>Camp Name</th><th>Camp Type</th><th>Date</th>
+              <th>City</th><th>Status</th><th>Total Registrations</th><th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="campTableBody">
+            <!-- rows injected by view-camp.js -->
+          </tbody>
+        </table>
+      </div>
+      <div class="table-footer">
+        <span id="showingText" class="stat-sub">Showing 1 to 10 of 25 camps</span>
+        <div class="pagination" id="pagination"></div>
+        <select class="select" id="perPage" style="width:110px;">
+          <option>10 / page</option>
+          <option>20 / page</option>
+          <option>50 / page</option>
+        </select>
+      </div>
+    </section>
+
+  </div>
+  <footer class="app-footer">© 2026 Medical Camp Management. All rights reserved.</footer>
+</main>
+
+<script src="shared/sidebar.js"></script>
+<script src="view-camp.js"></script>
+</body>
+</html>

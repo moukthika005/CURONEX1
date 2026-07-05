@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Curonex | Resource Availability</title>
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+            href="assets/css/resource-availability.css">
+
+</head>
+
+<body>
+
+<!-- ==========================================
+                TOP NAVBAR
+========================================== -->
+
+<header class="top-navbar">
+
+    <!-- Logo -->
+
+    <div class="logo-section">
+
+        <img src="assets/images/logo.png"
+             alt="Curonex Logo"
+             class="logo">
+
+        <div class="logo-text">
+
+            <h2>Curonex</h2>
+
+            <span>Hospital Camp Management</span>
+
+        </div>
+
+    </div>
+
+    <!-- Search -->
+
+    <div class="search-container">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+            id="availabilitySearch"
+            type="text"
+            placeholder="Search">
+
+    </div>
+
+    <!-- Right Navbar -->
+
+    <div class="navbar-right">
+
+        <nav class="nav-links">
+
+            <a href="#">About</a>
+
+            <a href="#">Contact</a>
+
+        </nav>
+
+        <button class="nav-icon">
+
+            <i class="fa-regular fa-bell"></i>
+
+        </button>
+
+        <button class="nav-icon">
+
+            <i class="fa-regular fa-envelope"></i>
+
+        </button>
+
+        <div class="profile-menu">
+
+            <div class="profile-icon">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+            <div class="profile-text">
+
+                <h4>Admin</h4>
+
+                <span>Administrator</span>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-down"></i>
+
+        </div>
+
+    </div>
+
+</header>
+
+<!-- ==========================================
+                MAIN CONTAINER
+========================================== -->
+
+<div class="main-container">
+
+    <!-- ==========================================
+                    LEFT SIDEBAR
+    =========================================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-top">
+
+            <div class="sidebar-header">
+
+                <h3>Inventory Module</h3>
+
+                <p>Manage Hospital Resources</p>
+
+            </div>
+
+            <nav class="sidebar-menu">
+
+                <a href="dashboard.html"
+                   class="menu-item">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    <span>Dashboard</span>
+
+                </a>
+
+                <a href="registration.html"
+                   class="menu-item">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    <span>Resource Registration</span>
+
+                </a>
+
+                <a href="resource-availability.html"
+                   class="menu-item active">
+
+                    <i class="fa-solid fa-boxes-stacked"></i>
+
+                    <span>Resource Availability</span>
+
+                </a>
+
+                <a href="transfer-request.html"
+                   class="menu-item">
+
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+
+                    <span>Transfer Request</span>
+
+                </a>
+
+                <a href="movement-tracking.html"
+                   class="menu-item">
+
+                    <i class="fa-solid fa-truck-fast"></i>
+
+                    <span>Movement Tracking</span>
+
+                </a>
+
+            </nav>
+
+        </div>
+
+        <!-- ==========================================
+                    HELP CARD
+        =========================================== -->
+
+        <div class="help-card">
+
+            <div class="help-icon">
+
+                <i class="fa-solid fa-headset"></i>
+
+            </div>
+
+            <h3>Need Help?</h3>
+
+            <h4>Support Center</h4>
+
+            <p>
+
+                Our support team is available to help
+                you with inventory operations.
+
+            </p>
+
+            <button class="support-btn">
+
+                Contact Support
+
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- ==========================================
+                    PAGE CONTENT
+    =========================================== -->
+
+    <main class="dashboard-content">
+
+    <!-- ==========================================
+                    PAGE HEADER
+    =========================================== -->
+
+    <section class="page-header">
+
+        <div class="page-title">
+
+            <h1>Resource Availability</h1>
+
+            <p>
+
+                Monitor inventory levels, search available
+                resources and track stock status across
+                hospitals and medical camps.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================================
+                    FILTER SECTION
+    =========================================== -->
+
+    <section class="filter-card">
+
+        <div class="filter-grid">
+
+            <!-- Search -->
+
+            <div class="filter-group">
+
+                <label for="searchResource">
+
+                    Search Resource
+
+                </label>
+
+                <input
+                    type="text"
+                    id="searchResource"
+                    placeholder="Search by resource name...">
+
+            </div>
+
+            <!-- Category -->
+
+            <div class="filter-group">
+
+                <label for="categoryFilter">
+
+                    Category
+
+                </label>
+
+                <select id="categoryFilter">
+
+                    <option value="">All Categories</option>
+
+                    <option>Medicine</option>
+
+                    <option>Equipment</option>
+
+                    <option>Consumables</option>
+
+                    <option>PPE Kit</option>
+
+                    <option>Emergency Supplies</option>
+
+                </select>
+
+            </div>
+
+            <!-- Status -->
+
+            <div class="filter-group">
+
+                <label for="statusFilter">
+
+                    Availability Status
+
+                </label>
+
+                <select id="statusFilter">
+
+                    <option value="">All Status</option>
+
+                    <option>Available</option>
+
+                    <option>Low Stock</option>
+
+                    <option>Out of Stock</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================================
+                RESOURCE TABLE
+    =========================================== -->
+
+    <section class="table-card">
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>Available Resources</h2>
+
+                <p>
+
+                    Current inventory across hospitals and camps.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="table-container">
+
+            <table class="resource-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Resource Name</th>
+
+                        <th>Category</th>
+
+                        <th>Quantity</th>
+
+                        <th>Hospital / Camp</th>
+
+                        <th>Expiry Date</th>
+
+                        <th>Status</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="resourceTableBody">
+
+                    <!-- JavaScript will populate rows here -->
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+                INVENTORY SUMMARY
+    =========================================== -->
+
+    <section class="summary-grid">
+
+        <div class="summary-card">
+
+            <i class="fa-solid fa-boxes-stacked"></i>
+
+            <h3 id="totalResourcesCount">0</h3>
+
+            <p>Total Resources</p>
+
+        </div>
+
+        <div class="summary-card">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            <h3 id="availableResourcesCount">0</h3>
+
+            <p>Available</p>
+
+        </div>
+
+        <div class="summary-card">
+
+            <i class="fa-solid fa-triangle-exclamation"></i>
+
+            <h3 id="lowStockCount">0</h3>
+
+            <p>Low Stock</p>
+
+        </div>
+
+        <div class="summary-card">
+
+            <i class="fa-solid fa-circle-xmark"></i>
+
+            <h3 id="outOfStockCount">0</h3>
+
+            <p>Out of Stock</p>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================================
+                EMPTY STATE
+    =========================================== -->
+
+    <section class="empty-state"
+             id="emptyState"
+             style="display:none;">
+
+        <i class="fa-solid fa-box-open"></i>
+
+        <h2>No Resources Found</h2>
+
+        <p>
+
+            No resources match the selected filters.
+            Try changing the search or category.
+
+        </p>
+
+    </section>
+
+</main>
+
+</div>
+
+<script src="assets/js/availability.js"></script>
+
+</body>
+
+</html>
