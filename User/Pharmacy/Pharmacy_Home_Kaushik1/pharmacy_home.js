@@ -6,6 +6,14 @@
 // ============================================================
 
 document.addEventListener('DOMContentLoaded', () => {
+  requireLogin();
+
+// Display logged-in username
+const username = sessionStorage.getItem("curonex_username");
+
+if (username) {
+    document.querySelector(".user-name").textContent = username;
+}
 
   /* ---------------------------------------------------------
      1. FILE UPLOAD (Choose File / drag-drop / validation)
@@ -47,6 +55,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function handleFile(file) {
     const error = validateFile(file);
+    sessionStorage.setItem(
+    "uploadedPrescriptionName",
+    file.name
+);
+
+sessionStorage.setItem(
+    "uploadedPrescriptionSize",
+    file.size
+);
+
+sessionStorage.setItem(
+    "uploadedPrescriptionType",
+    file.type
+);
     if (error) {
       showToast(error, 'error');
       resetUpload();
@@ -119,9 +141,16 @@ document.addEventListener('DOMContentLoaded', () => {
     setOrderButtonState(false);
 
     setTimeout(() => {
-      showToast('Order placed! Redirecting to Order Preview...', 'success');
-     
-    }, 1000);
+
+    showToast(
+        "Prescription uploaded successfully!",
+        "success"
+    );
+
+    window.location.href =
+    "../Pharmacy_Preview_Kaushik1/preview.html";
+
+},1000);
   });
 
 
@@ -350,5 +379,27 @@ document.addEventListener('DOMContentLoaded', () => {
       if (route) window.location.href = route;
     });
   });
+
+});
+document
+.getElementById("myProfileBtn")
+.addEventListener("click", function(e){
+
+    e.preventDefault();
+
+    goToProfile();
+
+});
+document
+.getElementById("logoutBtn")
+.addEventListener("click", function(e){
+
+    e.preventDefault();
+
+    if(confirm("Are you sure you want to logout?")){
+
+        logoutUser();
+
+    }
 
 });
