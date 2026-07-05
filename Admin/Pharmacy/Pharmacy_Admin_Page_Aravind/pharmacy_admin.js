@@ -1,4 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
+  requireLogin();
+  /* ======================================
+   Load Latest Patient Order
+====================================== */
+
+const latestMedicines = JSON.parse(
+    sessionStorage.getItem("selectedMedicines")
+) || [];
+
+const patientName =
+    sessionStorage.getItem("curonex_username") || "Patient";
+
+const latestOrderId =
+    sessionStorage.getItem("orderNumber") || "#ORD1045";
+
+const latestStatus =
+    sessionStorage.getItem("orderStatus") || "New";
+
+const amount =
+    sessionStorage.getItem("totalAmount") || "₹0";
+  const username =
+sessionStorage.getItem("curonex_username");
+
+if(username){
+
+    document.getElementById("adminName").textContent =
+    username;
+
+    document.getElementById("adminAvatar").textContent =
+    username.charAt(0).toUpperCase();
+
+}
 
   window.showMsg = function (id, text, type = 'success', duration = 3500) {
     const el = document.getElementById(id);
@@ -174,6 +206,63 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   setupSectionFiltering('page-orders', 'orders-msg');
+  /* ======================================
+   Insert Latest Order into Admin Table
+====================================== */
+
+const ordersTable =
+    document.getElementById("orders-table");
+
+if (ordersTable && latestMedicines.length > 0) {
+
+    const medicineText =
+        latestMedicines
+        .map(m => `${m.name} x${m.quantity}`)
+        .join(", ");
+
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+
+        <td>${latestOrderId}</td>
+
+        <td>${patientName}</td>
+
+        <td>${medicineText}</td>
+
+        <td>${amount}</td>
+
+        <td>
+            <span class="badge badge-info">
+                ${latestStatus}
+            </span>
+        </td>
+
+        <td class="row-actions">
+
+            <button
+            class="btn-sm accept"
+            onclick="orderAction(this,'Accepted')">
+
+            Accept
+
+            </button>
+
+            <button
+            class="btn-sm reject"
+            onclick="orderAction(this,'Rejected')">
+
+            Reject
+
+            </button>
+
+        </td>
+
+    `;
+
+    ordersTable.prepend(row);
+
+}
 
   /* =========================================================
      3. SEARCH INPUTS (Inventory, Availability, History)
@@ -247,27 +336,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (action === 'Accepted') {
-      statusCell.textContent = 'Completed';
-      statusCell.className = 'badge badge-success';
-      showMsg('orders-msg', `Order ${orderId} accepted and delivery request sent to delivery partner.`, 'success');
+
+    statusCell.textContent = 'Accepted';
+    statusCell.className = 'badge badge-success';
+
+    // Save order status
+    sessionStorage.setItem("orderStatus", "Accepted");
+
+    // Delivery partner details
+    sessionStorage.setItem("deliveryPartnerAssigned", "true");
+    sessionStorage.setItem("deliveryPartnerName", "Rahul Kumar");
+    sessionStorage.setItem("deliveryPartnerPhone", "+91 9876543210");
+    sessionStorage.setItem("deliveryETA", "22 mins");
+
+    showMsg(
+        'orders-msg',
+        `Order ${orderId} accepted. Delivery Partner has been assigned.`,
+        'success'
+    );
+
     } else if (action === 'Rejected') {
-      statusCell.textContent = 'Cancelled';
-      statusCell.className = 'badge badge-error';
-      showMsg('orders-msg', `Order ${orderId} has been rejected.`, 'error');
-    } else {
-      console.warn(`orderAction: unrecognized action "${action}".`);
-      return;
-    }
 
-    // Prevent double-accepting/rejecting the same order
-    actionButtons.forEach(b => {
-      if (b.classList.contains('accept') || b.classList.contains('reject')) {
-        b.disabled = true;
-        b.style.opacity = '0.5';
-        b.style.cursor = 'not-allowed';
-      }
-    });
+    statusCell.textContent = 'Rejected';
+    statusCell.className = 'badge badge-error';
 
+    sessionStorage.setItem("orderStatus", "Rejected");
+
+    showMsg(
+        'orders-msg',
+        `Order ${orderId} has been rejected.`,
+        'error'
+    );
+}
     // Re-apply the section's combined tab+search filter directly,
     // without clearing the success/error message that was just shown
     const section = document.getElementById('page-orders');

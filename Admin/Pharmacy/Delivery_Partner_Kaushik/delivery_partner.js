@@ -1,4 +1,5 @@
 // ===== STATE =====
+
 const state = {
   online: true,
   paused: false,
@@ -54,6 +55,65 @@ const STAGE_ICONS = ["✔", "✔", "🛵", "👤", "📦"];
 
 // ===== INIT =====
 document.addEventListener("DOMContentLoaded", () => {
+  requireLogin();
+
+/* Logged in delivery partner */
+
+const username =
+sessionStorage.getItem("curonex_username");
+
+if(username){
+
+    const name =
+    document.getElementById("deliveryPartnerName");
+
+    if(name){
+
+        name.textContent=username;
+
+    }
+
+}
+/* ===================================
+   Receive order from Pharmacy Admin
+=================================== */
+
+const assigned =
+sessionStorage.getItem(
+"deliveryPartnerAssigned"
+);
+
+if(assigned==="true"){
+
+    const order={
+
+        id:
+        sessionStorage.getItem("orderNumber"),
+
+        pharmacy:
+        sessionStorage.getItem("selectedPharmacy")
+        || "Curonex Pharmacy",
+
+        location:
+        "Hyderabad",
+
+        customer:
+        sessionStorage.getItem("curonex_username"),
+
+        phone:
+        "+91 9876543210",
+
+        eta:
+        sessionStorage.getItem("deliveryETA")
+        || "20 min",
+
+        stage:0
+
+    };
+
+    state.availableOrders.unshift(order);
+
+}
   renderStats();
   renderAvailableOrders();
   renderActiveDeliveries();
@@ -165,6 +225,15 @@ function acceptOrder(orderId) {
   const idx = state.availableOrders.findIndex(o => o.id === orderId);
   if (idx === -1) return;
   const [order] = state.availableOrders.splice(idx, 1);
+  sessionStorage.setItem(
+"orderStatus",
+"Accepted"
+);
+
+sessionStorage.setItem(
+"acceptedOrder",
+order.id
+);
 
   state.activeDeliveries.unshift({
     id: order.id, pharmacy: order.pharmacy, location: order.location,
@@ -272,13 +341,47 @@ function advanceDelivery(deliveryId) {
   if (delivery.stage === 1) { state.statusCounts.outForDelivery++; state.statusCounts.pickedUp = Math.max(0, state.statusCounts.pickedUp - 1); }
 
   delivery.stage++;
+  if(delivery.stage===1){
+
+    sessionStorage.setItem(
+    "orderStatus",
+    "Picked Up"
+    );
+
+}
+
+if(delivery.stage===2){
+
+    sessionStorage.setItem(
+    "orderStatus",
+    "Out for Delivery"
+    );
+
+}
+
+if(delivery.stage===3){
+
+    sessionStorage.setItem(
+    "orderStatus",
+    "Reached Customer"
+    );
+
+}
 
   if (delivery.stage >= STAGES.length - 1) {
     // Delivered
     completeDelivery(deliveryId);
     return;
   }
+sessionStorage.setItem(
+"orderStatus",
+"Delivered"
+);
 
+sessionStorage.setItem(
+"deliveryCompleted",
+"true"
+);
   renderActiveDeliveries();
   renderStats();
   renderRightPanel();
@@ -337,7 +440,11 @@ function bindHeaderEvents() {
     openModal(
       "Log out?",
       "You will need to sign in again to access your dashboard.",
-      () => { showToast("Logged out successfully", "info"); }
+      () => {
+
+logoutUser();
+
+}
     );
   });
 }
