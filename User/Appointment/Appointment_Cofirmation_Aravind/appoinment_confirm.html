@@ -75,7 +75,7 @@
         <div class="info-card">
           <img src="images/Hospital2.webp" alt="hospital">
           <div class="details">
-            <h3>City Care Hospital</h3>
+            <h3 id="selectedHospitalName">City Care Hospital</3>
             <p>123, MG Road, Near Central Park, City</p>
             <p>+91 98765 432***</p>
             <span class="badge-emergency">24x7 Emergency</span> 
@@ -86,7 +86,7 @@
         <div class="doctor-card">
           <div class="avatar"><img src="https://i.pravatar.cc/150?img=12" alt="Doctor" width="80" height="80" style="border-radius: 50%;"/></div>
           <div>
-            <h3>Dr. Rajesh Kumar</h3>
+            <h3 id="selectedDoctorName" id="selectedSpecialization">Dr. Rajesh Kumar</h3>
             <div class="specialty">Cardiologist</div>
             <div class="qual">MBBS, MD (Cardiology)</div>
             <div class="meta">
@@ -100,14 +100,14 @@
         <div class="slot-card">
           <div class="slot-item">
             <div>
-              <strong>20 May 2025</strong>
+              <strong id="selectedDate">20 May 2025</strong>
               <span>Tuesday</span>
             </div>
           </div>
           <div class="divider-v"></div>
           <div class="slot-item">
             <div>
-              <strong>09:00 AM - 09:30 AM</strong>
+              <strong id="selectedTime">09:00 AM - 09:30 AM</strong>
             </div>
           </div>
         </div>
@@ -191,8 +191,8 @@
         <div class="field-msg" id="form-msg"></div>
 
         <div class="action-row">
-          <button class="btncancel">Cancel</button>
-          <button class="btn-confirm">Confirm Appointment</button>
+          <button class="btncancel" id="cancelAppointmentBtn">Cancel</button>
+          <button class="btn-confirm" id="confirmAppointmentBtn">Confirm Appointment</button>
         </div>
 
       </div>
@@ -203,5 +203,6 @@
 </div>
 
 </body>
+<script src="../../../common/common.js"></script>
 <script src="appointment_confirm.js"></script>
 </html>

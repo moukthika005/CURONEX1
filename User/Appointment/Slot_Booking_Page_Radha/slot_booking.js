@@ -1,3 +1,26 @@
+document.addEventListener("DOMContentLoaded", () => {
+
+    requireLogin();
+
+    const username = sessionStorage.getItem("curonex_username");
+
+    if (username) {
+        document.querySelector(".username").textContent = username;
+    }
+
+    const doctor = sessionStorage.getItem("selectedDoctor");
+    const speciality = sessionStorage.getItem("selectedSpecialization");
+
+    if (doctor) {
+        document.querySelector(".doctor-info h3").innerHTML =
+            doctor + ' <span class="verified">✔</span>';
+    }
+
+    if (speciality) {
+        document.querySelector(".specialty").textContent = speciality;
+    }
+
+}); 
 // ===== Sidebar Navigation =====
 document.querySelectorAll('.side-item').forEach(item => {
   item.addEventListener('click', function () {
@@ -82,18 +105,36 @@ document.querySelectorAll('.date-row').forEach(row => {
 
 // ===== Confirm Appointment Button =====
 confirmBtn.addEventListener('click', function () {
+
   if (!currentSelection) {
     alert('Please select a time slot before confirming.');
     return;
   }
+  if(!currentSelection.date || !currentSelection.time){
 
+    alert("Please select both a date and a time slot.");
 
-  // Optionally lock the slot as booked after confirming
-  currentSelection.timeBox.classList.remove('selected');
-  currentSelection.timeBox.classList.add('booked');
-  currentSelection.card.classList.remove('has-selection');
-  currentSelection = null;
-  updateConfirmState();
+    return;
+
+}
+    sessionStorage.setItem(
+    "selectedHospital",
+    currentSelection.hospital
+);
+
+sessionStorage.setItem(
+    "selectedDate",
+    currentSelection.date
+);
+
+sessionStorage.setItem(
+    "selectedTime",
+    currentSelection.time
+);
+window.location.href =
+"../Appointment_Cofirmation_Aravind/appoinment_confirm.html";
+
+ 
 });
 
 // ===== Cancel Button =====
@@ -141,8 +182,15 @@ if (userWrap && dropdownMenu) {
   document.getElementById('logoutBtn').addEventListener('click', function (e) {
     e.preventDefault();
     if (confirm('Are you sure you want to log out?')) {
-      alert('Logged out successfully.');
+      logoutUser();
       // window.location.href = 'login.html';
     }
   });
 }
+document.getElementById("myProfileBtn").addEventListener("click", function(e){
+
+    e.preventDefault();
+
+    goToProfile();
+
+});

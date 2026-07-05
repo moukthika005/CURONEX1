@@ -2,7 +2,21 @@
    CURONEX — Appointment Confirmation Page
    appointment_confirm.js
    ========================================================= */
+document.addEventListener("DOMContentLoaded", () => {
 
+    requireLogin();
+
+    // Logged in username
+    const username = sessionStorage.getItem("curonex_username");
+
+    if(username){
+        document.querySelector(".username").textContent = username;
+    }
+
+});
+ if (hospital) {
+        document.getElementById("selectedHospitalName").textContent = hospital;
+    }
 document.addEventListener('DOMContentLoaded', () => {
   // ===== Profile Dropdown =====
 const userWrap = document.getElementById('userWrap');
@@ -33,12 +47,19 @@ if (userWrap && dropdownMenu) {
     alert('Navigating to Settings...');
   });
 
-  document.getElementById('logoutBtn').addEventListener('click', function (e) {
+  document
+.getElementById("logoutBtn")
+.addEventListener("click",function(e){
+
     e.preventDefault();
-    if (confirm('Are you sure you want to log out?')) {
-      alert('Logged out successfully.');
+
+    if(confirm("Are you sure you want to logout?")){
+
+        logoutUser();
+
     }
-  });
+
+});
 }
 
   /* ---------------------------------------------------------
@@ -365,5 +386,73 @@ if (userWrap && dropdownMenu) {
       item.classList.add('active');
     });
   });
+
+});
+const doctor =
+sessionStorage.getItem("selectedDoctor");
+
+const specialization =
+sessionStorage.getItem("selectedSpecialization");
+
+if(doctor){
+
+    document.getElementById("selectedDoctorName")
+    .textContent = doctor;
+
+}
+
+if(specialization){
+
+    document.getElementById("selectedSpecialization")
+    .textContent = specialization;
+
+}
+const date =
+sessionStorage.getItem("selectedDate");
+
+const time =
+sessionStorage.getItem("selectedTime");
+
+if(date){
+
+    document.getElementById("selectedDate")
+    .textContent = date;
+
+}
+
+if(time){
+
+    document.getElementById("selectedTime")
+    .textContent = time;
+
+}
+document
+.getElementById("myProfileBtn")
+.addEventListener("click",function(e){
+
+    e.preventDefault();
+
+    goToProfile();
+
+});
+document
+.getElementById("confirmAppointmentBtn")
+.addEventListener("click",function(){
+
+    alert("Appointment Confirmed Successfully!");
+
+    window.location.href =
+    "../Appointment_History_Aravind/appointment_history.html";
+
+});
+document
+.getElementById("cancelAppointmentBtn")
+.addEventListener("click",function(){
+
+    if(confirm("Cancel this booking?")){
+
+        history.back();
+
+    }
 
 });

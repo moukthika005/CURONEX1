@@ -1,4 +1,15 @@
+document.addEventListener("DOMContentLoaded", () => {
 
+    requireLogin();
+
+    // Show logged in username
+    const username = sessionStorage.getItem("curonex_username");
+
+    if (username) {
+        document.querySelector(".username").textContent = username;
+    }
+
+});
   const appointments = [
     {
       hospital: "City Care Hospital", doctor: "Dr. Rajesh Kumar", spec: "Cardiologist",image:"images/Hospital.jpg",
@@ -41,6 +52,49 @@
       date: "10 May 2025", day: "Saturday", time: "03:00 PM", status: "cancelled"
     }
   ];
+  const bookedHospital =
+    sessionStorage.getItem("selectedHospital");
+
+const bookedDoctor =
+    sessionStorage.getItem("selectedDoctor");
+
+const bookedSpecialization =
+    sessionStorage.getItem("selectedSpecialization");
+
+const bookedDate =
+    sessionStorage.getItem("selectedDate");
+
+const bookedTime =
+    sessionStorage.getItem("selectedTime");
+
+if (
+    bookedHospital &&
+    bookedDoctor &&
+    bookedDate &&
+    bookedTime
+) {
+
+    appointments.unshift({
+
+        hospital: bookedHospital,
+
+        doctor: bookedDoctor,
+
+        spec: bookedSpecialization,
+
+        image: "images/Hospital.jpg",
+
+        date: bookedDate,
+
+        day: "",
+
+        time: bookedTime,
+
+        status: "upcoming"
+
+    });
+
+}
 
   const statusMeta = {
     upcoming:  { label: "Upcoming",  icon: "🕐", class: "upcoming" },
@@ -112,5 +166,45 @@
   });
 
   // Initial load: Upcoming shown first
-  updateCounts();
-  setActiveTab('upcoming');
+  // Initial load
+updateCounts();
+
+const filter =
+    sessionStorage.getItem("appointmentFilter");
+
+if (
+    filter === "history" ||
+    filter === "upcoming" ||
+    filter === "cancelled"
+) {
+
+    setActiveTab(filter);
+
+}
+else {
+
+    setActiveTab("upcoming");
+
+}
+document
+.getElementById("myProfileBtn")
+.addEventListener("click", function(e){
+
+    e.preventDefault();
+
+    goToProfile();
+
+});
+document
+.getElementById("logoutBtn")
+.addEventListener("click", function(e){
+
+    e.preventDefault();
+
+    if(confirm("Are you sure you want to logout?")){
+
+        logoutUser();
+
+    }
+
+});
