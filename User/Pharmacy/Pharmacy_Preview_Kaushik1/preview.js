@@ -4,7 +4,34 @@
 // ============================================================
 
 document.addEventListener('DOMContentLoaded', () => {
+      requireLogin();
 
+    // Logged-in username
+    const username = sessionStorage.getItem("curonex_username");
+
+    if (username) {
+        const userName = document.querySelector(".user-name");
+        if (userName) {
+            userName.textContent = username;
+        }
+    }
+        // Load registered user details
+    const user = JSON.parse(localStorage.getItem("curonex_user"));
+
+    if (user) {
+
+        const patientName = document.getElementById("patientName");
+        const patientPhone = document.getElementById("patientPhone");
+        const patientAddress = document.getElementById("patientAddress");
+
+        if (patientName) patientName.textContent = user.fullName;
+        if (patientPhone) patientPhone.textContent = user.phone;
+
+        if (patientAddress) {
+            patientAddress.textContent =
+                user.address || "Address not provided";
+        }
+    }
   /* ---------------------------------------------------------
      0. SHARED UTILITIES (toast, dropdowns) — same pattern
         as pharmacy.js, duplicated here for standalone use
@@ -78,8 +105,22 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   toggleMenu('.bell-wrap', ['Order Delivered', 'Prescription Approved'], () => {});
-  toggleMenu('.user-chip', ['My Profile', 'My Orders', 'Settings', 'Logout'],
-    (label) => showToast(`${label} clicked`, 'info'));
+  toggleMenu('.user-chip', ['My Profile', 'My Orders', 'Logout'],
+    (label) => {
+
+    if (label === "My Profile") {
+
+        goToProfile();
+
+    }
+
+    else if (label === "Logout") {
+
+        logoutUser();
+
+    }
+
+});
 
 
   /* ---------------------------------------------------------
@@ -209,7 +250,16 @@ document.addEventListener('DOMContentLoaded', () => {
    5. CANCEL / CONFIRM ORDER
 --------------------------------------------------------- */
 
-const cancelBtn = document.querySelector('.btn-cancel');
+cancelBtn.addEventListener("click", function () {
+
+    if (confirm("Cancel this order?")) {
+
+        window.location.href =
+        "../Pharmacy_Home_Kaushik1/pharmacy_home.html";
+
+    }
+
+});
 const confirmBtn = document.querySelector('.btn-confirm');
 
 // Prevent multiple clicks
@@ -240,7 +290,7 @@ cancelBtn.addEventListener('click', () => {
     showToast('Order cancelled.', 'error');
 
     setTimeout(() => {
-        window.location.href = 'pharmacy.html';
+        window.location.href = '../Pharmacy_Home_Kaushik1/pharmacy_home.html';
     }, 800);
 
 });
@@ -311,8 +361,34 @@ confirmBtn.addEventListener('click', () => {
     );
 
     setTimeout(() => {
+      const selectedMedicines = [];
 
-        window.location.href = 'delivery_tracking.html';
+document.querySelectorAll(".table-row").forEach(row => {
+
+    const checkbox = row.querySelector(".checkbox");
+
+    if (checkbox.dataset.marked !== "true") {
+
+        selectedMedicines.push({
+
+            name: row.querySelector(".med-name").textContent,
+
+            quantity: parseInt(
+                row.querySelector(".qty-value").textContent
+            )
+
+        });
+
+    }
+
+});
+
+sessionStorage.setItem(
+    "selectedMedicines",
+    JSON.stringify(selectedMedicines)
+);
+
+        window.location.href = '../Pharmacy_Delivery_Kaushik1/delivery.html';
 
     }, 1200);
 
@@ -355,5 +431,24 @@ confirmBtn.addEventListener('click', () => {
       if (route) window.location.href = route;
     });
   });
+document.getElementById("myProfileBtn")
+.addEventListener("click", function (e) {
 
+    e.preventDefault();
+
+    goToProfile();
+
+});
+document.getElementById("logoutBtn")
+.addEventListener("click", function (e) {
+
+    e.preventDefault();
+
+    if (confirm("Are you sure you want to logout?")) {
+
+        logoutUser();
+
+    }
+
+});
 });
